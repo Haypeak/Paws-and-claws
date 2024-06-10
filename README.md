@@ -93,7 +93,7 @@ the other html files will look like
 
 ### Building a Veterinary Site
 
-User Stories
+#### User Stories
 -------------
 1. The user should be able to sign up for a newsletter.
 
