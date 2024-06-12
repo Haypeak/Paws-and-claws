@@ -1,7 +1,8 @@
-from app import app
+
 from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 
-
+app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pawsandclaws.db'
 db = SQLAlchemy(app)
 
@@ -17,6 +18,7 @@ class Owner(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(120), nullable=False, unique=True)
+    password = db.Column(db.String(100), nullable=False)
     pets = db.relationship('Pet', backref='owner', lazy='dynamic')
     
 class Record(db.Model):
@@ -31,6 +33,7 @@ class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.Date, nullable=False)
     time = db.Column(db.Time, nullable=False)
+    description = db.Column(db.Text, nullable=False)
     pet_id = db.Column(db.Integer, db.ForeignKey('pet.id'))
     pet = db.relationship('Pet', backref=db.backref('appointments', lazy='dynamic'))
     admin_id = db.Column(db.Integer, db.ForeignKey('admin.id'))
