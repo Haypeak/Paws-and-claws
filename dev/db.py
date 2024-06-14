@@ -15,6 +15,8 @@ class Pet(db.Model):
     breed = db.Column(db.String(50))
     age = db.Column(db.Integer)
     owner_id = db.Column(db.Integer, db.ForeignKey('owner.id'))
+    appointments = db.Column(db.Integer, db.ForeignKey('appointments.id'))
+    record_id = db.Column(db.Integer, db.ForeignKey('record.id'))
 
 class Owner(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -45,3 +47,4 @@ class Admin(db.Model):
     username = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
     appointments = db.relationship('Appointment', backref='admin', lazy='dynamic')
+    access=db.Column(db.String(50), nullable=False)
