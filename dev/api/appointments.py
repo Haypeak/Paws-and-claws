@@ -11,7 +11,7 @@ def create_appointment():
         return jsonify({"message": "Request body must be in JSON format"}), 400
 
     try:
-        # Parse the date and time from strings to datetime.date and datetime.time objects
+
         date_str = data.get('date')
         time_str = data.get('time')
         description = data.get('description')
@@ -26,7 +26,7 @@ def create_appointment():
 
         if not all([date_str, time_str, description, pet_id, admin_id]):
             return jsonify({"message": "Missing required fields"}), 400
-
+#Parsing 
         try:
             date = datetime.strptime(date_str, '%Y-%m-%d').date()
         except ValueError:
@@ -47,7 +47,7 @@ def create_appointment():
 
 
         
-        # Add the new appointment to the session and commit
+        # Adding the new appointment to the session and commit
         db.session.add(appointment)
         db.session.commit()
 
