@@ -12,22 +12,40 @@ def create_appointment():
 
     try:
         # Parse the date and time from strings to datetime.date and datetime.time objects
-        date = datetime.strptime(data.get('date'), '%Y-%m-%d').date()
-        time = datetime.strptime(data.get('time'), '%H:%M:%S').time()
+        date_str = data.get('date')
+        time_str = data.get('time')
+        description = data.get('description')
         pet_id = data.get('pet_id')
         admin_id = data.get('admin_id')
-        full_name= data.get('full_name')
+        
         # email
         # pet_name
         # cell_phone_number
         # Species
         # Breed
 
-        if not date or not time or not pet_id or not admin_id:
+        if not all([date_str, time_str, description, pet_id, admin_id]):
             return jsonify({"message": "Missing required fields"}), 400
 
-        # Create a new Appointment object
-        appointment = Appointment(date=date, time=time, pet_id=pet_id, admin_id=admin_id)
+        try:
+            date = datetime.strptime(date_str, '%Y-%m-%d').date()
+        except ValueError:
+            return jsonify({"message": "Invalid date format. Use YYYY-MM-DD."}), 400
+
+        try:
+            time = datetime.strptime(time_str, '%H:%M:%S').time()
+        except ValueError:
+            return jsonify({"message": "Invalid time format. Use HH:MM:SS."}), 400
+        
+         # Create a new Appointment object
+        appointment = Appointment(
+            date=date,
+            time=time, 
+            description=description, 
+            pet_id=pet_id, 
+            admin_id=admin_id)
+
+
         
         # Add the new appointment to the session and commit
         db.session.add(appointment)
@@ -48,6 +66,7 @@ def get_appointments():
         "id": appt.id,
         "date": appt.date.strftime('%Y-%m-%d'),
         "time": appt.time.strftime('%H:%M:%S'),
+        "description": appt.description,
         "pet_id": appt.pet_id,
         "admin_id": appt.admin_id
     } for appt in appointments]), 200
@@ -59,6 +78,7 @@ def get_appointment(id):
         "id": appointment.id,
         "date": appointment.date.strftime('%Y-%m-%d'),
         "time": appointment.time.strftime('%H:%M:%S'),
+        "description": appointment.description,
         "pet_id": appointment.pet_id,
         "admin_id": appointment.admin_id
     }), 200
@@ -73,11 +93,13 @@ def update_appointment(id):
     try:
         date = datetime.strptime(data.get('date'), '%Y-%m-%d').date() if 'date' in data else appointment.date
         time = datetime.strptime(data.get('time'), '%H:%M:%S').time() if 'time' in data else appointment.time
+        description = data.get('description') if 'description' in data else appointment.description
         pet_id = data.get('pet_id') if 'pet_id' in data else appointment.pet_id
         admin_id = data.get('admin_id') if 'admin_id' in data else appointment.admin_id
-
+        
         appointment.date = date
         appointment.time = time
+        appointment.description = description
         appointment.pet_id = pet_id
         appointment.admin_id = admin_id
 

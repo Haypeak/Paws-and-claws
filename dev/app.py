@@ -1,15 +1,22 @@
-from flask import Flask
-from db import db  # Import the db object (not app)
-from api.appointments import appointments_bp  # Import the blueprint
+from flask import Flask, render_template, url_for
+from hashlib import md5
+from base58 import b58encode 
+from db import db,app
+from api.appointments import appointments_bp  # Imported the blueprint
 
-app = Flask(__name__)
 
-# Configure the app
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pawsandclaws.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Initialize the database with the app
-db.init_app(app)
+
+def hash_pass(password):
+    addon = 'pn782533hdu04088fdu00234432vrertvvf'
+    return md5(b58encode(password + addon)).digest()
+
+
+@app.route('/login')
+def login(request):
+    email = request.get('email')
+    password = hash_pass(request.get('password'))
+    return "This is the Login page"
 
 @app.route('/admin')
 def admin():
@@ -20,7 +27,7 @@ def index():
     return "This is the home page"
     # return render_template('index.html')
 
-# Register the blueprint with the app
+# Registering the blueprint with the app
 app.register_blueprint(appointments_bp)
 
 if __name__ == '__main__':
