@@ -1,0 +1,149 @@
+.footer {
+    margin: 10px auto;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(219, 165, 64, 0.703), rgba(8, 0, 58, 0.7));
+    color: #fff;
+    padding: 15px 0 30px;
+    border-top-left-radius: 125px;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.row {
+    width: 85%;
+    margin: auto;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.col {
+    flex-basis: 25%;
+    padding: 10px;
+    align-items: baseline;
+}
+
+
+.col h3 {
+    width: fit-content;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.col h4 {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.cols {
+    margin-top: 40px;
+}
+
+.email-id {
+    width: fit-content;
+    border-bottom: 1px solid #ccc;
+    color: #fff;
+    margin: 20px 0;
+
+}
+
+.ul li {
+    list-style: none;
+    margin-bottom: 12px;
+}
+
+.li img {
+    width: 27px;
+}
+
+form {
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #ccc;
+}
+
+form input {
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    border: 0;
+    outline: none;
+}
+
+.sub {
+    border: none;
+    background: rgba(94, 94, 237, 0.456);
+    padding: 10px 16px;
+    color: #fff;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sub:active {
+    background: rgba(0, 0, 255, 0.385);
+    transition: 0.3s;
+}
+
+.social-icon img {
+    width: 30px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+hr {
+    width: 90%;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    margin: 10px auto;
+}
+
+.copyright {
+    text-align: center;
+}
+
+/* media queries */
+@media(max-width: 600px) {
+    .footer {
+        display: block;
+        text-align: center;
+    }
+
+    .col {
+        flex-basis: 100%;
+        margin: 10px;
+    }
+
+    .col h3 {
+        margin-left: 110px;
+    }
+}
+
+@media(max-width: 700px) {
+    .footer {
+        display: block;
+        text-align: center;
+
+    }
+
+    .col {
+        flex-basis: 100%;
+        margin: 10px;
+    }
+
+    .col h3 {
+        margin-left: 110px;
+    }
+
+    .email-id {
+        margin-left: 120px;
+    }
+}

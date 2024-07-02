@@ -1,0 +1,37 @@
+.lowContainer {
+    font-size: 15px;
+    text-align: center;
+    color: "#212EA0";
+    margin: 100px, 0, 30px;
+    padding-left: 10%;
+  padding-right: 10%;
+}
+.title {
+    font-size: 32px;
+  text-transform: none;
+  margin-top: 10px;
+}
+.button{
+  background: #fff;
+  color:  #f09342;
+  padding: 15px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  outline: 0;
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.button:active{
+   color: #fff;
+  background-color: #f09342;
+}
+.button img {
+  width: 27px;
+  margin-left: 10px;
+  background: transparent;
+}

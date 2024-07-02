@@ -1,0 +1,60 @@
+.tips {
+    width: 100%;
+    margin: 80px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.tips-left {
+    flex-basis: 44%;
+    justify-content: start;
+   
+
+
+}
+
+.tips-right {
+    flex-basis: 44%;
+    flex: 1;
+
+}
+
+.tips img {
+    width: 350px;
+    height: 260px;
+    margin: 2px;
+    margin-left: 30px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.tips h2 {
+    font-size: 35px;
+    font-weight: 600;
+    color: #000F38;
+    margin: 10px 0;
+    max-width: 400px;
+    margin-left: 30px;
+}
+
+.tips p {
+    color: #676767;
+    margin-bottom: 15px;
+    margin-left: 30px;
+}
+
+@media(max-width: 800px){
+    .tips{
+        flex-direction: column;
+    }
+    .tips-left{
+        flex-basis: 100%;
+        margin: 20px;
+    }
+    .tips-right{
+        flex-basis: 100%;
+    }
+}
