@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "type": "python",
+            "name": "Python configuration",
+            "environment": {
+                
+            },
+            "file": "dev/Backend/app.py",
+            "arguments": [],
+        },
+        {
+            "type": "npm",
+            "name": "npm configuration",
+            "dependsOn": ["Python configuration"],
+            "workingDir": "front-end/",
+            "command": "run",
+            "scripts": "dev",
+        }
+        
+        
+        
+        
+        
+    ]
+}

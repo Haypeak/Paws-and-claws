@@ -20,11 +20,11 @@ const Navbar = () => {
     <nav className={`container ${sticky ? 'dark-nav' : ''}`}>
       <img src={logo} alt="" className='logo' />
       <ul className={mobileMenu? '':'hide-mobile-menu'}>
-        <button><li><a href=''>Home</a></li></button>
-        <button><li><a href=''>About</a></li></button>
-        <button><li><a href=''>Products</a></li></button>
-        <button><li><a href=''>Services</a></li></button>
-        <button><li><a href=''>Tips & Updates</a></li></button>
+        <button><li><a href='/'>Home</a></li></button>
+        <button><li><a href='/#about'>About</a></li></button>
+        <button><li><a href='/#products'>Products</a></li></button>
+        <button><li><a href='/#services'>Services</a></li></button>
+        <button><li><a href='/#tips'>Tips & Updates</a></li></button>
         <li><button className='btn'><a href=''>Contact Us</a></button></li>
       </ul>
       <img src={menu} alt='' className='menu' onClick={toggleMenu}/>

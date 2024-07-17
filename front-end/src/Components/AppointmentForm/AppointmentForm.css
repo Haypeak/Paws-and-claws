@@ -1,0 +1,99 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #f8b400;
+    padding: 10px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+}
+
+
+
+.appointment {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: 20px auto;
+ 
+}
+
+.appointment-form {
+ display: flex;
+ flex-direction: column;
+}
+.appointment h1 {
+  margin-bottom: 20px;
+}
+.appointment label {
+  display: block;
+  margin-bottom: 5px;
+  align-items: start;
+}
+
+.appointment input, .appointment select, .appointment button {
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.appointment button {
+  background-color: #f8b400;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #f8b400;
+  color: white;
+}
+
+.footer-logo {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
