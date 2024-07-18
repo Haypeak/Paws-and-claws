@@ -16,7 +16,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="/appointments" element={<AppointmentsPage />} /> */}
+        <Route path="/appointments" element={<AppointmentsPage />} />s
         <Route path='*' element={<h1>404 Not Found</h1>} />
       </Routes>
     </Router>

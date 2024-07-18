@@ -90,6 +90,36 @@ nav ul button {
     right: -200px;
     
    }
+   /* Adjustments for mobile vertical nav */
+@media (max-width: 840px){
+    nav ul {
+      display: flex;
+      flex-direction: column; /* Makes the menu vertical */
+      align-items: start; /* Aligns items to the start of the nav */
+      padding: 0; /* Removes padding */
+    }
+    nav ul li {
+      margin: 10px 0; /* Adjusts margin for vertical spacing */
+    }
+    .hide-mobile-menu {
+      display: none; /* Ensures the menu is hidden when not active */
+    }
+    /* Ensure the mobile menu is visible when active */
+    .mobile-menu {
+      display: flex;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%; /* Full width */
+      height: 100vh; /* Full height */
+      background-color: #d07322; /* Background color */
+      flex-direction: column; /* Vertical layout */
+      align-items: center; /* Center items horizontally */
+      justify-content: center; /* Center items vertically */
+      z-index: 20; /* Ensures the menu is above other content */
+      transition: transform 0.5s ease; /* Smooth transition for opening/closing */
+    }
+  }
 
    
 }

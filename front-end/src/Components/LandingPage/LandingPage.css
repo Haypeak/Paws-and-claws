@@ -10,6 +10,16 @@
    justify-content: center;
 }
 
+.btns {
+    background: #ffffef;
+    color:  #f09342;
+}
+
+.btns:active {
+    color: #fff;
+    background-color: #f09342;
+}
+
 .Home-text {
     text-align: center;
     max-width: 900px;

@@ -9,6 +9,8 @@ const AppointmentForm = () => {
         email: '',
         date: '',
         time: '',
+        petId: '',
+        reason: '',
         service: 'general'
     });
 
@@ -20,9 +22,24 @@ const AppointmentForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    async function handleSubmit(e) {
         e.preventDefault();
-        alert('Appointment booked successfully!');
+        try{
+        const response = await fetch('/api/appointments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'True'
+            },
+            body: JSON.stringify(formData),
+            
+        });
+        return alert('Appointment Booked Succesfully!');
+    }catch (error){
+        console.log(response.json());
+        return alert('Try again!');
+    }
+
     };
 
     return (
@@ -31,17 +48,17 @@ const AppointmentForm = () => {
         
      
         <main>
-          <section className="banner">
-            <h3>Banner Placeholder</h3>
-          </section>
           <section className="appointment">
             <h1>Book an Appointment</h1>
         <form className="appointment-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
+            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} placeholder='name' required />
 
             <label htmlFor="email">Email:</label>
             <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+            
+            <label htmlFor="petId">Pet's Id:</label>
+            <input type="text" id="petId" name="petId" value={formData.petId} onChange={handleChange} required />
 
             <label htmlFor="date">Date:</label>
             <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} required />
@@ -57,6 +74,9 @@ const AppointmentForm = () => {
                 <option value="surgery">Surgery</option>
                 <option value="wellness">Wellness Care</option>
             </select>
+
+            <label htmlFor="reason">reason for appointment:</label>
+            <input type="text" id="reason" name="reason" value={formData.reason} onChange={handleChange} required />
 
             <button type="submit">Book Appointment</button>
         </form>
