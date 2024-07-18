@@ -1,7 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 from datetime import datetime, UTC
-app = Flask(__name__)
+
+app = Flask(__name__, static_folder='../../front-end/dist', static_url_path='/')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pawsandclaws.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
