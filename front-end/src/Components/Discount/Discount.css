@@ -1,0 +1,56 @@
+.Discount{
+    width: 90%;
+    margin: 50px auto;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.Discount h3{
+    font-size: 32px;
+    font-weight:700;
+    color: #040536f0;
+    margin-bottom: 10px;
+}
+.discount-left{
+ width: 100%;
+ flex-basis: 45%;
+}
+.discount-left h3{
+    text-align: center;
+}
+.discount-right{
+    flex-basis: 45%;
+}
+.discount-left img{
+    width: 94%;
+    border-radius: 15px;
+    margin-left: 20px;
+    cursor: pointer;
+    justify-content: start; 
+    transition: transform 1.5s ease-in-out;
+}
+.discount-left img:hover{
+    transform: rotate(360deg);
+}
+.discount-right p{
+    font-size: 16px;
+    color: #676767;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 800px) {
+    .Discount{
+        flex-direction: column;
+    }
+    .discount-left{
+        flex-basis: 100%;
+        margin: 10px;
+    }
+    .discount-right{
+        flex-basis: 100%;
+        margin: 10px;
+    }
+    
+}

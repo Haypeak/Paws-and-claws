@@ -1,0 +1,145 @@
+.personel{
+    margin: 80px auto;
+    width: 90%;
+    text-align: center;
+}
+.personel h3{
+    font-size: 32px;
+     color:  rgb(8, 0, 58);
+     margin-bottom: 20px;
+     border-bottom: 3px;
+     border-color: rgba(8, 0, 58, 0.877);
+}
+
+.section1{
+    margin-bottom: 40px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+.section2{
+    margin-bottom: 40px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+.doctors-left1{
+    width: 42%;
+    padding: 10px auto; 
+    margin-left: 40px;
+    box-shadow: 0 0 20px  rgba(0,0,0,0.05)
+
+}
+.doctors-right1{
+    width: 42%;
+    padding: 10px auto; 
+    margin-right: 40px;  
+    box-shadow: 0 0 20px  rgba(0,0,0,0.05)
+}
+.doctors-left2{
+    width: 42%;
+    padding: 10px auto; 
+    margin-left: 40px; 
+    box-shadow: 0 0 20px  rgba(0,0,0,0.05) 
+}
+.doctors-right2{
+    width: 42%;
+    padding: 10px auto; 
+    margin-right: 40px;  
+    box-shadow: 0 0 20px  rgba(0,0,0,0.05)
+}
+
+.doctors-left1 img{
+    width: 100%;
+    height: 260px;
+    border-radius: 15%;
+ 
+}
+.doctors-left2 img{
+    width: 100%;
+    height: 260px;
+    border-radius: 15%;
+}
+
+.doctors-right1 img{
+    width: 100%;
+    height: 260px;
+    border-radius: 15%;
+
+}
+
+
+.doctors-right2 img{
+    width: 100%;
+    height: 260px;
+    border-radius: 15%;
+}
+
+
+.section1 h4{
+    font-family: 28px;
+    font-weight: 500;
+    color: rgba(8, 0, 58, 0.877);
+    margin-top: 10px;
+    margin-bottom: 15px;
+  
+
+}
+
+.section1 p{
+   margin-top: 10px;
+    margin-bottom: 15px;
+}
+.section2 p{
+    margin-bottom: 15px;
+    margin-top: 10px;  
+}
+.section2 h4{
+    font-family: 28px;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: rgba(8, 0, 58, 0.877);
+
+}
+
+@media(max-width: 800px) {
+    .section1{
+        flex-direction: column;
+        padding: 10px auto;
+        margin-bottom: 50px;
+        justify-content: space-between;
+        
+    }
+    .section2{
+        flex-direction: column;
+        padding: 10px auto;
+        margin-bottom: 0px;
+    }
+    .doctors-left1{
+        width: 70%;
+        margin-bottom: 30px;
+      
+    }
+    .doctors-left2{
+        width: 70%;
+        margin-bottom: 30px;
+        margin-right: 20px;
+       
+    }
+    .doctors-right1{
+        width: 70%;
+        margin-bottom: 30px;
+        margin-left: 67px;
+    }
+    .doctors-right2{
+        width: 70%;
+        margin-bottom: 15px;
+        margin-left: 48px;
+    }
+    .personel h3{
+        font-size: 26px;
+        margin-left: 50px;
+    }
+}
