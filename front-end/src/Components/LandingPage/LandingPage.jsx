@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import "./LandingPage.css";
 import paws from "../../assets/paw.png";
 import { useNavigate } from 'react-router-dom';
