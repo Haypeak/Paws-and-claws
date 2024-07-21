@@ -13,11 +13,11 @@ from api.appointments import appointments_bp  # Imported the blueprint
 #     return md5(b58encode(password + addon)).digest()
 
 
-@app.route('/login')
-def login(request):
-    email = request.get('email')
-    password = hash_pass(request.get('password'))
-    return "This is the Login page"
+# @app.route('/login')
+# def login(request):
+#     email = request.get('email')
+#     password = hash_pass(request.get('password'))
+#     return "This is the Login page"
 
 @app.route('/admin')
 def admin():

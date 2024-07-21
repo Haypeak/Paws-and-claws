@@ -32,7 +32,7 @@ class User(db.Model):
     role = db.Column(db.String(50), nullable=False)
     date_joined = db.Column(db.DateTime, default=datetime.now(UTC))
     last_login = db.Column(db.DateTime, nullable=True)
-    newsletter = db.Column(db.Boolean, default=False, nullable=True)
+    subscribed = db.Column(db.Boolean, default=False, nullable=True)
     show_newsletter_prompt = db.Column(db.Boolean, default=True, nullable=False)
     pets = db.relationship('Pet', backref='owner', lazy=True)
     appointments = db.relationship('Appointment', backref='owner', lazy=True)
