@@ -2,11 +2,13 @@
 import "./LandingPage.css";
 import paws from "../../assets/paw.png";
 import { useNavigate } from 'react-router-dom';
+import { CgPushChevronDown } from "react-icons/cg";
 
 
  const LandingPage = () => {
   const navigate = useNavigate();
   return (
+    <>
     <div className='Home container'>
       <div className='Home-text'>
    <h1>Animal Care</h1>
@@ -16,8 +18,12 @@ import { useNavigate } from 'react-router-dom';
 </p>
      <button className='btns' onClick={()=> navigate('/appointments')}>Get Started 
       <img src={paws} alt='' className='paws'/></button>
+      {/* <div className='arrow-container'>
+         <button className="arrow-button" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}><CgPushChevronDown className='arrow-icon'/></button>
+      </div> */}
       </div>
     </div>
+    </>
   )
 }
 

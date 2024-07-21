@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Personels.css";
+import { useNavigate } from 'react-router-dom';
 import paws from "../../assets/paw.png";
 import person1 from "../../assets/person1.png";
 import person2 from "../../assets/person2.jpg";
@@ -8,6 +9,7 @@ import person4 from "../../assets/person4 (3).jpg";
 
 
 const Personels = () => {
+    const navigate = useNavigate();
     return (
         <div className='personel'><h3>OUR PROFESSIONAL DOCTORS</h3>
             <div className='section1'>
@@ -27,7 +29,8 @@ const Personels = () => {
                     <img src={person4} alt='' /><h4>Dr. James Patel - Veterinary Surgeon</h4><p>Role: Performs surgical procedures, ranging from routine spays and neuters to more complex orthopedic and soft tissue surgeries. Dr. Patel also manages post-operative care and recovery.
                     </p>
                 </div>
-            </div><button className= 'button'><a href='#'>Book an Appointment <img src={paws} alt='' /></a></button>
+            </div><button className='bton' onClick={()=> navigate('/appointments')}>Book Appointment
+            <img src={paws} alt='' className='paws'/></button>
 
         </div>
     )
