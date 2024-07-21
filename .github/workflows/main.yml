@@ -41,12 +41,12 @@ jobs:
       with:
         node-version: '14'
     - name: Install dependencies
-      working-directory: frontend
       run: |
+        cd ../frontend
         npm install
     - name: Run lint
-      working-directory: frontend
       run: |
+        cd ../frontend
         npm run lint
     - name: Run tests
       working-directory: frontend
