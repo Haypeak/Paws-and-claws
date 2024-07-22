@@ -29,6 +29,7 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
+      working-directory: server
       run: |
         pytest
 
@@ -41,14 +42,14 @@ jobs:
       with:
         node-version: '14'
     - name: Install dependencies
+      working-directory: front-end
       run: |
-        cd ../frontend
         npm install
     - name: Run lint
+      working-directory: front-end
       run: |
-        cd ../frontend
         npm run lint
     - name: Run tests
-      working-directory: frontend
+      working-directory: front-end
       run: |
         npm test
