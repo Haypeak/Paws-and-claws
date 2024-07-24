@@ -2,8 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AboutPage from './Pages/AboutPage';
 import HomePage from './Pages/HomePage';
 import AppointmentsPage from './Pages/AppointmentPage';
-import ScrollToTop from './functions/scrollToTop';
-import LoginPage from './Pages/LoginPage';
+import AdminLogin from './Components/AdminLogin/AdminLogin';
 
 const App = () => {
   return (
@@ -11,11 +10,11 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/appointments" element={<AppointmentsPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/AboutPage" element={<AboutPage />} />
+        <Route path="/" element={<AdminLogin />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
-      <ScrollToTop />
+      
     </Router>
   );
 }

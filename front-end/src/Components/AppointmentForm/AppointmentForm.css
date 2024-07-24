@@ -60,7 +60,7 @@ main {
 .appointment h1 {
   margin-bottom: 20px;
   text-align: center;
-  color: #D32222;
+  color: #f09342;
 }
 
 .appointment input, .appointment select, .appointment button {
@@ -102,7 +102,7 @@ main {
 }
 
 .appointment button {
-  background-color: #f8b400;
+  background-color: #f09342;
   color: white;
   border: none;
   cursor: pointer;
@@ -113,7 +113,7 @@ main {
 }
 
 .appointment button:hover {
-  background-color: #d19d00;
+  background-color: #ffc002;
 }
 
 .note-submit-btn {

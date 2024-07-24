@@ -1,7 +1,7 @@
 // import React from 'react';
-import PropTypes from 'prop-types';
 import "./Title.css";
 
+// eslint-disable-next-line react/prop-types
 const Title = ({title, subTitle}) => {
   return (
     <div className='title'>
@@ -11,7 +11,9 @@ const Title = ({title, subTitle}) => {
   )
 }
 Title.propTypes = {
+  // eslint-disable-next-line no-undef
   title: PropTypes.string.isRequired,
+  // eslint-disable-next-line no-undef
   subTitle: PropTypes.string.isRequired
 }
 
