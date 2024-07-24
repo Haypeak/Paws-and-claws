@@ -8,6 +8,7 @@ import Testimonials from './Components/Testimonials/Testimonials';
 import Discount from './Components/Discount/Discount';
 import HomePage from './Pages/HomePage';
 import AppointmentsPage from './Pages/AppointmentPage';
+import AdminLogin from './Components/AdminLogin/AdminLogin';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/appointments" element={<AppointmentsPage />} />
+        <Route path="/" element={<AdminLogin />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       <div>

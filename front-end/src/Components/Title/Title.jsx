@@ -1,6 +1,7 @@
-import React from 'react';
+// import React from 'react';
 import "./Title.css";
 
+// eslint-disable-next-line react/prop-types
 const Title = ({title, subTitle}) => {
   return (
     <div className='title'>

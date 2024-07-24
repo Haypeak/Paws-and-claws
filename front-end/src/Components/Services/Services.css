@@ -11,12 +11,12 @@
     flex-basis: 56%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* Adjust the minmax value based on desired width */
-     /* Space between images */
-    justify-content: start; 
-    width: 100%;   
+    gap: 30px; /* Space between images */
+    justify-content: start;
+    width: 100%;  
 }
 .services-left{
-    flex-basis: 40%;
+    flex-basis: 52%;
 }
 .services img{
     width: 280px;
@@ -24,6 +24,10 @@
     margin: 6px;
     object-fit: cover;
     border-radius: 10px;
+}
+
+.jj{
+    margin: 20px;
 }
 .jj:hover{
     width: 260px;
