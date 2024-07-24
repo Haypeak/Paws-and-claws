@@ -1,4 +1,3 @@
-// import React from 'react';
 import "./Discount.css";
 import discount from "../../assets/Discount.jpg"; 
 

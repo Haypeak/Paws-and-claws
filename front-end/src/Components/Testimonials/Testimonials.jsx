@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import "./Testimonials.css";
 import back_icon from "../../assets/back-icon.jpg";
 import next_icon from "../../assets/forward-icon.jpg";
@@ -39,7 +39,7 @@ const slideBackward = () =>{
                                 <span>Paws&Claws, Accra</span>
                             </div>
                         </div><p>
-                        "I can say that Paws and Claws has been a blessing for my pets! The veterinarians and staff are kind and helpful, especially Dr. Thompson, who performed a risky operation on my dog that others had refused. The clinic is always clean, and the personnel are friendly and welcoming. I highly recommend this clinic."</p>
+                        “I can say that Paws and Claws has been a blessing for my pets! The veterinarians and staff are kind and helpful, especially Dr. Thompson, who performed a risky operation on my dog that others had refused. The clinic is always clean, and the personnel are friendly and welcoming. I highly recommend this clinic.”</p>
                     </div>
                     </li>
                     <li><div className="slide">
@@ -60,7 +60,7 @@ const slideBackward = () =>{
                                 <span>Paws&Claws, Legon</span>
                             </div>
                         </div><p>
-                        "Paws and Claws is the best veterinary clinic I've ever taken my cats to. The care from everyone—technicians, receptionists, doctors, and surgical nurses—is outstanding. Dr. Lee, the internal medicine specialist, always provides exceptional service. I highly recommend this clinic."</p>
+                        “Paws and Claws is the best veterinary clinic I&#39;ve ever taken my cats to. The care from everyone—technicians, receptionists, doctors, and surgical nurses—is outstanding. Dr. Lee, the internal medicine specialist, always provides exceptional service. I highly recommend this clinic.”</p>
                     </div>
                     </li><li><div className="slide">
                         <div className="user-info">
@@ -70,7 +70,7 @@ const slideBackward = () =>{
                                 <span>Paws&Claws, Osu</span>
                             </div>
                         </div><p>
-                            "I can't say enough good things about Paws and Claws. The staff is incredibly kind and patient, and they genuinely care about the well-being of your pets. My dog had a complex surgery performed by Dr. Patel, and the care he received was outstanding. If you love your pets, take them to Paws and Claws!"</p>
+                            “I can&#39;t say enough good things about Paws and Claws. The staff is incredibly kind and patient, and they genuinely care about the well-being of your pets. My dog had a complex surgery performed by Dr. Patel, and the care he received was outstanding. If you love your pets, take them to Paws and Claws!”</p>
                     </div>
                     </li>
                 </ul>

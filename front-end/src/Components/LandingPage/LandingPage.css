@@ -5,99 +5,87 @@
     background-size: cover;
     background-position: center;
     color: #fff;
+    background-color: #f09342;
+}
+/* .arrow-container {
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f09342;
     display: flex;
     align-items: center;
     justify-content: center;
- }
- 
- .btns {
-     background: #ffffef;
-     color:  #f09342;
- }
- 
- .btns:active {
-     color: #fff;
-     background-color: #f09342;
- }
- /* .arrow-container {
-     bottom: 0;
-     right: 0;
-     margin: 20px;
-     width: 50px;
-     height: 50px;
-     border-radius: 50%;
-     background-color: #f09342;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     cursor: pointer;
- } */
- 
- .arrow-button {
-     position: absolute;
-     bottom: 0;
-     margin: 20px;
-     width: 50px;
-     height: 50px;
-     border-radius: 50%;
-     background-color: #f09342;
-     border-top: 2px solid #fff;
-     border-right: 2px solid #fff;
-     /* transform: rotate(45deg); */
-     transition: transform 0.3s ease;
- }
- 
- .arrow-container:hover .arrow-button {
-     content: "Next Page";
-     transform:  scale(1.2);
-     border-radius: 25px; /* Add this line to make the button pill shaped */
- }
- 
- .arrow-button::after {
-     content: "Next Page";
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     color: #fff;
-     font-size: 14px;
-     font-weight: bold;
-     opacity: 0;
-     transition: opacity 0.3s ease;
- }
- 
- .arrow-container:hover .arrow-button::after {
-     opacity: 1;
- }
- 
- .Home-text {
-     text-align: center;
-     max-width: 900px;
- }
- .Home-text h1{
-     font-size: 60px;
-     font-weight: 600;
- }
- .Home-text p{
-     max-width: 800px;
-     margin: 10px auto 20px;
-     line-height: 1.4;
- }
- 
- /* media queries*/
- @media(max-width: 850px) {
-     .Home-text h3{
-         font-size: 40px;
-     }
- }
- @media(max-width: 650px) {
-     .Home-text h3{
-         font-size: 40px;
-         max-width: 400px; /* to get some pace around text*/
-         margin: auto;
-     }
-     .Home-text p{
-         font-size: 14px;
-         margin: 15px;
-     }
- }
+    cursor: pointer;
+} */
+
+.arrow-button {
+    position: absolute;
+    bottom: 0;
+    margin: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f09342;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    /* transform: rotate(45deg); */
+    transition: transform 0.3s ease;
+}
+
+.arrow-container:hover .arrow-button {
+    content: "Next Page";
+    transform:  scale(1.2);
+    border-radius: 25px; /* Add this line to make the button pill shaped */
+}
+
+.arrow-button::after {
+    content: "Next Page";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.arrow-container:hover .arrow-button::after {
+    opacity: 1;
+}
+
+.Home-text {
+    text-align: center;
+    max-width: 900px;
+}
+.Home-text h1{
+    font-size: 60px;
+    font-weight: 600;
+}
+.Home-text p{
+    max-width: 800px;
+    margin: 10px auto 20px;
+    line-height: 1.4;
+}
+
+/* media queries*/
+@media(max-width: 850px) {
+    .Home-text h3{
+        font-size: 40px;
+    }
+}
+@media(max-width: 650px) {
+    .Home-text h3{
+        font-size: 40px;
+        max-width: 400px; /* to get some pace around text*/
+        margin: auto;
+    }
+    .Home-text p{
+        font-size: 14px;
+        margin: 15px;
+    }
+}

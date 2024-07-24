@@ -15,8 +15,8 @@ class Pet(db.Model):
     name = db.Column(db.String(255), nullable=False)
     species = db.Column(db.String(255), nullable=False)
     breed = db.Column(db.String(255), nullable=False)
-    age = db.Column(db.Integer, nullable=False)
-    medical_history = db.Column(db.Text, nullable=False)
+    age = db.Column(db.Integer, nullable=True)
+    medical_history = db.Column(db.Text, nullable=True)
     # vaccinations = db.relationship('PetVaccination', backref='pet', lazy=True)
     appointments = db.relationship('Appointment', backref='pet', lazy=True)
 
@@ -28,11 +28,11 @@ class User(db.Model):
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
     phone_number = db.Column(db.String(20), nullable=False)
-    address = db.Column(db.Text, nullable=False)
-    role = db.Column(db.String(50), nullable=False)
+    address = db.Column(db.Text, nullable=True)
+    role = db.Column(db.String(50), nullable=False, default='user')
     date_joined = db.Column(db.DateTime, default=datetime.now(UTC))
     last_login = db.Column(db.DateTime, nullable=True)
-    newsletter = db.Column(db.Boolean, default=False, nullable=True)
+    subscribed = db.Column(db.Boolean, default=False, nullable=True)
     show_newsletter_prompt = db.Column(db.Boolean, default=True, nullable=False)
     pets = db.relationship('Pet', backref='owner', lazy=True)
     appointments = db.relationship('Appointment', backref='owner', lazy=True)
@@ -66,7 +66,7 @@ class Appointment(db.Model):
 @db.validates('status')
 def validate_status(self, key, value):
     # set_values = ['confirmed','completed', 'canceled']
-    set_values = ['pending','confirmed']
+    set_values = ['pending','confirmed', 'canceled']
     if str(value.lower()) not in set_values:
         raise ValueError("Invalid status, try again")
     return value
