@@ -2,7 +2,7 @@
 import "./LandingPage.css";
 import paws from "../../assets/paw.png";
 import { useNavigate } from 'react-router-dom';
-import { CgPushChevronDown } from "react-icons/cg";
+// import { CgPushChevronDown } from "react-icons/cg";
 
 
  const LandingPage = () => {

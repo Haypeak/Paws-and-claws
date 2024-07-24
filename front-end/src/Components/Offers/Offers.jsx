@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import "./Offers.css";
 import pets1 from "../../assets/pets1.jpg";
 import pets2 from "../../assets/pets2.jpg";

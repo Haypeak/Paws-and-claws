@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import logo from "../../assets/Paws&Claws logo.png";
 import "./Footer.css";
 import facebook from "../../assets/facebook.png";

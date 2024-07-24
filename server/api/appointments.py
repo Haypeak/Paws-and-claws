@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from database.db import db, Appointment
+from database.db import db, Appointment, Pet, User
 from datetime import datetime
 
 appointments_bp = Blueprint('appointments', __name__, url_prefix='/api')
@@ -14,13 +14,39 @@ def create_appointment():
         datetime_str = f"{data.get('date')} {data.get('time')}"
         datetime_obj = datetime.strptime(datetime_str, '%Y-%m-%d %H:%M:%S')
         reason = data.get('reason')
-        pet_id = data.get('pet_id')
-        owner_id = data.get('owner_id')
+        pet_name = data.get('pet_name')
+        pet_breed = data.get('Breed')
+        pet_species = data.get('pet_species')
+        owner_first_name = data.get('owner_first_name')
+        owner_last_name = data.get('owner_last_name')
+        owner_email = data.get('email')
+        owner_name = data.get('owner_name')
         status = data.get('status', 'Pending')  # Default status
 
-        if not all([datetime_obj, reason, pet_id, owner_id]):
+        if not all([datetime_obj, reason, pet_name, pet_breed, pet_species, owner_email, owner_name, status]):
             return jsonify({"message": "Missing required fields"}), 400
-
+        
+        user = User(
+            first_name=owner_first_name, 
+            last_name=owner_last_name,  
+            email=data.get('email'),
+            address=data.get('address'),
+            phone_number=data.get('phone_number')
+        )
+        pet = Pet(
+            owner_id=user.id,
+            pet_name=pet_name,
+            pet_breed=pet_breed,
+            pet_species=pet_species
+        )
+        
+        owner_id = User.query.get({'email': owner_email}).first().id
+        pet_id = Pet.query.get({'pet_name': pet_name}).first().id
+        if not pet_id.exists():
+            db.session.add(pet)
+            db.commit()
+            
+        pet_id = Pet.query.get({'pet_name': pet_name, 'owner_id': owner_id}).first().id
         appointment = Appointment(
             date_time=datetime_obj,
             reason=reason,

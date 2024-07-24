@@ -55,9 +55,18 @@ const AppointmentForm = () => {
                             type="text" 
                             id="name" 
                             name="name" 
-                            value={formData.name} 
+                            value={formData.firstName} 
                             onChange={handleChange} 
-                            placeholder='Full Name*' 
+                            placeholder='First Name*' 
+                            required 
+                        />
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            value={formData.lastName} 
+                            onChange={handleChange} 
+                            placeholder='Surname*' 
                             required 
                         />
                         
@@ -102,16 +111,16 @@ const AppointmentForm = () => {
                         {/* <label htmlFor="email">Email:</label> */}
                         <select 
                            type="text"
-                           id="reason" 
-                            name="reason" 
-                            placeholder='Spieces:*'
-                            value={formData.reason} 
+                           id="species" 
+                            name="species" 
+                            placeholder='Species:*'
+                            value={formData.species} 
                             onChange={handleChange} 
                             required 
                             className='contact-section'
                         >
-                            <option value="general">Dog</option>
-                            <option value="dental">Cat</option>
+                            <option value="Dog">Dog</option>
+                            <option value="Cat">Cat</option>
                         </select>
 
                          {/* <label htmlFor="email">Email:</label> */}

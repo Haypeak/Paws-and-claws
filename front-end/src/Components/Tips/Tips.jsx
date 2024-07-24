@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import "./Tips.css";
 import health from "../../assets/healths.png";
  
