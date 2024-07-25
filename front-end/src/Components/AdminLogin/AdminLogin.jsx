@@ -1,5 +1,5 @@
 import { useState } from "react";
-import '../AdminLogin/AdminLogin.css';
+import './AdminLogin.css';
 
 const AdminLogin = () => {
     const [email, setEmail] = useState('');
@@ -38,6 +38,6 @@ const AdminLogin = () => {
         </form>
       </div>
     );
-  };
+  }
   
 export default AdminLogin;
