@@ -18,7 +18,10 @@
 
 }.products-right{
  flex-basis: 56%;
+ opacity: 0;
+ transform: translateX(-100%);
 }
+
 .products img {
     width: 180px; 
     height: 180px; 
