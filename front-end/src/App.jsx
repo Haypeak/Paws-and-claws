@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AboutPage from './Pages/AboutPage';
 import HomePage from './Pages/HomePage';
-import AppointmentsPage from './Pages/AppointmentPage';
+import AppointmentPage from './Pages/AppointmentPage';
 import LoginPage from './Pages/LoginPage';
+import SignUpPage from './Pages/SignUpPage';
 import AdminLoginPage from './Pages/AdminLoginPage';
 
 const App = () => {
@@ -10,10 +11,11 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/appointments" element={<AppointmentsPage />} />
-        <Route path="/AboutPage" element={<AboutPage />} />
+        <Route path="/appointments" element={<AppointmentPage />} />
+        <Route path="/About" element={<AboutPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/admin/syslogin" element={<AdminLoginPage />} />
+        <Route path="/SignUp" element={<SignUpPage />} />
+        <Route path="/AdminLogin" element={<AdminLoginPage />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       

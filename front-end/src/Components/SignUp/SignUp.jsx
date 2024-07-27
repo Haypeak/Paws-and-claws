@@ -1,26 +1,15 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Ensure you have this import for navigation
-import './Login.css';
+import { useNavigate } from 'react-router-dom';
+import './SignUp.css';
 
 function Login() {
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const navigate = useNavigate(); // Initialize navigate
-
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
-  //   // Call login API here
-  //   console.log('Login button clicked');
-  // };
-
-  // const handleSignup = (e) => {
-  //   e.preventDefault();
-  //   // Call signup API here
-  //   console.log('Signup button clicked');
-  // };
+  const [password, setPassword] = useState('');
+  const [, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleForgotPassword = () => {
-    // Call forgot password API here
     console.log('Forgot password button clicked');
   };
 
@@ -31,36 +20,49 @@ function Login() {
         <div className="login-form">
           <div className="ll-header">
             <h2 className="ll">Welcome</h2>
-            <h4 className="lolo"> to Paws and Claws Veterinary Pet Shop Portal</h4>
+            <h4 className="lolo">to Paws and Claws Veterinary Pet Shop Portal</h4>
           </div>
-
           <form className="login-login">
+            <div className="login-info">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setError(''); // Clear error when user starts typing
+                }}
+                placeholder="Username"
+                required
+              />
+            </div>
             <div className="login-info">
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setError(''); // Clear error when user starts typing
+                }}
                 placeholder="Email"
                 required
               />
             </div>
-
             <div className="login-info">
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setError(''); // Clear error when user starts typing
+                }}
                 placeholder="Password"
                 required
               />
             </div>
-
             <div className="login-signup">
-            <button className="btn-btn" onClick={() => navigate('/Appointments')}>Log In</button>
+              <button className="btn-btn" onClick={() => navigate('/Appointments')}>Log In</button>
               <button className="btn-btn-1" onClick={() => navigate('/SignUp')}>Sign Up</button>
-             
             </div>
-
             <p>
               <a onClick={handleForgotPassword}>Forgot password?</a>
             </p>

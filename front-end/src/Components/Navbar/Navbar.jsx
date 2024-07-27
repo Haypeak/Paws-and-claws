@@ -28,7 +28,7 @@ const Navbar = ({color}) => {
         <li><a href='/#tips'>Tips & Updates</a></li>
         <li>
           {/* <button className='btn'> */}
-          <a href='/login'>Login</a>
+          <a href='/login'>Contact Us</a>
           {/* </button> */}
           </li>
       </ul>
