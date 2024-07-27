@@ -3,6 +3,9 @@ import "./LandingPage.css";
 import paws from "../../assets/paw.png";
 
  const LandingPage = () => {
+
+
+
   return (
     <div className='Home container'>
       <div className='Home-text'>
