@@ -36,6 +36,12 @@
     margin-bottom: 20px;
 }
 
+.col p{
+    text-transform: none;
+    font-size: 14px;
+    color: #fff;
+}
+
 .cols {
     margin-top: 40px;
 }

@@ -46,14 +46,15 @@ body {
     margin-top: 70px;
   }
   
-  .Log-in-title {
+  /* .Log-in-title {
     margin-top: 240px;
     color: #d6a57a;
-  }
+  } */
   
   .ll-header {
     padding: 50px 0;
     background-image: radial-gradient(circle 300px at center, #d07322 0%, #d07322 100%);
+    
   }
   
   .ll {
@@ -84,7 +85,7 @@ body {
     border: none;
     border-bottom: 1px solid #9e9e9e;
     outline: none;
-    height: 3rem;
+    height: 1.5rem;
     width: 100%;
     font-size: 1rem;
     margin: 0 0 20px 0;
@@ -95,15 +96,7 @@ body {
     color: black;
   }
   
-  a {
-    text-decoration: none;
-    color: #1511f0d0;
-    cursor: pointer;
-  }
   
-  a:hover {
-    color: rgb(19, 209, 19);
-  }
   
   .login-login {
     display: flex;
@@ -115,25 +108,11 @@ body {
     flex-direction: column;
   }
   
-  .btn-btn {
-    padding: 10px 20px;
-    border: none;
-    background-color: #d07322;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: background-color 0.3s, opacity 0.3s;
-  }
-  
-  .btn-btn:hover {
-    background-color: #b3621b;
-  }
   
   .btn-btn-1 {
     margin-bottom: 5px;
     background-color: #d07322;
-    padding: 10px 20px;
+    width: 190px;
     border: none;
     color: white;
     border-radius: 5px;
@@ -150,4 +129,21 @@ body {
     font-size: 12px;
     text-transform: uppercase;
   }
-  
+
+  .psswrd-requirement-col{
+   margin-left: -100px;
+    
+  }
+  .password-requirement{
+    flex-direction: row;
+    display: flex;
+   align-content: flex-start;
+  }
+  .password-requirement p{
+    text-transform: none;
+    
+  }
+  .password-requirement img{
+    width: 12px;
+    height: 12px;
+  }

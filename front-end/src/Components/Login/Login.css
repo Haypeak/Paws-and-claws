@@ -3,6 +3,9 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  margin-top: 170px;
+  
+  
 }
 
 .login-container {
@@ -10,17 +13,20 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 70px;
+ 
+  background-color: #fff;
+  
 }
 
-.Log-in-title {
+/* .Log-in-title {
   margin-top: 240px;
   color: #d6a57a;
-}
+} */
 
 .ll-header {
   padding: 50px 0;
   background-image: radial-gradient(circle 300px at center, #d07322 0%, #d07322 100%);
+  margin-bottom: 18px;
 }
 
 .ll {
@@ -44,6 +50,7 @@ body {
   box-sizing: border-box; /* Ensure padding and border are included in width */
   padding: 20px;
   background-color: #fff;
+  
 }
 
 .login-info input {
@@ -83,7 +90,7 @@ a:hover {
 }
 
 .btn-btn {
-  padding: 10px 40px; /* Adjusted for better padding */
+  width: 200px; /* Adjusted for better padding */
   border: none;
   background-color: #d07322;
   color: white;

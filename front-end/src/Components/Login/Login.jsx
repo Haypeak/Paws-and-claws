@@ -27,7 +27,7 @@ function Login() {
   return (
     <div className="Log-in">
       <div className="login-container">
-        <h2 className="Log-in-title">Book An Appointment</h2>
+        {/* <h2 className="Log-in-title">Book An Appointment</h2> */}
         <div className="login-form">
           <div className="ll-header">
             <h2 className="ll">Welcome</h2>

@@ -12,6 +12,7 @@
     width: 100%;
     border-radius: 10px;
     display: block;
+    height: 28vh;
 }
 
 
@@ -39,6 +40,7 @@
 .caption img{
     margin-bottom: 10px;
     width: 60px;
+    /* height: 25vh; */
 }
 .offer:hover .caption{
     opacity: 1;

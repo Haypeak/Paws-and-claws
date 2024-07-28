@@ -1,0 +1,86 @@
+.Contact-container {
+    margin-top: 150px;
+    
+}
+
+.col-map-section .map-frame #map-canvas {
+    height: 55vh;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.Contact-header-info {
+    color: #000F38;
+    font-size: 34px;
+}
+
+.col-section-row {
+    display: flex;
+    flex-direction: row;
+    gap: 100px; /* Adjust the gap value as needed */
+    align-items: center;
+    justify-content: center;
+}
+
+.col-contact-info h3 {
+    margin-bottom: 40px;
+    color: #000F38;
+    
+}
+
+img{
+    width: 23px;
+    height: 23px;
+}
+
+.contact-info{
+    flex-direction: row;
+    display: flex;
+    margin-bottom: 30px;
+    gap: 10px;
+}
+
+.contact-info p{
+    text-transform: none;
+    font-size: 14px;
+}
+
+.form-container {
+    margin-top: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    color: black;
+}
+
+form input[type="submit"] {
+    background-color: #d07322;
+    color: white;
+    width: 90px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #d07322;
+}

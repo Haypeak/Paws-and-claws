@@ -5,6 +5,7 @@ import AppointmentPage from './Pages/AppointmentPage';
 import LoginPage from './Pages/LoginPage';
 import SignUpPage from './Pages/SignUpPage';
 import AdminLoginPage from './Pages/AdminLoginPage';
+import ContactUsPage from './Pages/ContactUsPage'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/SignUp" element={<SignUpPage />} />
         <Route path="/AdminLogin" element={<AdminLoginPage />} />
+        <Route path="/ContactUs" element={<ContactUsPage />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       
