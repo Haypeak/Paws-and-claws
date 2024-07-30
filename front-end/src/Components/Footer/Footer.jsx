@@ -37,7 +37,7 @@ const Footer = () => {
         <div className='col'>
           <h4 className='cols'>Subscribe to get pet tips & insight</h4>
           <form>
-            <input type='email' placeholder='Enter email address' required/>
+            <input className='emaill' type='email' placeholder='Enter email address' required/>
             <button className='sub'>Subscribe</button>
           </form>
           <h5>PawsnClawsGH</h5>

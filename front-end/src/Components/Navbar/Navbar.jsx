@@ -2,21 +2,15 @@ import { useEffect, useState } from 'react';
 import logo from "../../assets/Paws&Claws logo.png";
 import menu from "../../assets/menu.png";
 import "./Navbar.css";
-import PropTypes from 'prop-types';
 
-const Navbar = ({ color }) => {
+
+const Navbar = () => {
   const [sticky, setSticky] = useState(false);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      setSticky(window.scrollY > 50);
-    };
 
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      window.scrollY > 50 ? setSticky(true) : setSticky(false);
+    })
   }, []);
 
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -26,7 +20,7 @@ const Navbar = ({ color }) => {
   };
 
   return (
-    <nav className={`container ${sticky ? 'dark-nav' : ''}`} style={{ backgroundColor: `${color}` }}>
+    <nav className={`container ${sticky ? 'dark-nav' : ''}`}>
       <img src={logo} alt="" className='logo' />
       <ul className={mobileMenu ? 'mobile-menu' : 'hide-mobile-menu'}>
         <li><a href='/'>Home</a></li>
@@ -45,8 +39,5 @@ const Navbar = ({ color }) => {
   );
 }
 
-Navbar.propTypes = {
-  color: PropTypes.string.isRequired
-};
 
 export default Navbar;

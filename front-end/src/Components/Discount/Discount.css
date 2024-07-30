@@ -26,6 +26,7 @@
 }
 .discount-left img{
     width: 94%;
+    height: 50%;
     border-radius: 15px;
     margin-left: 20px;
     cursor: pointer;
