@@ -74,13 +74,15 @@ form textarea {
 form input[type="submit"] {
     background-color: #d07322;
     color: white;
-    width: 90px;
-    height: 40px;
+    width: 160px;
+    height: 50px;
     border: none;
-    border-radius: 20px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color, opacity 0.3s;
 }
 
 form input[type="submit"]:hover {
     background-color: #d07322;
+    opacity: 0.9 ;
 }

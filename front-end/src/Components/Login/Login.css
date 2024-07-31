@@ -4,6 +4,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   margin-top: 170px;
+  background-color: #fff;
   
   
 }
@@ -13,9 +14,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
- 
-  background-color: #fff;
-  
 }
 
 /* .Log-in-title {
@@ -104,14 +102,7 @@ a:hover {
   background-color: #b3621b; /* Slightly darker shade for hover effect */
 }
 
-.btn-btn-1 {
-  margin-bottom: 5px;
-  background-color: #d07322;
-}
 
-.btn-btn-1:hover {
-  background-color: #b3621b; /* Slightly darker shade for hover effect */
-}
 
 p {
   color: #9e9e9e;

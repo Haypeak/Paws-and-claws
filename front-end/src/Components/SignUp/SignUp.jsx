@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import acceptDisabled from '../../assets/acceptDisabled.png'
 import './SignUp.css';
 
-function Login() {
+function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -94,7 +94,7 @@ function Login() {
 
             <div className="login-signup">
         
-              <button className="btn-btn-1" onClick={() => navigate('/SignUp')}>Sign Up</button>
+              <button className="btn-btn-1" onClick={() => navigate('/appointments')}>Sign Up</button>
             </div>
         
           </form>
@@ -104,4 +104,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;
