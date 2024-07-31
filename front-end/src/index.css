@@ -35,6 +35,12 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: background-color, opacity 0.3s;
+}
+
+.btn:hover{
+  background-color:#f09342 ;
+  opacity: 0.9;
 }
 
 .btn:active {
