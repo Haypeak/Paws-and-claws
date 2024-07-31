@@ -56,7 +56,8 @@
 .bb{
     background: #f09342;
     color: #fff;
-    padding: 6px 16px;
+    width: 250px;
+    height: 50px;
     font-size: 16px;
     border-radius: 30px;
     cursor: pointer;

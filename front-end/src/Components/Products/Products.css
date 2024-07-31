@@ -62,7 +62,8 @@
 .bbs {
     background: #f09342;
     color: #fff;
-    padding: 8px 10px; /* Increased padding for a larger button */
+    width: 210px;
+    height: 50px;
     font-size: 18px; /* Increased font size */
     border-radius: 30px;
     cursor: pointer;
