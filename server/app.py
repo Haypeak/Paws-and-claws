@@ -1,24 +1,28 @@
-from flask import Flask, render_template, send_from_directory, url_for
-from hashlib import md5
-from base58 import b58encode 
-from database.db import db,app
+from flask import Flask, render_template, send_from_directory, url_for, request
+from flask_mail import Mail, Message
+from apscheduler.schedulers.background import BackgroundScheduler
 from api.auth import auth_blueprint
 from api.appointments import appointments_bp  # Imported the blueprint
+from api.newsletters import newsletter_bp, send_newsletters
+from database.db import app, db, User  # Ensure the app instance is imported correctly
 
+# Configuring the Flask application
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = 'your_email@gmail.com'  # Replace with vet email
+app.config['MAIL_PASSWORD'] = 'your_password'  # Replace with your vet password
 
+mail = Mail(app)
+mail.init_app(app)
 
+# Creating a scheduler
+scheduler = BackgroundScheduler()
+scheduler.add_job(func=lambda: send_newsletters(app, mail), trigger='interval', weeks=1)
+scheduler.start()
 
-# def hash_pass(password):
-#     addon = 'pn782533hdu04088fdu00234432vrertvvf'
-#     return md5(b58encode(password + addon)).digest()
-
-
-# @app.route('/login')
-# def login(request):
-#     email = request.get('email')
-#     password = hash_pass(request.get('password'))
-#     return "This is the Login page"
-
+# Routes for the application
 @app.route('/admin')
 def admin():
     return "This is the admin page"
@@ -26,15 +30,16 @@ def admin():
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def index(path):
-  '''Return index.html for all non-api routes'''
-  #pylint: disable=unused-argument
-  return send_from_directory(app.static_folder, 'index.html')
+    '''Return index.html for all non-api routes'''
+    return send_from_directory(app.static_folder, 'index.html')
 
-# Registering the blueprint with the app
+# Registering the blueprints with the app
 app.register_blueprint(appointments_bp)
 app.register_blueprint(auth_blueprint, url_prefix='/auth')
+app.register_blueprint(newsletter_bp, url_prefix='/newsletters')
 
+
+
+# Starting the Flask application
 if __name__ == '__main__':
-    # with app.app_context():
-    #     db.create_all()
     app.run(debug=True)
