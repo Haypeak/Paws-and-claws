@@ -37,7 +37,8 @@ const Footer = () => {
         <div className='col'>
           <h4 className='cols'>Subscribe to get pet tips & insight</h4>
           <form>
-            <input type='email' placeholder='Enter email address' required></input><button className='sub'>Subscribe</button>
+            <input className='emaill' type='email' placeholder='Enter email address' required/>
+            <button className='sub'>Subscribe</button>
           </form>
           <h5>PawsnClawsGH</h5>
           <div className='social-icon'>
@@ -47,7 +48,7 @@ const Footer = () => {
         </div>
       </div>
       <hr></hr>
-      <p className='copyright'>&copy; 2024 Pasw&Claws. All Rights Reserved</p>
+      <p className='copyright' style={{color: '#BEBEBE'}}>&copy; 2024 Pasw&Claws. All Rights Reserved</p>
     </div>
   )
 }

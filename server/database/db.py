@@ -1,15 +1,16 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 from datetime import datetime, UTC
+from flask_migrate import Migrate
 
 app = Flask(__name__, static_folder='../../front-end/dist', static_url_path='/')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pawsandclaws.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
-
-class Pet(db.Model):
+class Pet(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     name = db.Column(db.String(255), nullable=False)
@@ -32,7 +33,7 @@ class User(db.Model):
     role = db.Column(db.String(50), nullable=False, default='user')
     date_joined = db.Column(db.DateTime, default=datetime.now(UTC))
     last_login = db.Column(db.DateTime, nullable=True)
-    subscribed = db.Column(db.Boolean, default=False, nullable=True)
+    subscribed = db.Column(db.Boolean, default=False, nullable=False)
     show_newsletter_prompt = db.Column(db.Boolean, default=True, nullable=False)
     pets = db.relationship('Pet', backref='owner', lazy=True)
     appointments = db.relationship('Appointment', backref='owner', lazy=True)
@@ -116,3 +117,5 @@ class Feedback(db.Model):
 #     vaccination_id = db.Column(db.Integer, db.ForeignKey('vaccination.id'), nullable=False)
 #     date_administered = db.Column(db.DateTime, nullable=False)
 #     administered_by_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+print("db.py is being imported and executed")

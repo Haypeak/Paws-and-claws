@@ -1,10 +1,10 @@
-import  Navbar  from '../Components/Navbar/Navbar';
+// import  Navbar  from '../Components/Navbar/Navbar';
 import  Login  from '../Components/Login/Login';
 
 const LoginPage = () => {
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             <Login />
         </div>
     );

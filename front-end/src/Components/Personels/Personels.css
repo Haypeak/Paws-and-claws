@@ -27,7 +27,8 @@
 .bton{
     color: #fff;
     background-color: #f09342;
-    padding: 15px 24px;
+    width: 210px;
+    height: 50px;
     font-size: 16px;
     font-weight: 600;
     border-radius: 20px;

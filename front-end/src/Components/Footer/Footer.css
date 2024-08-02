@@ -36,6 +36,12 @@
     margin-bottom: 20px;
 }
 
+.col p{
+    text-transform: none;
+    font-size: 14px;
+    color: #fff;
+}
+
 .cols {
     margin-top: 40px;
 }
@@ -45,7 +51,9 @@
     border-bottom: 1px solid #ccc;
     color: #fff;
     margin: 20px 0;
-
+}
+.emaill{
+    color: #fff;
 }
 
 .ul li {

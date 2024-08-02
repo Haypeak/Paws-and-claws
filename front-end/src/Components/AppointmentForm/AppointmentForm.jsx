@@ -202,8 +202,18 @@ const AppointmentForm = () => {
                             className='appointment-textarea'
                         />
                         <div>
+                        <div className='check-in-area'>
                         <p>* Indicates Compulsory</p>
+                        <label className="col-container">Walk In
+                            <input type="radio" checked="checked" name="radio"/>
+                            <span className="checkmark"></span>
+                        </label>
+                            <label className="col-container">Home Appointment
+                            <input type="radio" name="radio"/>
+                            <span className="checkmark"></span>
+                            </label>
                         <button type="submit" className='appointment button'>Book Appointment</button>
+                        </div>
                         </div>
                         
                         </div>   

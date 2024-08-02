@@ -5,7 +5,7 @@ body {
   box-sizing: border-box;
 }
 
-header {
+/* header {
   background-color: #f8b400;
   padding: 10px 0;
 }
@@ -32,8 +32,19 @@ nav ul li a {
   text-decoration: none;
   color: white;
   font-weight: bold;
+} */
+.Home{
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(rgba(219, 165, 64, 0.703), rgba(8, 0, 58, 0.7)), url('../../assets/pets.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px; /* To ensure content starts below the navbar */
 }
-
 main {
   padding: 20px;
 }
@@ -109,11 +120,12 @@ main {
   padding: 12px 20px;
   border-radius: 5px;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, opacity 0.3s;
 }
 
 .appointment button:hover {
-  background-color: #ffc002;
+  background-color: #f09342;
+  opacity: 0.9;
 }
 
 .note-submit-btn {
@@ -127,12 +139,76 @@ main {
   font-size: 22px;
   margin-bottom: 0%;
   color: #BEBEBE;
+  text-transform: none;
 }
 
 .appointment-textarea {
   min-height: 100px; /* Adjust the height of the textarea as needed */
   min-width: 250px;
   border-color: #ccc;
+}
+.col-container{
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  /* color: #ccc; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.col-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.col-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a #f09342 background */
+.col-container input:checked ~ .checkmark {
+  background-color: #f09342;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.col-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.col-container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
 }
 
 footer {

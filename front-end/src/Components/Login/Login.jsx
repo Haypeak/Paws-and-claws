@@ -27,7 +27,7 @@ function Login() {
   return (
     <div className="Log-in">
       <div className="login-container">
-        <h2 className="Log-in-title">Book An Appointment</h2>
+        {/* <h2 className="Log-in-title">Book An Appointment</h2> */}
         <div className="login-form">
           <div className="ll-header">
             <h2 className="ll">Welcome</h2>
@@ -57,16 +57,16 @@ function Login() {
 
             <div className="login-signup">
             <button className="btn-btn" onClick={() => navigate('/Appointments')}>Log In</button>
-              <button className="btn-btn-1" onClick={() => navigate('/SignUp')}>Sign Up</button>
+              <button className="btn-btn" onClick={() => navigate('/SignUp')}>Sign Up</button>
              
             </div>
 
             <p>
               <a onClick={handleForgotPassword}>Forgot password?</a>
             </p>
-            <p>
+            {/* <p>
               <a onClick={() => navigate('/AdminLogin')}>Staff LogIn</a>
-            </p>
+            </p> */}
           </form>
         </div>
       </div>

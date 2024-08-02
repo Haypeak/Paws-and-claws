@@ -48,6 +48,8 @@
     margin-top: 30px;
     line-height: 1.4;
     font-size: 18px;
+    text-transform: none;
+    color: #fff;
 }
 
 @media(max-width: 650px){
