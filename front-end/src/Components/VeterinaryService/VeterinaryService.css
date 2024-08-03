@@ -1,0 +1,34 @@
+.Home{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(rgba(219, 165, 64, 0.703), rgba(8, 0, 58, 0.7)), url('../../assets/pets.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px; /* To ensure content starts below the navbar */
+}
+
+.ServicesHeader{
+    margin-top: 50px;
+    font-size: 26px;
+}
+
+.service-col-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.service-col-section-1{
+    margin-left: 90px;
+}
+
+.service-col-section-2 p{
+    word-wrap: break-word;
+    text-transform: none;
+    font-size: 16px;
+}
