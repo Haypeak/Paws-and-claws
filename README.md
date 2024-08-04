@@ -4,6 +4,9 @@ All developments for the paws and claws project
 ### UX/UI Design
 https://www.figma.com/design/tVWehuvwseaDQUMoAQRuWs/paws-%26-claws-idea1?node-id=0-1&t=v2PmDayw6PMgIY79-1
 
+### Admin Panel UI Design
+https://www.figma.com/design/jRevsDslrRIAl1yNtUPniF/Admin-Dashboard?node-id=0-1&t=xcuB58RfanGTqYG5-0
+
 In the repository there are two folders `dev` and `main`.
 
 ### dev
