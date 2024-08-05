@@ -54,6 +54,14 @@ main {
   height: auto;
 }
 
+.appointment-btns {
+  background-color: #f09342;
+  color: #fff;
+  height: 50px;
+  width: 210px;
+  border-radius: 20px;
+}
+
 .appointment {
   background-color: #fff;
   padding: 20px;
