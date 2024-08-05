@@ -1,6 +1,6 @@
 import VeterinaryServiceHeader from "../Components/VeterinaryService/VeterianaryServiceHeader";
 import VeterianaryService from "../Components/VeterinaryService/VeterinaryService";
-// import Footer from '../Components/Footer/Footer';
+import Footer from '../Components/Footer/Footer';
 import Navbar from '../Components/Navbar/Navbar';
 
 
@@ -10,7 +10,7 @@ const VeterianaryServicePage = () => {
             <Navbar color='#d07322'/>
             <VeterinaryServiceHeader/>
             <VeterianaryService />
-            {/* <Footer /> */}
+            <Footer />
         </div>
     );
 };

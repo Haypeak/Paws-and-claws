@@ -67,15 +67,7 @@ body {
   color: black;
 }
 
-a {
-  text-decoration: none;
-  color: #1511f0d0;
-  cursor: pointer;
-}
 
-a:hover {
-  color: rgb(19, 209, 19);
-}
 
 .login-login {
   display: flex;
