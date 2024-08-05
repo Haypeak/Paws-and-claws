@@ -14,7 +14,7 @@ click==8.1.7
 colorama==0.4.6
 cytoolz==0.12.3
 cffi==1.16.0 
-cryptography-42.0.8 
+cryptography==42.0.8 
 decorator==5.1.1
 eth-abi==4.2.1
 eth-account==0.8.0
@@ -31,6 +31,7 @@ Flask-Admin==1.6.1
 Flask-APScheduler==1.13.1
 Flask-Mail==0.9.1
 Flask-SQLAlchemy==3.1.1
+flask-cors==4.0.1
 frozenlist==1.4.1
 graphviz==0.19.2
 greenlet==3.0.3
