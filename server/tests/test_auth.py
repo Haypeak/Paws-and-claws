@@ -52,7 +52,7 @@ def test_login(client):
     #     # db.session.commit()
     
     data = {
-        "username": "testuser",
+        "username": "test@example.com",
         "password": "password123"
     }
     response = client.post('/login', auth=(data['username'], data['password']))
