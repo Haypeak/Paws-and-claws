@@ -23,9 +23,9 @@ class Pet(db.Model):
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(255), unique=True, nullable=False)
+    username = db.Column(db.String(255), unique=True, nullable=True)
     email = db.Column(db.String(255), unique=True, nullable=False)
-    password_hash = db.Column(db.String(255), nullable=False)
+    password_hash = db.Column(db.String(255), nullable=True)
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
     phone_number = db.Column(db.String(20), nullable=False)
@@ -39,6 +39,12 @@ class User(db.Model):
     appointments = db.relationship('Appointment', backref='owner', lazy=True)
     notifications = db.relationship('Notification', backref='user', lazy=True)
     feedback = db.relationship('Feedback', backref='user', lazy=True)
+    admin = db.relationship('Admin', backref='user', uselist=False)
+
+class Admin(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    role = db.Column(db.String(50), nullable=False, default='admin')
 
 class Record(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -63,6 +69,9 @@ class Appointment(db.Model):
     date_time = db.Column(db.DateTime, nullable=False)
     reason = db.Column(db.Text, nullable=False)
     status = db.Column(db.String(50), nullable=False)
+    notes = db.Column(db.Text, nullable=False)
+    appointmentType = db.Column(db.String(50), nullable=False)
+    
 
 @db.validates('status')
 def validate_status(self, key, value):
@@ -117,5 +126,6 @@ class Feedback(db.Model):
 #     vaccination_id = db.Column(db.Integer, db.ForeignKey('vaccination.id'), nullable=False)
 #     date_administered = db.Column(db.DateTime, nullable=False)
 #     administered_by_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
 
 print("db.py is being imported and executed")

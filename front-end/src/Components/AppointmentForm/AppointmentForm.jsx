@@ -3,13 +3,18 @@ import "./AppointmentForm.css";
 
 const AppointmentForm = () => {
     const [formData, setFormData] = useState({
-        name: '',
+        firstName: '',
+        surname:'',
         email: '',
+        phoneNumber: '',
         date: '',
         time: '',
-        petId: '',
-        reason: '',
-        service: 'general'
+        petName: '',
+        Breed: '',
+        appointmentType: 'Walk-In',
+        reason: 'General Checkup',
+        notes: '',
+        species: 'Dog',
     });
 
     const handleChange = (e) => {
@@ -23,20 +28,21 @@ const AppointmentForm = () => {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            const response = await fetch('/api/appointments', {
+            const response = await fetch('http://127.0.0.1:5000/api/appointments', {
                 method: 'POST',
+                mode: "cors",
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData),
             });
 
-            if (response.ok) {
+            if (response.status === 201) {
                 alert('Appointment Booked Successfully!');
             } else {
                 const errorData = await response.json();
                 console.error('Server Error:', errorData);
-                alert('Try again!');
+                alert(errorData.message);
             }
         } catch (error) {
             console.error('Network Error:', error);
@@ -54,7 +60,7 @@ const AppointmentForm = () => {
                         <input 
                             type="text" 
                             id="name" 
-                            name="name" 
+                            name="firstName" 
                             value={formData.firstName} 
                             onChange={handleChange} 
                             placeholder='First Name*' 
@@ -63,7 +69,7 @@ const AppointmentForm = () => {
                         <input 
                             type="text" 
                             id="name" 
-                            name="name" 
+                            name="surname" 
                             value={formData.lastName} 
                             onChange={handleChange} 
                             placeholder='Surname*' 
@@ -86,8 +92,8 @@ const AppointmentForm = () => {
                         <input 
                             type="text" 
                             id="number" 
-                            name="cellphone-number" 
-                            value={formData.number} 
+                            name="phoneNumber" 
+                            value={formData.phoneNumber} 
                             placeholder='Cellphone*' 
                             onChange={handleChange} 
                             required 
@@ -119,8 +125,8 @@ const AppointmentForm = () => {
                             required 
                             className='contact-section'
                         >
-                            <option value="Dog">Dog</option>
-                            <option value="Cat">Cat</option>
+                            <option value='Dog' selected={formData.species === 'Dog'}>Dog</option>
+                            <option value='Cat' selected={formData.species === 'Cat'}>Cat</option>
                         </select>
 
                          {/* <label htmlFor="email">Email:</label> */}
@@ -166,30 +172,19 @@ const AppointmentForm = () => {
 
                         {/* <label htmlFor="service">Service:</label> */}
                         <select 
-                           type="text"
-                           id="reason" 
-                            name="reason" 
-                            placeholder='Reason for Appointment:*'
-                            value={formData.reason} 
-                            onChange={handleChange} 
-                            required 
-                        >
-                            <option value="general">General Checkup</option>
-                            <option value="dental">Dental Care</option>
-                            <option value="surgery">Surgery</option>
-                            <option value="wellness">Wellness Care</option>
-                        </select>
-
-                        {/* <label htmlFor="reason">Reason for Appointment:</label>
-                        <input 
-                            type="text" 
+                            type="text"
                             id="reason" 
-                            name="reason" 
-                             placeholder='*'
-                            value={formData.reason} 
-                            onChange={handleChange} 
-                            required 
-                        /> */}
+                             name="reason" 
+                             placeholder='Reason for Appointment:*'
+                             value={formData.reason} 
+                             onChange={handleChange} 
+                             required 
+                        >
+                             <option value="general">General Checkup</option>
+                             <option value="dental">Dental Care</option>
+                             <option value="surgery">Surgery</option>
+                             <option value="wellness">Wellness Care</option>
+                        </select>
 
 
                          <div className='note-submit-btn'>
@@ -205,11 +200,23 @@ const AppointmentForm = () => {
                         <div className='check-in-area'>
                         <p>* Indicates Compulsory</p>
                         <label className="col-container">Walk In
-                            <input type="radio" checked="checked" name="radio"/>
+                            <input 
+                                type="radio" 
+                                checked={formData.appointmentType === 'Walk-In'} 
+                                name="appointmentType" 
+                                value='Walk-In' 
+                                onChange={handleChange}
+                            />
                             <span className="checkmark"></span>
                         </label>
                             <label className="col-container">Home Appointment
-                            <input type="radio" name="radio"/>
+                            <input 
+                                type="radio" 
+                                checked={formData.appointmentType === 'Home'} 
+                                name="appointmentType" 
+                                value='Home' 
+                                onChange={handleChange}
+                            />
                             <span className="checkmark"></span>
                             </label>
                         <button type="submit" className='appointment button'>Book Appointment</button>
