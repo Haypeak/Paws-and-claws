@@ -4,14 +4,36 @@ import acceptDisabled from '../../assets/acceptDisabled.png'
 import './SignUp.css';
 
 function SignUp() {
-  const [name, setName] = useState('');
+  const [username, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [, setError] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
- 
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      // Call signup API here
+      const response = await fetch('http://127.0.0.1:5000/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password }),
+      });
+      if (response.ok) {
+        // Handle successful signup (e.g., redirect to login page)
+        navigate('/login');
+      } else {
+        const errorData = await response.json();
+        setError(errorData.message || 'Signup failed. Please try again.');
+      }
+    } catch (error) {
+      setError('An error occurred. Please try again.');
+      console.error('Signup error:', error);
+    }
+  };
 
   return (
     <div className="Log-in">
@@ -22,11 +44,11 @@ function SignUp() {
             <h2 className="ll">Welcome</h2>
             <h4 className="lolo">to Paws and Claws Veterinary Pet Shop Registration Portal</h4>
           </div>
-          <form className="login-login">
+          <form className="login-login" onSubmit={handleSignup}>
             <div className="login-info">
               <input
                 type="text"
-                value={name}
+                value={username}
                 onChange={(e) => {
                   setName(e.target.value);
                   setError(''); // Clear error when user starts typing
@@ -94,7 +116,7 @@ function SignUp() {
 
             <div className="login-signup">
         
-              <button className="btn-btn-1" onClick={() => navigate('/appointments')}>Sign Up</button>
+              <button className="btn-btn-1" type="submit">Sign Up</button>
             </div>
         
           </form>

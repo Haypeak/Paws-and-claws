@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import "./AppointmentForm.css";
 
 const AppointmentForm = () => {
@@ -24,6 +24,7 @@ const AppointmentForm = () => {
             [name]: value,
         });
     };
+    const [isLoading, setIsLoading] = useState(true);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -48,6 +49,47 @@ const AppointmentForm = () => {
             console.error('Network Error:', error);
             alert('Try again!');
         }
+    }
+
+    useEffect(() => {
+        const checkLoggedIn = async () => {
+            try {
+                // Extract the token from the document cookie
+                const getCookie = (name) => {
+                    const value = `; ${document.cookie}`;
+                    const parts = value.split(`; ${name}=`);
+                    if (parts.length === 2) return parts.pop().split(';').shift();
+                };
+        
+                const token = getCookie('token'); // Assuming the token is stored in a cookie named 'token'
+        
+                const response = await fetch('http://127.0.0.1:5000/auth/checkloggedin', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}` // Include the token in the Authorization header
+                    },
+                });
+        
+                if (response.status === 200) {
+                    // User is logged in, do nothing
+                    setIsLoading(false);
+                } else {
+                    // User is not logged in, redirect to login page
+                    window.location.href = '/login';
+                }
+            } catch (error) {
+                console.error('Network Error:', error);
+                // Redirect to home page
+                window.location.href = '/';
+            }
+        };
+
+        checkLoggedIn();
+    }, []);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
     }
 
     return (

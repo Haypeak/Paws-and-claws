@@ -1,23 +1,53 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Ensure you have this import for navigation
+import axios from 'axios'
+import Cookies from 'js-cookie';
+
 import './Login.css';
 
 function Login() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate(); // Initialize navigate
 
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
-  //   // Call login API here
-  //   console.log('Login button clicked');
-  // };
+  const handleLogin = async (event) => {
+    event.preventDefault();
 
-  // const handleSignup = (e) => {
-  //   e.preventDefault();
-  //   // Call signup API here
-  //   console.log('Signup button clicked');
-  // };
+    const credentials = btoa(`${email}:${password}`);
+    const config = {
+      headers: {
+        'Authorization': `Basic ${credentials}`
+      }
+    };
+    try {
+      const response = await axios.post('http://127.0.0.1:5000/auth/login', {}, {
+        auth: {
+          username: email,
+          password:password
+        }
+      });
+      if (response.status === 200) {
+        // Handle successful login (e.g., save token, redirect)
+        if (response.data.token) {
+          // Save the token as a cookie
+          Cookies.set('token', response.data.token);
+
+          // Handle successful login (e.g., redirect)
+          navigate('/appointments');
+          console.log('Login successful:', response.data);
+        } else {
+          setError('Login failed. Please check your credentials.');
+        }
+        console.log('Login successful:', response.data);
+      } else {
+        setError('Login failed. Please check your credentials.');
+      }
+    } catch (error) {
+      setError('An error occurred. Please try again.');
+      console.error('Login error:', error);
+    }
+  };
 
   const handleForgotPassword = () => {
     // Call forgot password API here
@@ -34,7 +64,7 @@ function Login() {
             <h4 className="lolo"> to Paws and Claws Veterinary Pet Shop Portal</h4>
           </div>
 
-          <form className="login-login">
+          <form className="login-login" onSubmit={handleLogin}>
             <div className="login-info">
               <input
                 type="email"
@@ -56,7 +86,7 @@ function Login() {
             </div>
 
             <div className="login-signup">
-            <button className="btn-btn" onClick={() => navigate('/Appointments')}>Log In</button>
+            <button className="btn-btn" type="submit">Log In</button>
               <button className="btn-btn" onClick={() => navigate('/SignUp')}>Sign Up</button>
              
             </div>

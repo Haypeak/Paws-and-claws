@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import JSON
 from flask import Flask
 from datetime import datetime, UTC
 from flask_migrate import Migrate
@@ -50,7 +51,7 @@ class Record(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.Date, nullable=False)
     description = db.Column(db.Text, nullable=False)
-    vitals = db.Column(db.Text, nullable=False)
+    vitals = db.Column(JSON, nullable=False)
     pet_id = db.Column(db.Integer, db.ForeignKey('pet.id'))
     # pet = db.relationship('Pet', backref=db.backref('records', lazy='dynamic'))
 
@@ -69,7 +70,7 @@ class Appointment(db.Model):
     date_time = db.Column(db.DateTime, nullable=False)
     reason = db.Column(db.Text, nullable=False)
     status = db.Column(db.String(50), nullable=False)
-    notes = db.Column(db.Text, nullable=False)
+    notes = db.Column(db.Text, nullable=True)
     appointmentType = db.Column(db.String(50), nullable=False)
     
 
