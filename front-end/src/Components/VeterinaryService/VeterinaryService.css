@@ -86,19 +86,41 @@
     margin-bottom: 50px;
 }
 
+/* Container for image and text */
+.service-image-wrap {
+    text-align: center;
+    transition: transform 0.3s ease, color 0.3s, box-shadow 0.3s ease;
+    background-color: #f0934217;
+    border-radius: 0 50px 0 0;
+}
+
+
+.service-image-wrap p a:hover{
+        color: coral;
+    }
+
+
 /* Style for Each Image */
-.service-image-col-1 img, .service-image-col-2 img {
+.service-image-wrap img {
     width: 300px; /* Adjust width as needed */
     height: 200px; /* Adjust height as needed */
     object-fit: cover; /* Ensures images cover the area without distortion */
     border-radius: 0 50px 0 50px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(21, 17, 59, 0.281); /* Shadow for a subtle effect */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.281); /* Shadow for a subtle effect */
 }
 
-.service-image-col-1 img:hover, .service-image-col-2 img:hover {
-    transform: scale(1.05); /* Slightly enlarge image on hover */
+/* Apply hover effect to the container */
+.service-image-wrap:hover {
+    border-radius: 0 50px 0 0 ;
+    transform: scale(1.05); /* Slightly enlarge image and text on hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Increase shadow on hover */
+}
+
+/* Style for text below the image */
+.service-image-wrap p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #000F38;
 }
 
 /* Media Queries for Responsiveness */
@@ -115,7 +137,7 @@
         margin-bottom: 20px;
     }
 
-    .service-image-col-1 img, .service-image-col-2 img {
+    .service-image-wrap img {
         width: 150px;
         height: 100px;
     }
@@ -133,7 +155,7 @@
         margin-bottom: 70px;
     }
 
-    .service-image-col-1 img, .service-image-col-2 img {
+    .service-image-wrap img {
         width: 120px;
         height: 80px;
     }

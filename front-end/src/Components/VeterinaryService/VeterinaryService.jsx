@@ -7,6 +7,7 @@ import emergencyCare from '../../assets/emergency care.jpeg'
 import petDiagnostic from '../../assets/Pet-Diagnostic-Imaging.jpeg'
 import wellness from '../../assets/wellness and care.jpeg'
 
+
 const VeterianaryService =()=>{
     return(
         <div className='VeterinaryService-container'>
@@ -15,13 +16,15 @@ const VeterianaryService =()=>{
             </div>
             <div className='service-col-container'>
                 <div className='service-col-section-1'>
-                    <ul style={{listStyle:'none',}}className='service-list'>
-                        <li>Dog and Cat Grooming</li><br/>
-                        <li>Animal Vaccinations</li><br/>
-                        <li>Animal Surgery</li><br/>
-                        <li>Dental care</li><br/>
-                        <li>Animal Medical Check Up</li><br/>
+                    <ul style={{ listStyle: 'none' }} className='service-list'>
+                        <li><a href="/grooming">Dog and Cat Grooming</a></li><br/>
+                        <li><a href="/vaccinations">Vaccination Service</a></li><br/>
+                        <li><a href="/surgery">Surgerical Service</a></li><br/>
+                        <li><a href="/dental-care">Dental Care</a></li><br/>
+                        <li><a href="/medical-checkup">Medical Check Up</a></li><br/>
+                        <li><a href="/Pet-wellness-care">Pet and Wellness Care</a></li>
                     </ul>
+
                 </div>
                 <div className='service-col-section-2'> 
             <p>As a pet parent, you are held with the responsiblity of ensuring your animal&#39;s happiness and health for as many years as possible.</p><p> At Paws& Claws Veterinary Pet Shop, we&#39;d be honored to assist you in achieving that goal.</p><p> Our suite of services has been developed to provide a lifetime of care, from wellness care to advanced surgery as well as everything in between.</p><p> We&#39;ve got you covered, from the first round of vaccinations to specialized care for the senior years.</p>
@@ -39,31 +42,37 @@ const VeterianaryService =()=>{
             </div>
             <div className='service-image-container'>
                 <div className='service-image-col-1'>
-                    <div>
-                    <img src={wellness} alt="Wellness and Care"/>
-                    <p>Pet Wellness and Care</p>
+                    <div className='service-image-wrap'>
+                        <img src={wellness} alt="Wellness and Care" />
+                        <p style={{fontSize:'20px'}}>Pet Wellness and Care</p>
+                        <p><a href="/Pet-wellness-care">READ MORE</a></p>
                     </div>
-                    <div>
-                    <img src={dentalCare} alt="Dental Care"/>
-                    <p>Dental Care</p>
+                    <div className='service-image-wrap'>
+                        <img src={dentalCare} alt="Dental Care" />
+                        <p style={{fontSize:'20px'}}>Dental Care</p>
+                        <p><a href="/dental-care">READ MORE</a></p>
                     </div>
-                    <div>
-                    <img src={petDiagnostic} alt="Pet Diagnostic Imaging"/>
-                    <p>Animal Medical Check Up</p> 
-                    </div>                   
+                    <div className='service-image-wrap'>
+                        <img src={petDiagnostic} alt="Pet Diagnostic Imaging" />
+                        <p style={{fontSize:'20px'}}>Medical Check Up</p>
+                        <p><a href="/medical-checkup">READ MORE</a></p>
+                    </div>
                 </div>
                 <div className='service-image-col-2'>
-                    <div>
-                    <img src={emergencyCare} alt="Emergency Care"/>
-                    <p>Animal Vaccination</p>
+                    <div className='service-image-wrap'>
+                        <img src={emergencyCare} alt="Emergency Care" />
+                        <p style={{fontSize:'20px'}}>Vaccination Service</p>
+                        <p><a href="/vaccinations">READ MORE</a></p>
                     </div>
-                    <div>
-                    <img src={dogSurgery} alt="Dog Surgery"/>
-                    <p>Surgery</p>
+                    <div className='service-image-wrap'>
+                        <img src={dogSurgery} alt="Dog Surgery" />
+                        <p style={{fontSize:'20px'}}>Surgery</p>
+                        <p><a href="/surgery">READ MORE</a></p>
                     </div>
-                    <div>
-                    <img src={animalBabies} alt="Cat and Dog Babies"/>
-                    <p>Pet Grooming</p>
+                    <div className='service-image-wrap'>
+                        <img src={animalBabies} alt="Cat and Dog Babies" />
+                        <p style={{fontSize:'20px'}}>Pet Grooming</p>
+                        <p><a href="/grooming">READ MORE</a></p>
                     </div>
                 </div>
             </div>

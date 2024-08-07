@@ -1,0 +1,398 @@
+p{
+    text-transform: none;
+}
+
+h2{
+    font-size: 32px;
+}
+.Vet{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(rgba(219, 165, 64, 0.703), rgba(8, 0, 58, 0.7)), url('../../assets/pets.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px; /* To ensure content starts below the navbar */
+}
+.Vet-text {
+    text-align: center;
+    max-width: 900px;
+}
+
+.Vet-text h1 {
+    font-size: 60px;
+    font-weight: 600;
+}
+
+.Vet-text p {
+    max-width: 800px;
+    margin: 10px auto 20px;
+    line-height: 1.4;
+    text-transform: none;
+    font-size: 16px;
+    color: #fff;
+}
+
+
+.Header-header{
+    margin-top: 100px;
+    color: #000F38;
+    font-size: 40px;
+}
+
+.container-highlight{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    gap: 20px;
+}
+
+.left-sub-container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-list li a:hover{
+    color: #f0934273;
+}
+
+.triangle-img  {
+    width: 400px;
+    height: 300px;
+    object-fit: fill;
+    position: absolute;
+    border-radius: 30px;
+    top: 0;
+    left: 0;
+    margin-top: 50px;
+}
+
+.right-sub-container p{
+    text-transform: none;
+    font-size: 15px;
+    line-height: 1.4;
+    max-width: 730px;
+    text-wrap:break-word ;
+}
+
+.vet-notice{
+    background-color: #f09342;
+    height: 300px;
+}
+
+.vet-notice {
+    display: flex;
+    flex-direction: column; /* Stack the child elements vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically if parent has height */
+    text-align: center;
+}
+
+.vet-notice-col-1, .vet-sub-notice p {
+    text-align: center;
+    line-height: 1.4;
+    max-width: 630px;
+    font-size: 15px;
+    margin: 0 auto;  /* Center the paragraph horizontally within its parent container */
+    color: #fff;
+}
+
+.vet-sub-notice {
+    margin-top: 50px;
+    border: 5px solid #fff;
+    width: 700px;
+    padding: 20px; /* Adds space between the text and the border */
+    border-radius: 10px;
+    display: flex;
+    align-items: center; /* Vertically center text inside the border */
+    justify-content: center; /* Horizontally center text inside the border */
+    text-align: center;
+}
+
+/* Ensure the parent container has these properties */
+.vet-button-container {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    text-align: center; /* Center text inside the container */
+}
+
+/* Button styles */
+.vet-button {
+    background: #fff;
+    color: #f09342;
+    border: 2px solid #f09342;
+    width: 290px;
+    height: 60px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: auto;  /* Center the button */
+    margin-right: auto; /* Center the button */
+    transition: background-color ease 0.3s;
+}
+
+/* Active state */
+.vet-button:active {
+    color: #fff;
+    background-color: #f09342;
+    
+}
+
+/* Image inside button */
+.vet-button img {
+    width: 27px;
+    margin-left: 10px;
+}
+/* Style for the divider container */
+.vet-divider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0; /* Adjust spacing above and below the divider */
+}
+
+/* Style for the divider lines */
+.vet-divider {
+    flex-grow: 1;
+    border: none;
+    border-top: 2px solid #ccc; /* Color and thickness of the line */
+    margin: 0 10px; /* Spacing between the line and the diamond */
+}
+
+/* Style for the diamond shape */
+.vet-divider-diamond {
+    width: 20px; /* Width of the diamond */
+    height: 10px; /* Height of the diamond */
+    background-color: #ccc; /* Color of the diamond */
+    transform: rotate(35deg); /* Rotate to form a diamond shape */
+}
+
+.vet-message{
+    color: #000F38;
+    margin-top: 30px;
+    font-size: 38px;
+}
+
+/* Media Queries for Responsiveness */
+/* Mobile Devices (Portrait and Landscape) */
+@media only screen and (max-width: 600px) {
+    .Vet-text h1 {
+        font-size: 24px;
+    }
+    
+    .Vet-text h3 {
+        font-size: 18px;
+    }
+    
+    .Vet-text p {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    .container-highlight {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+    }
+    
+    .left-sub-container, .right-sub-container {
+        width: 90%;
+        height: auto;
+    }
+    
+    .left-sub-container img {
+        width: 100%;
+        height: auto;
+    }
+
+    .vet-notice {
+        height: auto;
+        padding: 20px;
+    }
+
+    .vet-sub-notice {
+        width: 90%;
+    }
+
+    .vet-button {
+        width: 80%;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .vet-divider-container {
+        flex-direction: column;
+    }
+
+    .vet-divider {
+        margin: 10px 0;
+    }
+
+    .vet-divider-diamond {
+        width: 15px;
+        height: 15px;
+    }
+
+    .form-container input, .form-container textarea {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .form-container input[type='submit'] {
+        width: auto;
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+
+/* Tablets (Portrait and Landscape) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .Vet-text h1 {
+        font-size: 28px;
+    }
+    
+    .Vet-text h3 {
+        font-size: 22px;
+    }
+    
+    .Vet-text p {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+
+    .container-highlight {
+        flex-direction: row;
+        margin-top: 40px;
+    }
+    
+    .left-sub-container, .right-sub-container {
+        width: 45%;
+    }
+
+    .left-sub-container img {
+        width: 100%;
+        height: auto;
+    }
+
+    .vet-notice {
+        height: auto;
+        padding: 30px;
+    }
+
+    .vet-sub-notice {
+        width: 80%;
+    }
+
+    .vet-button {
+        width: 70%;
+        height: 55px;
+        font-size: 17px;
+    }
+
+    .vet-divider-container {
+        flex-direction: row;
+    }
+
+    .vet-divider {
+        margin: 0 15px;
+    }
+
+    .vet-divider-diamond {
+        width: 20px;
+        height: 10px;
+    }
+
+    .form-container input, .form-container textarea {
+        width: 100%;
+    }
+
+    .form-container input[type='submit'] {
+        width: auto;
+        padding: 12px;
+        font-size: 18px;
+    }
+}
+
+/* Larger Screens */
+@media only screen and (max-width: 850px) {
+    .Vet-text h1 {
+        font-size: 32px;
+    }
+    
+    .Vet-text h3 {
+        font-size: 24px;
+    }
+    
+    .Vet-text p {
+        font-size: 18px;
+        padding: 0 30px;
+    }
+
+    .container-highlight {
+        flex-direction: row;
+        margin-top: 60px;
+    }
+    
+    .left-sub-container, .right-sub-container {
+        width: 50%;
+    }
+
+    .left-sub-container img {
+        width: 100%;
+        height: auto;
+    }
+
+    .vet-notice {
+        height: auto;
+        padding: 40px;
+    }
+
+    .vet-sub-notice {
+        width: 70%;
+    }
+
+    .vet-button {
+        width: 60%;
+        height: 60px;
+        font-size: 18px;
+    }
+
+    .vet-divider-container {
+        flex-direction: row;
+    }
+
+    .vet-divider {
+        margin: 0 20px;
+    }
+
+    .vet-divider-diamond {
+        width: 25px;
+        height: 15px;
+    }
+
+    .form-container input, .form-container textarea {
+        width: 100%;
+    }
+
+    .form-container input[type='submit'] {
+        width: auto;
+        padding: 15px;
+        font-size: 20px;
+    }
+}
