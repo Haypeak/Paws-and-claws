@@ -8,7 +8,7 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [error, setError] = useState('');
+  const [, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -118,7 +118,9 @@ function SignUp() {
         
               <button className="btn-btn-1" type="submit">Sign Up</button>
             </div>
-        
+            <p>
+              <a onClick={() => navigate('/login')}>Already have an account? Log in</a>
+            </p>        
           </form>
         </div>
       </div>

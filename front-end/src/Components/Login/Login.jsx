@@ -8,18 +8,12 @@ import './Login.css';
 function Login() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
+  const [, setError] = useState('');
   const navigate = useNavigate(); // Initialize navigate
 
   const handleLogin = async (event) => {
     event.preventDefault();
 
-    const credentials = btoa(`${email}:${password}`);
-    const config = {
-      headers: {
-        'Authorization': `Basic ${credentials}`
-      }
-    };
     try {
       const response = await axios.post('http://127.0.0.1:5000/auth/login', {}, {
         auth: {
