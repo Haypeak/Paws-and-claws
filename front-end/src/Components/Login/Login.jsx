@@ -1,45 +1,63 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Ensure you have this import for navigation
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 function Login() {
-  const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const navigate = useNavigate(); // Initialize navigate
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
-  //   // Call login API here
-  //   console.log('Login button clicked');
-  // };
+  // Simulated user data for validation
+  const registeredUsers = [
+    { email: 'user1@example.com', password: 'Password123' },
+    { email: 'user2@example.com', password: 'Password456' }
+  ];
 
-  // const handleSignup = (e) => {
-  //   e.preventDefault();
-  //   // Call signup API here
-  //   console.log('Signup button clicked');
-  // };
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      setError('Please fill in both email and password.');
+      return;
+    }
+
+    const user = registeredUsers.find(user => user.email === email);
+    if (user) {
+      if (user.password === password) {
+        setError('');
+        navigate('/Appointments');
+      } else {
+        setError('Incorrect password. Please try again.');
+      }
+    } else {
+      setError('User not found. Please sign up first.');
+    }
+  };
 
   const handleForgotPassword = () => {
-    // Call forgot password API here
-    console.log('Forgot password button clicked');
+    console.log('Forgot password clicked');
+    // Implement forgot password logic here
   };
 
   return (
     <div className="Log-in">
       <div className="login-container">
-        {/* <h2 className="Log-in-title">Book An Appointment</h2> */}
         <div className="login-form">
           <div className="ll-header">
             <h2 className="ll">Welcome</h2>
-            <h4 className="lolo"> to Paws and Claws Veterinary Pet Shop Portal</h4>
+            <h4 className="lolo">to Paws and Claws Veterinary Pet Shop Portal</h4>
           </div>
 
-          <form className="login-login">
+          <form className="login-login" onSubmit={handleLogin}>
             <div className="login-info">
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setError('');
+                }}
                 placeholder="Email"
                 required
               />
@@ -49,24 +67,26 @@ function Login() {
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setError('');
+                }}
                 placeholder="Password"
                 required
               />
             </div>
 
+            {error && <p className="error-message">{error}</p>}
+
             <div className="login-signup">
-            <button className="btn-btn" onClick={() => navigate('/Appointments')}>Log In</button>
-              <button className="btn-btn" onClick={() => navigate('/SignUp')}>Sign Up</button>
-             
+              <button type="submit" className="btn-btn">Log In</button>
+              <button type="button" className="btn-btn" onClick={() => navigate('/SignUp')}>Sign Up</button>
             </div>
 
             <p>
               <a onClick={handleForgotPassword}>Forgot password?</a>
+              <a href='/new-product-edit'>a</a>
             </p>
-            {/* <p>
-              <a onClick={() => navigate('/AdminLogin')}>Staff LogIn</a>
-            </p> */}
           </form>
         </div>
       </div>

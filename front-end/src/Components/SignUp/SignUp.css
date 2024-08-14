@@ -5,14 +5,12 @@ body {
   box-sizing: border-box;
 }
 
-
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-top: 70px;
-  
 }
 
 /* .Log-in-title {
@@ -27,24 +25,25 @@ body {
 }
 
 .ll {
-  margin-bottom: 0;
+  margin-bottom: 10px; /* Increase the margin-bottom */
   color: #d6a57a;
   text-transform: uppercase;
+  font-size: 24px; /* Increase the font size */
 }
 
 .lolo {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px; /* Increase the font size */
   color: #fff;
   text-align: center;
+  margin-bottom: 20px; /* Increase the margin-bottom */
 }
-
 .login-form {
-  width: 300px;
+  /* width: 900px; */
   max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(187, 94, 94, 0.1);
-  padding: 20px;
+  /* padding: 100px; */
   background-color: #fff;
   box-sizing: border-box;
 }
@@ -56,10 +55,10 @@ body {
   border: none;
   border-bottom: 1px solid #9e9e9e;
   outline: none;
-  height: 1.5rem;
+  height: 1rem;
   width: 100%;
-  font-size: 1rem;
-  margin: 0 0 20px 0;
+  font-size: 1.1rem;
+  margin: 0 0 25px 0;
   padding: 0;
   box-shadow: none;
   box-sizing: border-box;
@@ -82,8 +81,8 @@ body {
 
 
 .btn-btn-1 {
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top: 15px; /* Increase the margin-top */
+  margin-bottom: 5px; /* Increase the margin-bottom */
   background-color: #d07322;
   width: 190px;
   border: none;
@@ -91,6 +90,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, opacity 0.3s;
+  font-size: 16px;
 }
 
 .btn-btn-1:hover {

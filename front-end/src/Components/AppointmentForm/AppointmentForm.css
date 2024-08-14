@@ -140,6 +140,8 @@ main {
   display: flex;
   flex-direction: row;
   gap: 130px;
+  justify-content: space-between;
+
 }
 
 .note-submit-btn p{
@@ -181,8 +183,8 @@ main {
   position: absolute;
   top: 0;
   left: 0;
-  height: 18px;
-  width: 18px;
+  height: 14px; /* Reduce the height */
+  width: 14px; /* Reduce the width */
   background-color: #eee;
   border-radius: 50%;
 }
@@ -211,10 +213,11 @@ main {
 
 /* Style the indicator (dot/circle) */
 .col-container .checkmark:after {
- 	top: 9px;
-	left: 9px;
-	width: 8px;
-	height: 8px;
+ 	top: 5px; /* Adjust the top position */
+	right: 10px;
+  left: 4px; /* Adjust the left position */
+	width: 6px; /* Reduce the width */
+	height: 6px; /* Reduce the height */
 	border-radius: 50%;
 	background: white;
 }
@@ -229,4 +232,87 @@ footer {
 .footer-logo {
   max-width: 100px;
   margin-bottom: 10px;
+}
+
+.profileContainer{
+  background-color: #e6e4e4;
+  width: 320px;
+  max-height: 620px;
+  justify-content: center;
+  align-items: center;
+}
+.profileContainer p, .profileContainer h3{
+  color: #000;
+}
+
+.account-button, .account-button:hover{
+  width: 320px;
+  height: 50px;
+  border-radius: 0%;
+  border-top: 2px solid gray;
+  background-color: #eee;
+  color: gray;
+}
+.profile-image-container{
+  background-color: #BEBEBE;
+  border-radius: 6px;
+  width: 210px;
+}
+.profile-image-container-main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profile-image-wrapper {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.profile-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-left:10px;
+}
+
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: 8px;
+}
+
+.edit-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transform: translate(5%, 5%); /* Adjust this to control the overlap */
+}
+.profile-name {
+  
+  font-size: 16px;
+  text-align: left;
+  margin-left: 5px;
+}
+
+.profile-email {
+  font-size: 14px;
+  text-align: center;
+}
+.remove-button{
+  width: 80px;
+  margin-right: 5px;
+}
+.cancel-button{
+  width: 80px;
+}
+.profile-button-container{
+  justify-content: space-around;
 }
