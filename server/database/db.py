@@ -9,7 +9,7 @@ app = Flask(__name__, static_folder='../../front-end/dist', static_url_path='/')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pawsandclaws.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+# migrate = Migrate(app, db)
 
 class Pet(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
@@ -42,6 +42,18 @@ class User(db.Model):
     feedback = db.relationship('Feedback', backref='user', lazy=True)
     admin = db.relationship('Admin', backref='user', uselist=False)
 
+    def make_admin(self):
+        self.role = 'admin'
+        admin = Admin(user=self)
+        db.session.add(admin)
+        db.session.commit()
+
+    def remove_admin(self):
+        self.role = 'admin'
+        admin = Admin.query.filter_by(user=self).first()
+        db.session.delete(admin)
+        db.session.commit()
+
 class Admin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -70,7 +82,7 @@ class Appointment(db.Model):
     date_time = db.Column(db.DateTime, nullable=False)
     reason = db.Column(db.Text, nullable=False)
     status = db.Column(db.String(50), nullable=False)
-    notes = db.Column(db.Text, nullable=True)
+    notes = db.Column(db.Text, nullable=False, default="")
     appointmentType = db.Column(db.String(50), nullable=False)
     
 
