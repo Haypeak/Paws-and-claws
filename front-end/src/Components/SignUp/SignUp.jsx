@@ -4,7 +4,7 @@ import acceptDisabled from '../../assets/acceptDisabled.png';
 import './SignUp.css';
 
 function SignUp() {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -16,54 +16,77 @@ function SignUp() {
     return passwordRegex.test(password);
   };
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
+
     if (!validatePassword(password)) {
       setError('Password must be at least 8 characters long, and include 1 uppercase letter, 1 lowercase letter, and 1 number.');
       return;
     }
+
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
       return;
     }
 
-    // Retrieve existing profiles from localStorage
-    const existingProfiles = JSON.parse(localStorage.getItem('userProfiles')) || [];
+    try {
+      // Call signup API here
+      const response = await fetch('http://127.0.0.1:5000/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password }),
+      });
 
-    // Create new profile
-    const newProfile = { name, email, image: null };
+      if (response.ok) {
+        // Retrieve existing profiles from localStorage
+        const existingProfiles = JSON.parse(localStorage.getItem('userProfiles')) || [];
 
-    // Add new profile to existing profiles
-    const updatedProfiles = [...existingProfiles, newProfile];
+        // Create new profile
+        const newProfile = { username, email, image: null };
 
-    // Store updated profiles in localStorage
-    localStorage.setItem('userProfiles', JSON.stringify(updatedProfiles));
+        // Add new profile to existing profiles
+        const updatedProfiles = [...existingProfiles, newProfile];
 
-    // Navigate to the appointments page if validation passes
-    navigate('/appointments');
+        // Store updated profiles in localStorage
+        localStorage.setItem('userProfiles', JSON.stringify(updatedProfiles));
+
+        // Handle successful signup (e.g., redirect to login page)
+        navigate('/login');
+      } else {
+        const errorData = await response.json();
+        setError(errorData.message || 'Signup failed. Please try again.');
+      }
+    } catch (error) {
+      setError('An error occurred. Please try again.');
+      console.error('Signup error:', error);
+    }
   };
 
   return (
     <div className="Log-in">
       <div className="login-container">
         <div className="login-form">
-          <div className="ll-header" style={{ marginBottom: '10px'}}>
+          <div className="ll-header" style={{ marginBottom: '10px' }}>
             <h2 className="ll">Welcome</h2>
             <h4 className="lolo">to Paws and Claws Veterinary Pet Shop Registration Portal</h4>
           </div>
+
           <form className="login-login" onSubmit={handleSignUp}>
             <div className="login-info">
               <input
                 type="text"
-                value={name}
+                value={username}
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setUsername(e.target.value);
                   setError(''); // Clear error when user starts typing
                 }}
                 placeholder="Username"
                 required
               />
             </div>
+
             <div className="login-info">
               <input
                 type="email"
@@ -76,6 +99,7 @@ function SignUp() {
                 required
               />
             </div>
+
             <div className="login-info">
               <input
                 type="password"
@@ -88,6 +112,7 @@ function SignUp() {
                 required
               />
             </div>
+
             <div className="login-info">
               <input
                 type="password"
@@ -100,6 +125,7 @@ function SignUp() {
                 required
               />
             </div>
+
             <div className="psswrd-requirement-col">
               <div className="password-requirement">
                 <img src={acceptDisabled} alt=''/>
@@ -122,8 +148,12 @@ function SignUp() {
             {error && <p className="error-message">{error}</p>}
 
             <div className="login-signup">
-              <button type="submit" className="btn-btn-1">Sign Up</button>
+              <button className="btn-btn-1" type="submit">Sign Up</button>
             </div>
+
+            <p>
+              <a onClick={() => navigate('/login')}>Already have an account? Log in</a>
+            </p>
           </form>
         </div>
       </div>

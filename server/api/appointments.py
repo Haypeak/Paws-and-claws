@@ -108,14 +108,14 @@ def create_appointment():
         return jsonify({"message": "Appointment created", "appointment": appointment.id}), 201
 
     except ValueError as e:
-        return jsonify({"message": "Invalid date or time format"}), 400
+        return jsonify({"message": "Invalid date or time format " + str(e)}), 400
     except Exception as e:
         print(e)
         return jsonify({"message": str(e)}), 500
 
 @appointments_bp.route('/appointments', methods=['GET'])
 def get_appointments():
-    appointments = Appointment.query.all()
+    appointments = db.session.query(Appointment).all()
     return jsonify([{
         "id": appt.id,
         "pet_id": appt.pet_id,
@@ -129,7 +129,7 @@ def get_appointments():
 
 @appointments_bp.route('/appointments/<int:id>', methods=['GET'])
 def get_appointment(id):
-    appointment = Appointment.query.get_or_404(id)
+    appointment = db.session.get(Appointment, id)
     return jsonify({
         "id": appointment.id,
         "date_time": appointment.date_time.strftime('%Y-%m-%d %H:%M:%S'),
@@ -141,7 +141,7 @@ def get_appointment(id):
 
 @appointments_bp.route('/appointments/<int:id>', methods=['PUT'])
 def update_appointment(id):
-    appointment = Appointment.query.get_or_404(id)
+    appointment = db.session.get(Appointment, id)
     data = request.get_json()
 
     if not data:
@@ -168,7 +168,7 @@ def update_appointment(id):
 
 @appointments_bp.route('/appointments/<int:id>', methods=['DELETE'])
 def delete_appointment(id):
-    appointment = Appointment.query.get_or_404(id)
+    appointment = db.session.get(Appointment, id)
     db.session.delete(appointment)
     db.session.commit()
     return jsonify({"message": "Appointment deleted"}), 200

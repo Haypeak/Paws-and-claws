@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Ensure you have this import for navigation
+import axios from 'axios';
+import Cookies from 'js-cookie';
 import './Login.css';
 
 function Login() {
@@ -14,24 +16,49 @@ function Login() {
     { email: 'user2@example.com', password: 'Password456' }
   ];
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = async (event) => {
+    event.preventDefault();
 
     if (!email || !password) {
       setError('Please fill in both email and password.');
       return;
     }
 
-    const user = registeredUsers.find(user => user.email === email);
-    if (user) {
-      if (user.password === password) {
-        setError('');
-        navigate('/Appointments');
+    try {
+      const user = registeredUsers.find(user => user.email === email);
+      if (user) {
+        if (user.password === password) {
+          setError('');
+
+          const response = await axios.post('http://127.0.0.1:5000/auth/login', {}, {
+            auth: {
+              username: email,
+              password: password
+            }
+          });
+
+          if (response.status === 200) {
+            if (response.data.token) {
+              // Save the token as a cookie
+              Cookies.set('token', response.data.token);
+              // Handle successful login (e.g., redirect)
+              navigate('/appointments');
+              console.log('Login successful:', response.data);
+            } else {
+              setError('Login failed. Please check your credentials.');
+            }
+          } else {
+            setError('Login failed. Please check your credentials.');
+          }
+        } else {
+          setError('Incorrect password. Please try again.');
+        }
       } else {
-        setError('Incorrect password. Please try again.');
+        setError('User not found. Please sign up first.');
       }
-    } else {
-      setError('User not found. Please sign up first.');
+    } catch (error) {
+      setError('An error occurred. Please try again.');
+      console.error('Login error:', error);
     }
   };
 

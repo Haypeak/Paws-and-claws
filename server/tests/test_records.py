@@ -1,8 +1,11 @@
+from datetime import datetime
 from flask import Flask
 import json
 import pytest
 from api.records import records_bp
 from database.db import db, Record
+
+date_time = datetime.now()
 
 @pytest.fixture(autouse=True, scope="session")
 def client():
@@ -19,9 +22,14 @@ def client():
 def test_create_record(client):
     data = {
         "description": "Annual checkup",
-        "date": "2023-01-01",
+        "date": str(date_time),
         "pet_id": 1,
-      #  "vet_id": 1 let's say it's needed.
+        "vitals": {
+            "weight": 10,
+            "temperature": 38,
+            "heart_rate": 90,
+            "respiratory_rate": 20
+        }
     }
     response = client.post('/api/records', data=json.dumps(data), content_type='application/json')
     assert response.status_code == 201
@@ -31,12 +39,19 @@ def test_get_records(client):
     with client.application.app_context():
         record = Record(
             description="Annual checkup", 
-            date="2023-01-01", 
-            pet_id=1, 
+            date=date_time, 
+            pet_id=1,
+            vitals={
+            "weight": 10,
+            "temperature": 38,
+            "heart_rate": 90,
+            "respiratory_rate": 20
+        } 
             #vet_id=1
             )
         db.session.add(record)
         db.session.commit()
+        db.session.refresh(record)
     response = client.get('/api/records')
     assert response.status_code == 200
     assert "Annual checkup" in str(response.data)
@@ -45,12 +60,19 @@ def test_get_record(client):
     with client.application.app_context():
         record = Record(
             description="Annual checkup", 
-            date="2023-01-01", 
-            pet_id=1, 
+            date=date_time, 
+            pet_id=1,
+            vitals={
+            "weight": 10,
+            "temperature": 38,
+            "heart_rate": 90,
+            "respiratory_rate": 20
+        } 
             #vet_id=1
             )
         db.session.add(record)
         db.session.commit()
+        db.session.refresh(record)
     response = client.get(f'/api/records/{record.id}')
     assert response.status_code == 200
     assert "Annual checkup" in str(response.data)
@@ -59,12 +81,19 @@ def test_update_record(client):
     with client.application.app_context():
         record = Record(
             description="Annual checkup", 
-            date="2023-01-01", 
-            pet_id=1, 
+            date=date_time, 
+            pet_id=1,
+            vitals={
+            "weight": 10,
+            "temperature": 38,
+            "heart_rate": 90,
+            "respiratory_rate": 20
+        } 
             #vet_id=1
             )
         db.session.add(record)
         db.session.commit()
+        db.session.refresh(record)
     data = {
         "description": "Vaccination",
         "date": "2023-01-01"
@@ -77,12 +106,19 @@ def test_delete_record(client):
     with client.application.app_context():
         record = Record(
             description="Annual checkup", 
-            date="2023-01-01", 
-            pet_id=1, 
+            date=date_time, 
+            pet_id=1,
+            vitals={
+            "weight": 10,
+            "temperature": 38,
+            "heart_rate": 90,
+            "respiratory_rate": 20
+        }
             #vet_id=1
             )
         db.session.add(record)
         db.session.commit()
+        db.session.refresh(record)
     response = client.delete(f'/api/records/{record.id}')
     assert response.status_code == 200
     assert "Record deleted" in str(response.data)

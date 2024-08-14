@@ -35,24 +35,24 @@ def test_register(client):
     assert "Registered successfully!" in str(response.data)
 
 def test_login(client):
-    with client.application.app_context():
-        hashed_password = generate_password_hash("password123")
-        user = User(
-            username="testuser",
-            email="test@example.com",
-            password_hash=hashed_password,
-            first_name="Test",
-            last_name="User",
-            phone_number="1234567890",
-            address="123 Test Street",
-            role="user",
-            date_joined=datetime.now()
-        )
-        db.session.add(user)
-        db.session.commit()
+    # with client.application.app_context():
+    #     hashed_password = generate_password_hash("password123")
+    #     # user = User(
+    #     #     username="testuser",
+    #     #     email="test@example.com",
+    #     #     password_hash=hashed_password,
+    #     #     first_name="Test",
+    #     #     last_name="User",
+    #     #     phone_number="1234567890",
+    #     #     address="123 Test Street",
+    #     #     role="user",
+    #     #     date_joined=datetime.now()
+    #     # )
+    #     # db.session.add(user)
+    #     # db.session.commit()
     
     data = {
-        "username": "testuser",
+        "username": "test@example.com",
         "password": "password123"
     }
     response = client.post('/login', auth=(data['username'], data['password']))
