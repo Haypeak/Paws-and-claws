@@ -5,6 +5,9 @@ import './SignUp.css';
 
 function SignUp() {
   const [username, setName] = useState('');
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('');
+  const [phone_number, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -20,7 +23,7 @@ function SignUp() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ username, first_name, last_name, phone_number, email, password }),
       });
       if (response.ok) {
         // Handle successful signup (e.g., redirect to login page)
@@ -59,6 +62,42 @@ function SignUp() {
             </div>
             <div className="login-info">
               <input
+                type="text"
+                value={first_name}
+                onChange={(e) => {
+                  setFirstName(e.target.value);
+                  setError(''); // Clear error when user starts typing
+                }}
+                placeholder="First Name"
+                required
+              />
+            </div>
+            <div className="login-info">
+              <input
+                type="text"
+                value={last_name}
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                  setError(''); // Clear error when user starts typing
+                }}
+                placeholder="Last Name"
+                required
+              />
+              </div>
+            <div className="login-info">
+              <input
+                type="phone-number"
+                value={phone_number}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                  setError(''); // Clear error when user starts typing
+                }}
+                placeholder="Phone Number"
+                required
+              />
+            </div>
+            <div className="login-info">
+              <input
                 type="email"
                 value={email}
                 onChange={(e) => {
@@ -83,18 +122,20 @@ function SignUp() {
               />
             </div>
 
-            <div className="login-info">
+            {/* <div className="login-info">
               <input
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => {
                   setConfirmPassword(e.target.value);
-                  setError(''); // Clear error when user starts typing
+                  if (e.target.value !== password){
+                    setError('passwords do not match'); // Clear error when user starts typing
+                  }
                 }}
                 placeholder="Confirm Password"
                 required
               />
-            </div>
+            </div> */}
             <div className="psswrd-requirement-col">
               <div className="password-requirement">
                 <img src={acceptDisabled} alt=''/>
