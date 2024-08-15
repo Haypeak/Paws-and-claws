@@ -1,18 +1,18 @@
-import React from 'react';
+// import React from 'react';
 // import { useState } from 'react';
 import logo from "../../assets/Paws&Claws logo.png";
 import "./Footer.css";
 import facebook from "../../assets/facebook.png";
 import insta from "../../assets/insta.png";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 
 
 const Footer = () => {
-  const navigate = useNavigate(); // Initialize navigate
-  const handleAdminLogin = () => {
-    navigate('/AdminLogin'); // Navigates to the Admin Login page
-  };
+  // const navigate = useNavigate(); // Initialize navigate
+  // const handleAdminLogin = () => {
+  //   navigate('/AdminLogin'); // Navigates to the Admin Login page
+  // };
   return (
     <div className='footer'>
       <div className='row'>
@@ -32,12 +32,12 @@ const Footer = () => {
         <div className='col'>
           <h4 className='cols'>Links</h4>
           <ul>
-            <li><a href=''>Home</a></li>
-            <li><a href=''>About</a></li>
-            <li><a href=''>Products</a></li>
-            <li><a href=''>Services</a></li>
-            <li><a href=''>Tips & Updates</a></li>
-            <li><a href=''>Book Appointment</a></li>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/about'>About</a></li>
+            <li><a href='/Veterinary-Care-And-Product'>Products</a></li>
+            <li><a href='/VeterinaryService'>Services</a></li>
+            <li><a href='/#tips'>Tips & Updates</a></li>
+            <li><a href='/login'>Book Appointment</a></li>
           </ul>
         </div>
         <div className='col'>
@@ -53,9 +53,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p>
+      {/* <p>
               <a onClick={handleAdminLogin} style={{cursor: 'pointer'}}>Log in as Admin</a>
-      </p> 
+      </p>  */}
       <p className='copyright' style={{color: '#BEBEBE'}}>&copy; 2024 Pasw&Claws. All Rights Reserved</p>
     </div>
   )

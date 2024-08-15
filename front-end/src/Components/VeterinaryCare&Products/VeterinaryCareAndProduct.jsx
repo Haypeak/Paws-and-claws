@@ -1,16 +1,15 @@
 import './VeterinaryCareAndProduct.css';
 import '../VeterinaryService/VeterinaryService.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 import dog from '../../assets/dog.jpeg';
 import cat from '../../assets/cat.jpeg';
 import fish from '../../assets/fish.jpeg';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 const VeterinaryCareAndProduct=()=> {
-    
+  const navigate = useNavigate();
   return (
     <div className='main-Vetcare-and-product-container'>
     <div className='Vet'>
@@ -20,7 +19,7 @@ const VeterinaryCareAndProduct=()=> {
      <p>Your pet’s health and well-being are our top priority. We provide compassionate and professional care to ensure your furry friends live happy and healthy lives. Explore our services and let us partner with you in caring for your beloved pets. 
      Trust Paws and Claws to treat your pets like family.
   </p>
-  <button className='service-btn'>Book an Appointment</button>
+  <button className='service-btn' onClick={() => navigate('/login')}>Book an Appointment</button>
         </div>
       </div>
         <div className='VetCare-Header'>

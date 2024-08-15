@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import acceptDisabled from '../../assets/acceptDisabled.png';
+// import acceptDisabled from '../../assets/acceptDisabled.png';
 import './SignUp.css';
 
 function SignUp() {
@@ -65,97 +65,98 @@ function SignUp() {
   };
 
   return (
-    <div className="Log-in">
-      <div className="login-container">
-        <div className="login-form">
-          <div className="ll-header" style={{ marginBottom: '10px' }}>
-            <h2 className="ll">Welcome</h2>
-            <h4 className="lolo">to Paws and Claws Veterinary Pet Shop Registration Portal</h4>
+    <div className="sign-container">
+      <div className="sign-in">
+        <div className="ss-header" style={{ marginBottom: '10px', color:'#d07322' }}>
+          <h2 className="ss">Welcome</h2>
+          <h4 className="soso">to Paws and Claws Veterinary Pet Shop Registration Portal</h4>
+        </div>
+
+        <form className="sign-sign" onSubmit={handleSignUp}>
+          <div className="sign-info username-input">
+            <input
+            className='sign-username'
+              type="text"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+                setError(''); // Clear error when user starts typing
+              }}
+              placeholder="Username"
+              required
+            />
           </div>
 
-          <form className="login-login" onSubmit={handleSignUp}>
-            <div className="login-info">
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                  setError(''); // Clear error when user starts typing
-                }}
-                placeholder="Username"
-                required
-              />
+          <div className="sign-info">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setError(''); // Clear error when user starts typing
+              }}
+              placeholder="Email"
+              required
+            />
+          </div>
+
+          <div className="sign-info">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError(''); // Clear error when user starts typing
+              }}
+              placeholder="Password"
+              required
+            />
+          </div>
+
+          <div className="sign-info">
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+                setError(''); // Clear error when user starts typing
+              }}
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+          
+
+          {/* <div className="psswrd-requirement-col">
+            <div className="password-requirement">
+              <img src={acceptDisabled} alt=''/>
+              <p>8 Characters</p>
             </div>
-
-            <div className="login-info">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setError(''); // Clear error when user starts typing
-                }}
-                placeholder="Email"
-                required
-              />
+            <div className="password-requirement">
+              <img src={acceptDisabled} alt=''/>
+              <p>1 Uppercase Letter</p>
             </div>
-
-            <div className="login-info">
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  setError(''); // Clear error when user starts typing
-                }}
-                placeholder="Password"
-                required
-              />
+            <div className="password-requirement">
+              <img src={acceptDisabled} alt=''/>
+              <p>1 Lowercase Letter</p>
             </div>
-
-            <div className="login-info">
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => {
-                  setConfirmPassword(e.target.value);
-                  setError(''); // Clear error when user starts typing
-                }}
-                placeholder="Confirm Password"
-                required
-              />
+            <div className="password-requirement">
+              <img src={acceptDisabled} alt=''/>
+              <p>1 Number</p>
             </div>
+          </div> */}
 
-            <div className="psswrd-requirement-col">
-              <div className="password-requirement">
-                <img src={acceptDisabled} alt=''/>
-                <p>8 Characters</p>
-              </div>
-              <div className="password-requirement">
-                <img src={acceptDisabled} alt=''/>
-                <p>1 Uppercase Letter</p>
-              </div>
-              <div className="password-requirement">
-                <img src={acceptDisabled} alt=''/>
-                <p>1 Lowercase Letter</p>
-              </div>
-              <div className="password-requirement">
-                <img src={acceptDisabled} alt=''/>
-                <p>1 Number</p>
-              </div>
-            </div>
+          {error && <p className="error-message">{error}</p>}
 
-            {error && <p className="error-message">{error}</p>}
+          <div className="login-signup">
+            <button className="btn-btn-1" type="submit" onClick={() => navigate('/appointments')}>Sign Up</button>
+          </div>
+          <p style={{color:'red', textAlign:'center'}}>If an error occurs whiles filling the form the message will be dispalyed here.</p>
 
-            <div className="login-signup">
-              <button className="btn-btn-1" type="submit">Sign Up</button>
-            </div>
-
-            <p>
-              <a onClick={() => navigate('/login')}>Already have an account? Log in</a>
-            </p>
-          </form>
-        </div>
+          <p>
+            <a onClick={() => navigate('/login')}>Already have an account?<span style={{color:'#d07322'}}> Log in</span></a>
+          </p>
+        </form>
       </div>
     </div>
   );

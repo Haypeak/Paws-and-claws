@@ -63,6 +63,7 @@
 .slide p{
   text-transform: none;
   font-size: 15px;
+  text-align: left;
 }
 .user-info{
    display: flex;

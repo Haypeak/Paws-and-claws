@@ -71,6 +71,10 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+      <div className='contact-Us-message'>
+            <h2>Send Us A Message</h2>
+            <p style={{textAlign:'center', fontSize:'15px'}}>Let Us Know Your Concerns. Our Team will get back to you shortly</p>
+        </div>
       <div className='form-container'>
         <form onSubmit={handleSubmit}>
           

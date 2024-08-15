@@ -1,90 +1,105 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.login-container {
+/* Container to center content */
+.sign-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh; /* Make the container take full viewport height */
+  background-color: #f5f5f5; /* Optional: Add background color */
+  padding: 0 10px; /* Optional: Add some horizontal padding */
+}
+
+.sign-in {
+  display: flex;
   flex-direction: column;
-  margin-top: 70px;
-}
-
-/* .Log-in-title {
-  margin-top: 240px;
-  color: #d6a57a;
-} */
-
-.ll-header {
-  padding: 50px 0;
-  background-image: radial-gradient(circle 300px at center, #d07322 0%, #d07322 100%);
-  
-}
-
-.ll {
-  margin-bottom: 10px; /* Increase the margin-bottom */
-  color: #d6a57a;
-  text-transform: uppercase;
-  font-size: 24px; /* Increase the font size */
-}
-
-.lolo {
-  font-weight: 400;
-  font-size: 18px; /* Increase the font size */
-  color: #fff;
-  text-align: center;
-  margin-bottom: 20px; /* Increase the margin-bottom */
-}
-.login-form {
-  /* width: 900px; */
-  max-width: 100%;
+  align-items: center;
+  width: 100%;
+  max-width: 400px; /* Limit the max width of the form */
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(187, 94, 94, 0.1);
-  /* padding: 100px; */
-  background-color: #fff;
-  box-sizing: border-box;
+  text-align: center;
 }
 
 
 
-.login-info input {
+.ss {
+  margin: 0; /* Remove bottom margin */
+  font-size: 28px;
+}
+
+.soso{
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  color: #d07322;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+
+.sign-info {
+  width: 100%; /* Ensure the input container takes full width */
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+}
+.sign-info.username-input {
+  margin-top: 20px; /* Adjust the value as needed */
+}
+
+
+.sign-info input {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #9e9e9e;
   outline: none;
-  height: 1rem;
-  width: 100%;
-  font-size: 1.1rem;
-  margin: 0 0 25px 0;
+  height: 1.8rem; /* Adjusted for better height */
+  width: 100%; /* Ensure inputs take full width of container */
+  font-size: 1rem;
+  margin: 0 0 20px 0; /* Reduced bottom margin */
   padding: 0;
   box-shadow: none;
   box-sizing: border-box;
   transition: all 0.3s;
   color: black;
+  text-align: left; /* Align text to the left inside input */
 }
 
-
-
-.login-login {
+.sign-sign, .sign-signup {
   display: flex;
   flex-direction: column;
-  margin-top: 15px;
+  align-items: center;
+  width: 100%;
 }
 
-.login-signup {
+.psswrd-requirement-col {
   display: flex;
   flex-direction: column;
+  align-items: flex-start; /* Align items to start */
+  justify-content: start;
+  margin: 0; /* Remove margin to fit content */
+  padding: 0; /* Remove padding if not needed */
 }
 
+.password-requirement {
+  display: flex;
+  align-items: center; 
+  line-height: 2px;
+}
+
+.password-requirement img {
+  width: 12px;
+  height: 12px;
+  margin-right: 8px; /* Add some space between the image and text */
+}
 
 .btn-btn-1 {
-  margin-top: 15px; /* Increase the margin-top */
-  margin-bottom: 5px; /* Increase the margin-bottom */
+  margin-top: 15px;
+  margin-bottom: 5px;
   background-color: #d07322;
-  width: 190px;
+  width: 160px; /* Adjust width to fit container */
+  max-width: 190px; /* Limit button width */
+  height: 45px;
   border: none;
   color: white;
   border-radius: 5px;
@@ -94,7 +109,7 @@ body {
 }
 
 .btn-btn-1:hover {
-  background-color: #d07322;
+  background-color: #b3621b; /* Adjusted hover color */
   opacity: 0.9;
 }
 
@@ -102,22 +117,60 @@ p {
   color: #9e9e9e;
   font-size: 12px;
   text-transform: uppercase;
+  text-align: center;
+  margin: 10px 0; /* Adjust margins to fit content */
 }
 
-.psswrd-requirement-col{
- margin-left: -100px;
-  
+/* Media Queries */
+
+/* For tablets and small screens */
+@media (max-width: 768px) {
+  .sign-in {
+    padding: 15px;
+    max-width: 90%; /* Make form width responsive */
+  }
+
+  .ss {
+    font-size: 20px;
+  }
+
+  .soso {
+    font-size: 16px;
+  }
+
+  .sign-info input {
+    height: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-btn-1 {
+    font-size: 14px;
+    height: 40px;
+  }
 }
-.password-requirement{
-  flex-direction: row;
-  display: flex;
- align-content: flex-start;
-}
-.password-requirement p{
-  text-transform: none;
-  
-}
-.password-requirement img{
-  width: 12px;
-  height: 12px;
+
+/* For mobile phones */
+@media (max-width: 480px) {
+  .sign-in {
+    padding: 10px;
+    max-width: 100%; /* Ensure form takes full width */
+  }
+
+  .ss {
+    font-size: 18px;
+  }
+
+  .soso {
+    font-size: 14px;
+  }
+
+  .signin-info input {
+    height: 1.4rem;
+    font-size: 0.8rem;
+  }
+
+  .btn-btn-1 {
+    font-size: 12px;
+    height: 35px;
+  }
 }
