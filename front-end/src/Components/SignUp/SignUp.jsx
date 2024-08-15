@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './SignUp.css';
 
 function SignUp() {
-  const [username, setUsername] = useState('');
+
   const [first_name, setFirstName] = useState('');
   const [last_name, setLastName] = useState('');
   const [phone_number, setPhoneNumber] = useState('');
@@ -39,7 +39,7 @@ function SignUp() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, first_name, last_name, phone_number, email, password }),
+        body: JSON.stringify({ first_name, last_name, phone_number, email, password }),
       });
 
       if (response.ok) {
@@ -47,7 +47,7 @@ function SignUp() {
         const existingProfiles = JSON.parse(localStorage.getItem('userProfiles')) || [];
 
         // Create new profile
-        const newProfile = { username, email, image: null };
+        const newProfile = {first_name, last_name, email, image: null };
 
         // Add new profile to existing profiles
         const updatedProfiles = [...existingProfiles, newProfile];
@@ -80,15 +80,40 @@ function SignUp() {
             <input
             className='sign-username'
               type="text"
-              value={username}
+              value={first_name}
               onChange={(e) => {
-                setUsername(e.target.value);
+                setFirstName(e.target.value);
                 setError(''); // Clear error when user starts typing
               }}
-              placeholder="Username"
+              placeholder="First Name"
               required
             />
           </div>
+          <div className="sign-info">
+          <input
+              type="text"
+              value={last_name}
+              onChange={(e) => {
+                setLastName(e.target.value);
+                setError(''); // Clear error when user starts typing
+              }}
+              placeholder="Last Name"
+              required
+            />
+          </div>
+
+          <div className="sign-info">
+              <input
+                type="phone_number"
+                value={phone_number}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                  setError(''); // Clear error when user starts typing
+                }}
+                placeholder="Phone Number"
+                required
+              />
+            </div>
 
           <div className="sign-info">
             <input
@@ -116,7 +141,7 @@ function SignUp() {
             />
           </div>
 
-            <div className="login-info">
+            <div className="sign-info">
               <input
                 type="password"
                 value={confirmPassword}
@@ -128,25 +153,7 @@ function SignUp() {
                 required
               />
             </div>
-
-            <div className="psswrd-requirement-col">
-              <div className="password-requirement">
-                <img src={acceptDisabled} alt=''/>
-                <p>8 Characters</p>
-              </div>
-              <div className="password-requirement">
-                <img src={acceptDisabled} alt=''/>
-                <p>1 Uppercase Letter</p>
-              </div>
-              <div className="password-requirement">
-                <img src={acceptDisabled} alt=''/>
-                <p>1 Lowercase Letter</p>
-              </div>
-              <div className="password-requirement">
-                <img src={acceptDisabled} alt=''/>
-                <p>1 Number</p>
-              </div>
-            </div>
+            
 
           {error && <p className="error-message">{error}</p>}
 
