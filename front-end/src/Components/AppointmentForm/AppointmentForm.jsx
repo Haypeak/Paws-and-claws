@@ -195,8 +195,8 @@ const AppointmentForm = () => {
                         />
                         </div>
                        
-                        
-                        {/* <label htmlFor="petId">Pet&#39;s Id:</label> */}
+                        <div className='contact-details'>
+                             {/* <label htmlFor="petId">Pet&#39;s Id:</label> */}
                         <input 
                             type="text" 
                             id="petName" 
@@ -206,6 +206,17 @@ const AppointmentForm = () => {
                             onChange={handleChange} 
                             required 
                         />
+                        <input 
+                            type="text" 
+                            id="homeAddress" 
+                            name="homeAddress" 
+                            value={formData.homeAddress}
+                            placeholder='GM-123-45-678*'  
+                            onChange={handleChange} 
+                            required 
+                        />
+                        </div>
+                       
 
                         <div className='animalKind-detail'>
                         {/* <label htmlFor="email">Email:</label> */}
@@ -274,10 +285,12 @@ const AppointmentForm = () => {
                              onChange={handleChange} 
                              required
                         >
-                             <option value="general">General Checkup</option>
+                             <option value="general">General Medical Checkup</option>
                              <option value="dental">Dental Care</option>
                              <option value="surgery">Surgery</option>
                              <option value="wellness">Wellness Care</option>
+                             <option value="wellness">Grooming</option>
+                             <option value="wellness">Vaccination</option>
                         </select>
 
 
@@ -292,7 +305,7 @@ const AppointmentForm = () => {
                         />
                         <div>
                         <div className='check-in-area'>
-                        <p>* Indicates Compulsory</p>
+                        <p style={{fontSize:'16px'}}>* Indicates Compulsory</p>
                         <label className="col-container">Walk In
                             <input 
                                 type="radio" 
@@ -303,7 +316,7 @@ const AppointmentForm = () => {
                             />
                             <span className="checkmark"></span>
                         </label>
-                            <label className="col-container">Home Appointment
+                            <label className="col-container">Home
                             <input 
                                 type="radio" 
                                 checked={formData.appointmentType === 'Home'} 

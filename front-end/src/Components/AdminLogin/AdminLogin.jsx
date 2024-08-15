@@ -1,73 +1,61 @@
-import { useState } from "react";
-import {useNavigate } from "react-router-dom";
-// import axios from "axios";
+import { useState } from 'react';
 import './AdminLogin.css';
-// import Dashboard from "../../AdminPanel/AdminPages/Dashboard/Dashboard"
+import { useNavigate } from 'react-router-dom';
 
-const AdminLogin = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const navigate = useNavigate(); // Initialize navigate
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      // Implement your authentication logic here
-      // console.log('Email:', email);
-      // console.log('Password:', password);
-      navigate('/Admin-dashboard');
-    };
-  
-  //   try {
-  //     // Make a POST request to your login API endpoint
-  //     const response = await axios.post('http://your-api-url/auth/login', {
-  //       username: email,
-  //       password: password,
-  //     });
+const AdminLoginPage = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  //     if (response.status === 200) {
-  //       // Assuming the API returns a token or some success response
-  //       // You can save the token in localStorage or cookies
-  //       localStorage.setItem('adminToken', response.data.token);
-        
-  //       // Navigate to the admin dashboard
-  //       navigate('/admin-dashboard');
-  //     } else {
-  //       setError('Login failed. Please check your credentials.');
-  //     }
-  //   } catch (error) {
-  //     setError('An error occurred. Please try again.');
-  //     console.error('Login error:', error);
-  //   }
-  // };
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-    return (
-      <div className="login-container">
-        <form className="login-form" onSubmit={handleSubmit}>
-          <h2>Admin Login</h2>
-          <div className="input-group">
-            <label>Email</label>
-            <input 
-              type="email" 
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
-              required 
-            />
-          </div>
-          <div className="input-group">
-            <label>Password</label>
-            <input 
-              type="password" 
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
-              required 
-            />
-          </div>
-          {/* {error && <p className="error">{error}</p>} */}
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    );
-  }
-  
-export default AdminLogin;
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        const { token } = await response.json();
+        localStorage.setItem('adminToken', token); // Store token
+        localStorage.setItem('adminAuthenticated', 'true');
+        navigate('/admin-dashboard');
+      } else {
+        const { message } = await response.json();
+        setError(message);
+      }
+    } catch (err) {
+      setError('Something went wrong');
+    }
+  };
+
+  return (
+    <div className="login-container">
+      <form onSubmit={handleLogin}>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+        />
+        <button type="submit" className='Admin-Login-button'>Login</button>
+        {error && <p className="error">{error}</p>}
+      </form>
+    </div>
+  );
+};
+
+export default AdminLoginPage;

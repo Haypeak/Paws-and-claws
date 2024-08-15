@@ -1,21 +1,37 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import acceptDisabled from '../../assets/acceptDisabled.png'
+import acceptDisabled from '../../assets/acceptDisabled.png';
 import './SignUp.css';
 
 function SignUp() {
-  const [username, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [first_name, setFirstName] = useState('');
   const [last_name, setLastName] = useState('');
   const [phone_number, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [, setError] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSignup = async (e) => {
+  const validatePassword = (password) => {
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    return passwordRegex.test(password);
+  };
+
+  const handleSignUp = async (e) => {
     e.preventDefault();
+
+    if (!validatePassword(password)) {
+      setError('Password must be at least 8 characters long, and include 1 uppercase letter, 1 lowercase letter, and 1 number.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+
     try {
       // Call signup API here
       const response = await fetch('http://127.0.0.1:5000/auth/register', {
@@ -25,7 +41,20 @@ function SignUp() {
         },
         body: JSON.stringify({ username, first_name, last_name, phone_number, email, password }),
       });
+
       if (response.ok) {
+        // Retrieve existing profiles from localStorage
+        const existingProfiles = JSON.parse(localStorage.getItem('userProfiles')) || [];
+
+        // Create new profile
+        const newProfile = { username, email, image: null };
+
+        // Add new profile to existing profiles
+        const updatedProfiles = [...existingProfiles, newProfile];
+
+        // Store updated profiles in localStorage
+        localStorage.setItem('userProfiles', JSON.stringify(updatedProfiles));
+
         // Handle successful signup (e.g., redirect to login page)
         navigate('/login');
       } else {
@@ -41,19 +70,19 @@ function SignUp() {
   return (
     <div className="Log-in">
       <div className="login-container">
-        {/* <h2 className="Log-in-title">Book An Appointment</h2> */}
         <div className="login-form">
-          <div className="ll-header" style={{ marginBottom: '10px'}}>
+          <div className="ll-header" style={{ marginBottom: '10px' }}>
             <h2 className="ll">Welcome</h2>
             <h4 className="lolo">to Paws and Claws Veterinary Pet Shop Registration Portal</h4>
           </div>
-          <form className="login-login" onSubmit={handleSignup}>
+
+          <form className="login-login" onSubmit={handleSignUp}>
             <div className="login-info">
               <input
                 type="text"
                 value={username}
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setUsername(e.target.value);
                   setError(''); // Clear error when user starts typing
                 }}
                 placeholder="Username"
@@ -96,6 +125,7 @@ function SignUp() {
                 required
               />
             </div>
+
             <div className="login-info">
               <input
                 type="email"
@@ -122,7 +152,7 @@ function SignUp() {
               />
             </div>
 
-            {/* <div className="login-info">
+            <div className="login-info">
               <input
                 type="password"
                 value={confirmPassword}
@@ -135,33 +165,36 @@ function SignUp() {
                 placeholder="Confirm Password"
                 required
               />
-            </div> */}
+            </div>
+
             <div className="psswrd-requirement-col">
               <div className="password-requirement">
                 <img src={acceptDisabled} alt=''/>
-                <p> 8 Characters </p>
+                <p>8 Characters</p>
               </div>
               <div className="password-requirement">
-              <img src={acceptDisabled} alt=''/>
-              <p> 1 Uppercase Letter </p>
+                <img src={acceptDisabled} alt=''/>
+                <p>1 Uppercase Letter</p>
               </div>
               <div className="password-requirement">
-              <img src={acceptDisabled} alt=''/>
-              <p className="password-requirement">1 Lowercase Letter</p>
+                <img src={acceptDisabled} alt=''/>
+                <p>1 Lowercase Letter</p>
               </div>
               <div className="password-requirement">
-              <img src={acceptDisabled} alt=''/>
-              <p >1 Number</p>
+                <img src={acceptDisabled} alt=''/>
+                <p>1 Number</p>
               </div>
             </div>
 
+            {error && <p className="error-message">{error}</p>}
+
             <div className="login-signup">
-        
               <button className="btn-btn-1" type="submit">Sign Up</button>
             </div>
+
             <p>
               <a onClick={() => navigate('/login')}>Already have an account? Log in</a>
-            </p>        
+            </p>
           </form>
         </div>
       </div>

@@ -189,6 +189,111 @@ h2{
     font-size: 38px;
 }
 
+.grooming-service-flex-direction{
+    display: flex;
+    flex-direction: row;
+    gap: 250px;
+    margin-bottom: 50px;
+    
+}
+
+.grooming-service-section{
+   
+    margin-bottom: 30px;
+    margin-top: -90px;
+    justify-content: center;
+    align-items: center;
+   
+}
+.grooming-service-section p{
+    font-size: 15px;
+    max-width: 720px;
+}
+.grooming-service-list{
+   display: flex;
+   flex-direction: row;
+   gap: 30px;
+   margin-top: 10px;
+}
+
+.grooming-service-list-col-2 img{
+    margin-right: 8px;
+}
+.Cat-groomed-image-slide{
+    width: 30px;
+    height: 40px;
+    object-fit: fill;
+    border-radius: 0 30px;
+}
+
+/* General container for the slideshow */
+.slick-slider {
+    width: 40px;
+    max-width: 50px; /* Adjust the max width as per your layout */
+    margin: 0 auto;
+    padding: 10px 0; /* Reduce the vertical padding */
+    /* background-color: #fff; */
+}
+
+
+/* Styling the individual slides */
+.slick-slide img {
+    width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px; /* Rounded corners for the images */
+    background-color: #f09342;
+}
+
+.grooming-slide-show {
+    max-width: 300px; /* Adjust the max-width to a smaller size */
+    margin: 0 auto; /* Center the slideshow */
+    padding: 10px;
+    border: 2px solid #f09342; /* Keep the border if needed */
+}
+
+.Cat-groomed-image-slide {
+    width: 100%; /* Ensure images fit within the container */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 200px; /* Limit the maximum height of the images */
+    border-radius: 10px;
+}
+
+/* Dots styling */
+.slick-dots {
+    bottom: -30px; /* Adjust positioning if needed */
+}
+
+.slick-dots li button:before {
+    color: #333; /* Dot color */
+}
+
+.slick-dots li.slick-active button:before {
+    color: #f09342; /* Active dot color */
+}
+
+/* Arrows styling */
+.slick-prev, .slick-next {
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size: 20px;
+    color: #fff;
+}
+
+.slick-prev:hover, .slick-next:hover {
+    background-color: #007bff; /* Color change on hover */
+}
+
 /* Media Queries for Responsiveness */
 /* Mobile Devices (Portrait and Landscape) */
 @media only screen and (max-width: 600px) {

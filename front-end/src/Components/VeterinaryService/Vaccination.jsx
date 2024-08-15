@@ -52,17 +52,19 @@ const Vaccination =()=>{
                 </div>
             </div>
             <div className='right-sub-container'>
-                <p>Dental hygiene is an important part of your pet’s health because dental disease can be associated with other serious health problems such as heart disease and kidney disease. Without proper care,bacteria that leads to plaque and tartar buildup on your pet’s teeth. The causes bad breath, reddened gums, and other common signs of dental disease. As dental disease progresses, other signs can include drooling, discomfort while chewing, and loose or missing teeth. Even if you’re using treats and chews to help control tartar, these are frequently not enough to keep dental disease in check.</p><br/>
+                <p>Vaccinations are a critical part of your pet&#39;s health, and can help protect your pets from fatal diseases such as rabies and lyme disease. The rabies vaccine is a requirement for every pet.</p><br/>
 
-                <p>Fortunately, many dental problems can be managed through at-home care and by bringing your pet to us for regular dental checkups and teeth cleanings. We want your pet to live a long, healthy life, and we understand that maintaining a healthy mouth is part of that. Your pet’s health is important to us, hence we make it a priority to we provide all the necessary so to help you with this commitment. Call or book an appointment today to discuss your pet’s dental care needs and how we can help!</p>
+                <p>Other vaccines are recommended based on an animal&#39;s individual lifestyle. Your veterinarian will make a suggestion about which vaccines your pet should receive during your visit.</p><br/>
+
+                <p>Puppies and kittens are to receive serial vaccines every 3-4 weeks starting at 8 weeks of age, with the last dose between 16 weeks-18 weeks of age. Elderly pets or pets with underlying medical conditions may not be vaccinated. We want your pet to live a long, healthy life and we understand that a healthy  pet requires vaccination.Your pet’s health is important to us, hence we make it a priority to we provide all the necessary to help you with this commitment. Call or book an appointment today to discuss your pet’s dental care needs and how we can help!</p>
             </div>
         </div>
 
         <div className='vet-notice'>
-            <h2 style={{color: '#fff'}}>Gentle Grooming Care</h2>
-            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide gentle grooming services for your pet&#39;s physical care.This services includes dental check ups and dental cleaning.</p>
+            <h2 style={{color: '#fff'}}>Pet Preventive Care</h2>
+            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide a pet preventative care services for your pet&#39;s immune system.This services includes prescribed vaccines instructed by the veterinarian</p>
             <div className='vet-sub-notice'>
-                <p>Dental disease can also lead to systemic health problems in dogs and cats, including heart disease and kidney disease. Fortunately, this can be easily prevented by regular dental examinations, home care, and regular dental cleanings.</p>
+                <p>Vaccines are very important to managing the health of your pet.It is very important to discuss with the veterinarian a vaccination protocol that’s right for your pet. Factors that should be examined include age, medical history, environment, travel habits and lifestyle.</p>
             </div>
         </div>
         <div className='vet-divider-container'>

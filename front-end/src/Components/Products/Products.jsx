@@ -4,11 +4,12 @@ import product4 from "../../assets/products4.jpg";
 import product6 from "../../assets/products6.jpg";
 import product8 from "../../assets/products8.jpg";
 import product18 from "../../assets/products18.jpg";
-import carts from "../../assets/carts.jpg"
+import carts from "../../assets/carts.jpg";
+import { useNavigate } from 'react-router-dom';
 
 
 const SubProducts = () => {
-
+  const navigate = useNavigate();
   return (
     <div className='products'>
         <div className='products-left'>
@@ -23,7 +24,7 @@ const SubProducts = () => {
           <p>At Paws and Claws, we offer a wide variety of high-quality products to meet all your pet’s needs. Our nutrient-rich pet food ensures your pets receive the nourishment they deserve, promoting their health and vitality. We also provide a range of toys, grooming supplies, and accessories, all chosen for their safety and effectiveness.</p>
           <p>Our specialized dietary products cater to pets with specific health needs. Our knowledgeable staff is here to help you find the perfect items for your pet. From premium kibble and organic treats to supplements, our products support your pet&#39;s growth and energy levels. We believe that happy, healthy pets lead to happy owners. Visit Paws and Claws Pet Shop today and see the difference quality makes! 
 </p>
-<button className='bbs'>Discover more
+<button className='bbs'  onClick={() => navigate('/Veterinary-Care-And-Product')}>Discover more
 <img src={carts} alt='' className='cart'/></button>
         </div>
     </div>

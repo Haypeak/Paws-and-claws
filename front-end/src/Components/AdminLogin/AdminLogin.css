@@ -1,28 +1,28 @@
-body {
+ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.login-container {
+ .login-container {
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0; /* Light background for contrast */
-}
+  background-color: #f0f0f0; 
+} 
 
 .login-form {
-  background-color: #fff; /* White background for the form */
+  background-color: #fff; 
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   width: 300px;
   display: flex;
-  flex-direction: column; /* Ensure form elements are stacked vertically */
-  align-items: center; /* Center align form elements */
+  flex-direction: column; 
+  align-items: center; 
   color:#d07322;
 }
 
@@ -32,32 +32,31 @@ h2 {
 }
 
 .input-group {
-  width: 100%; /* Make input groups take full width */
+  width: 100%; 
   margin-bottom: 15px;
   display: flex;
-  flex-direction: column; /* Stack label and input vertically */
-  
+  flex-direction: column;
 }
 
 .input-group label {
   margin-bottom: 5px;
-  color: #333; /* Dark color for better visibility */
+  color: #333; 
 }
 
 .input-group input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc; /* Border for better visibility */
+  border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   color: #000;
-}
+} 
 
 button {
   width: 100%;
   padding: 10px;
-  background-color: #d07322; /* Button color */
-  color: white; /* White text */
+  background-color: #d07322; 
+  color: white; 
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -65,6 +64,22 @@ button {
 }
 
 button:hover {
+  background-color: #d07322; /* Darker button color on hover */
+  opacity: 0.9;
+}
+
+.Admin-Login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #d07322; 
+  color: white; 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.Admin-Login-button:hover {
   background-color: #d07322; /* Darker button color on hover */
   opacity: 0.9;
 }
