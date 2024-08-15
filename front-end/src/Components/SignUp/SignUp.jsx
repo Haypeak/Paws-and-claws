@@ -5,6 +5,9 @@ import './SignUp.css';
 
 function SignUp() {
   const [username, setUsername] = useState('');
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('');
+  const [phone_number, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -36,7 +39,7 @@ function SignUp() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ username, first_name, last_name, phone_number, email, password }),
       });
 
       if (response.ok) {
@@ -113,38 +116,37 @@ function SignUp() {
             />
           </div>
 
-          <div className="sign-info">
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => {
-                setConfirmPassword(e.target.value);
-                setError(''); // Clear error when user starts typing
-              }}
-              placeholder="Confirm Password"
-              required
-            />
-          </div>
-          
+            <div className="login-info">
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                  setError(''); // Clear error when user starts typing
+                }}
+                placeholder="Confirm Password"
+                required
+              />
+            </div>
 
-          {/* <div className="psswrd-requirement-col">
-            <div className="password-requirement">
-              <img src={acceptDisabled} alt=''/>
-              <p>8 Characters</p>
+            <div className="psswrd-requirement-col">
+              <div className="password-requirement">
+                <img src={acceptDisabled} alt=''/>
+                <p>8 Characters</p>
+              </div>
+              <div className="password-requirement">
+                <img src={acceptDisabled} alt=''/>
+                <p>1 Uppercase Letter</p>
+              </div>
+              <div className="password-requirement">
+                <img src={acceptDisabled} alt=''/>
+                <p>1 Lowercase Letter</p>
+              </div>
+              <div className="password-requirement">
+                <img src={acceptDisabled} alt=''/>
+                <p>1 Number</p>
+              </div>
             </div>
-            <div className="password-requirement">
-              <img src={acceptDisabled} alt=''/>
-              <p>1 Uppercase Letter</p>
-            </div>
-            <div className="password-requirement">
-              <img src={acceptDisabled} alt=''/>
-              <p>1 Lowercase Letter</p>
-            </div>
-            <div className="password-requirement">
-              <img src={acceptDisabled} alt=''/>
-              <p>1 Number</p>
-            </div>
-          </div> */}
 
           {error && <p className="error-message">{error}</p>}
 
