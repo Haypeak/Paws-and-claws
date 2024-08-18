@@ -158,7 +158,7 @@ function SignUp() {
           {error && <p className="error-message">{error}</p>}
 
           <div className="login-signup">
-            <button className="btn-btn-1" type="submit" onClick={() => navigate('/appointments')}>Sign Up</button>
+            <button className="btn-btn-1" type="submit" onSubmit={handleSignUp}>Sign Up</button>
           </div>
           <p style={{color:'red', textAlign:'center'}}>If an error occurs whiles filling the form the message will be dispalyed here.</p>
 

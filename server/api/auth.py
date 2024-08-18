@@ -19,7 +19,7 @@ def register():
     phone_number = data['phone_number'] if not None else " " 
     address=" "
     hashed_password = generate_password_hash(data['password'])
-    new_user = User(username=data['username'], email=data['email'], password_hash=hashed_password,
+    new_user = User(email=data['email'], password_hash=hashed_password,
                     first_name=first_name , last_name=last_name, phone_number=phone_number,
                     address=address , date_joined=datetime.now())
     db.session.add(new_user)

@@ -37,6 +37,11 @@ const AdminLoginPage = () => {
   return (
     <div className="login-container">
       <form onSubmit={handleLogin}>
+        <div>
+          <h4 style={{color:'#d07322'}}>Paws & Claws Veterinary Pet Shop</h4>
+        <h2 style={{color:'#d07322'}}>Admin Login</h2>
+        </div>
+      
         <input
           type="text"
           value={username}

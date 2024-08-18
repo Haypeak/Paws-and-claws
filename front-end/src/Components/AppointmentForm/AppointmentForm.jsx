@@ -153,8 +153,8 @@ const AppointmentForm = () => {
             <main>
                 <section className="appointment">
                     <h1 className='appointment title'>Book an Appointment</h1>
-                    <form className="appointment-form" >
-                        onSubmit={handleSubmit}
+                    <form className="appointment-form"  onSubmit={handleSubmit}>
+                       
                         {/* <label htmlFor="name">Name:</label> */}
                         <input 
                             type="text" 
