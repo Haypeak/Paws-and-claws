@@ -236,23 +236,18 @@ footer {
 
 .profileContainer{
   background-color: #e6e4e4;
-  width: 320px;
+  width: 500px;
   max-height: 620px;
   justify-content: center;
   align-items: center;
+  margin-left: 160px;
+  margin-top: 10px;
 }
 .profileContainer p, .profileContainer h3{
   color: #000;
 }
 
-.account-button, .account-button:hover{
-  width: 320px;
-  height: 50px;
-  border-radius: 0%;
-  border-top: 2px solid gray;
-  background-color: #eee;
-  color: gray;
-}
+
 .profile-image-container{
   background-color: #BEBEBE;
   border-radius: 6px;
@@ -272,7 +267,7 @@ footer {
 
 .profile-item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 10px;
   margin-left:10px;
@@ -283,7 +278,7 @@ footer {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .edit-icon {
@@ -293,7 +288,7 @@ footer {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  transform: translate(5%, 5%); /* Adjust this to control the overlap */
+  transform: translate(12%, 2%); /* Adjust this to control the overlap */
 }
 .profile-name {
   
@@ -315,4 +310,44 @@ footer {
 }
 .profile-button-container{
   justify-content: space-around;
+}
+
+.profile-img-container {
+  position: relative;
+  display: inline-block; /* Ensures the container wraps the profile image */
+}
+
+.hovering-image {
+  position: absolute;
+  top: 1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(rgba(225, 189, 123, 0.703), rgba(8, 0, 58, 0.7));        
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  cursor: pointer;  
+  opacity: 0;  
+  display: flex;   
+  /* padding-top: 40px;   */
+  transition: 0.5s;
+  border-radius: 50%;
+  width: 50px; 
+  height: 50px;
+  overflow: hidden; 
+}
+
+.hovering-image img {
+  margin-bottom: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+}
+
+.hovering-image:hover, .profile-img-container {
+  opacity: 1;
+  padding-top: 0;
 }
