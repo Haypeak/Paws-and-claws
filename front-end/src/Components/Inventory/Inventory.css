@@ -1,0 +1,88 @@
+.Inventory {
+    margin: 25px auto;
+    padding: 0 80px;
+    position: relative;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 75%;
+    margin-left: 20%;
+    box-shadow: 0 0 20px  rgba(0,0,0,0.05);
+}
+.Inventory nav{
+    color: black;
+    margin-top: 260px;
+    margin-left: 150px;
+    width: 87%; 
+}
+
+.back-btn, .next-btn{
+    position: absolute;
+    /* padding: 15px; */
+    right: 0;
+    top: 50%;
+    transform: translateY(50%);
+    width: 30px;
+    height: 40px;
+    background-color: #f09342;
+    border-radius: 20px;
+    cursor: pointer;
+    
+ }
+ .back-btn{
+    right: auto;
+    left: 0;
+    margin-left: -55px;
+    
+    
+ }
+ .next-btn{
+    margin-right: -44px;
+ }
+ .slider{
+    display: flex;
+    grid-template-columns: repeat(6, 1fr); 
+    
+ }
+ .slider ul{
+    list-style-type: none;
+    transition: transform 0.5s ease-in-out;
+    grid-template-columns: repeat(6, 1fr);  
+ }
+
+ .slide{
+    padding: 40px;
+   border-radius: 10px;
+   line-height: 1.4;
+ }
+ 
+.slide li {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.productImage {
+    width: 100px;
+    height: auto;
+    grid-column: 2 / 3;
+}
+
+.productnum {
+    grid-column: 1 / 2;
+}
+
+.productName {
+    grid-column: 3 / 4;
+}
+
+.productPrice {
+    grid-column: 4 / 5;
+}
+
+.currentStock {
+    grid-column: 5 / 6;
+}

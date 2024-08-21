@@ -26,11 +26,12 @@
   background: #fff;
   color: #f09342;
   border-color: #f09342;
-  width: 290px;
-  height: 50px;
-  font-size: 18px;
+  padding: 15px 24px;
+  font-size: 16px;
+  outline: 5px;
   font-weight: 600;
-  border-radius: 40px;
+  border-radius: 20px;
+  border-width: 5px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -41,8 +42,8 @@
 
 .button:active {
   color: #fff;
-  background-color: #f09342;
-  transition: 0.3s;
+  background: #f09342;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .button img {

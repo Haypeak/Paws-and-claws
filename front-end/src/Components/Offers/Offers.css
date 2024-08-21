@@ -40,13 +40,16 @@
 .caption img{
     margin-bottom: 10px;
     width: 60px;
-    /* height: 25vh; */
+     height: 65px; 
 }
 .offer:hover .caption{
     opacity: 1;
     padding-top: 0;
 }
-
+.caption p{
+   font-size: 14px;
+   font-weight: 600;
+}
 /* media queries*/
 
 @media(max-width: 650px) {

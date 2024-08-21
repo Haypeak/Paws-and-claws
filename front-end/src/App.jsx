@@ -13,29 +13,39 @@ import MedicalCheckupPage from './Pages/MedicalCheckupPage'
 import SurgeryPage from "./Pages/SurgeryPage"
 import VaccinationPage from "./Pages/VaccinationPage"
 import PetAndWellnessPage from './Pages/PetWellnessPage';
+import AdminNavbar from './Components/AdminNavbar/AdminNavbar';
+import AdminSidebar from './Components/AdminSidebar/AdminSidebar';
+import AdminHeader from './Components/AdminHeader/AdminHeader';
+import Inventory from './Components/Inventory/Inventory';
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/appointments" element={<AppointmentPage />} />
-        <Route path="/About" element={<AboutPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/SignUp" element={<SignUpPage />} />
-        <Route path="/AdminLogin" element={<AdminLoginPage />} />
-        <Route path="/ContactUs" element={<ContactUsPage />} />
-        <Route path='/VeterinaryService' element={<VeterianaryServicePage/>}/>
-        <Route path='/dental-care' element={<DentalCarePage/>}/>
-        <Route path='/grooming' element={<GroomingPage/>}/>
-        <Route path='/medical-checkup' element={<MedicalCheckupPage/>}/>
-        <Route path='/surgery' element={<SurgeryPage/>}/>
-        <Route path='/vaccinations' element={<VaccinationPage/>}/>
-        <Route path='/Pet-wellness-care' element={<PetAndWellnessPage/>}/>
-        <Route path="*" element={<h1>404 Not Found</h1>} />
-      </Routes>
-      
-    </Router>
+     
+    <div>
+    <AdminNavbar />
+    <AdminSidebar />
+    <AdminHeader />
+    <Inventory />
+    </div>
+    // <Router>
+    //   <Routes>
+    //     <Route path="/" element={<HomePage />} />
+    //     <Route path="/appointments" element={<AppointmentPage />} />
+    //     <Route path="/About" element={<AboutPage />} />
+    //     <Route path="/login" element={<LoginPage />} />
+    //     <Route path="/SignUp" element={<SignUpPage />} />
+    //     <Route path="/AdminLogin" element={<AdminLoginPage />} />
+    //     <Route path="/ContactUs" element={<ContactUsPage />} />
+    //     <Route path='/VeterinaryService' element={<VeterianaryServicePage/>}/>
+    //     <Route path='/dental-care' element={<DentalCarePage/>}/>
+    //     <Route path='/grooming' element={<GroomingPage/>}/>
+    //     <Route path='/medical-checkup' element={<MedicalCheckupPage/>}/>
+    //     <Route path='/surgery' element={<SurgeryPage/>}/>
+    //     <Route path='/vaccinations' element={<VaccinationPage/>}/>
+    //     <Route path='/Pet-wellness-care' element={<PetAndWellnessPage/>}/>
+    //     <Route path="*" element={<h1>404 Not Found</h1>} />
+    //   </Routes>   
+    // </Router>
   );
 }
 

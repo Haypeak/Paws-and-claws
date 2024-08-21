@@ -38,10 +38,6 @@ a {
   transition: background-color, opacity 0.3s;
 }
 
-.btn:hover{
-  background-color:#f09342 ;
-  opacity: 0.9;
-}
 
 .btn:active {
   color: #040536f0;
