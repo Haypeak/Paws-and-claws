@@ -57,6 +57,12 @@ img{
     font-size: 14px;
 }
 
+.vet-message{
+    color: #000F38;
+    margin-top: 30px;
+    font-size: 38px;
+}
+
 .form-container {
     margin-top: 20px;
     width: 80%;

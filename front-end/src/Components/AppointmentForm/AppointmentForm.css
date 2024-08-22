@@ -140,6 +140,8 @@ main {
   display: flex;
   flex-direction: row;
   gap: 130px;
+  justify-content: space-between;
+
 }
 
 .note-submit-btn p{
@@ -181,8 +183,8 @@ main {
   position: absolute;
   top: 0;
   left: 0;
-  height: 18px;
-  width: 18px;
+  height: 14px; /* Reduce the height */
+  width: 14px; /* Reduce the width */
   background-color: #eee;
   border-radius: 50%;
 }
@@ -211,10 +213,11 @@ main {
 
 /* Style the indicator (dot/circle) */
 .col-container .checkmark:after {
- 	top: 9px;
-	left: 9px;
-	width: 8px;
-	height: 8px;
+ 	top: 5px; /* Adjust the top position */
+	right: 10px;
+  left: 4px; /* Adjust the left position */
+	width: 6px; /* Reduce the width */
+	height: 6px; /* Reduce the height */
 	border-radius: 50%;
 	background: white;
 }
@@ -229,4 +232,122 @@ footer {
 .footer-logo {
   max-width: 100px;
   margin-bottom: 10px;
+}
+
+.profileContainer{
+  background-color: #e6e4e4;
+  width: 500px;
+  max-height: 620px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 160px;
+  margin-top: 10px;
+}
+.profileContainer p, .profileContainer h3{
+  color: #000;
+}
+
+
+.profile-image-container{
+  background-color: #BEBEBE;
+  border-radius: 6px;
+  width: 210px;
+}
+.profile-image-container-main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profile-image-wrapper {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.profile-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-left:10px;
+}
+
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+.edit-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transform: translate(12%, 2%); /* Adjust this to control the overlap */
+}
+.profile-name {
+  
+  font-size: 16px;
+  text-align: left;
+  margin-left: 5px;
+}
+
+.profile-email {
+  font-size: 14px;
+  text-align: center;
+}
+.remove-button{
+  width: 80px;
+  margin-right: 5px;
+}
+.cancel-button{
+  width: 80px;
+}
+.profile-button-container{
+  justify-content: space-around;
+}
+
+.profile-img-container {
+  position: relative;
+  display: inline-block; /* Ensures the container wraps the profile image */
+}
+
+.hovering-image {
+  position: absolute;
+  top: 1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(rgba(225, 189, 123, 0.703), rgba(8, 0, 58, 0.7));        
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  cursor: pointer;  
+  opacity: 0;  
+  display: flex;   
+  /* padding-top: 40px;   */
+  transition: 0.5s;
+  border-radius: 50%;
+  width: 50px; 
+  height: 50px;
+  overflow: hidden; 
+}
+
+.hovering-image img {
+  margin-bottom: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+}
+
+.hovering-image:hover, .profile-img-container {
+  opacity: 1;
+  padding-top: 0;
 }

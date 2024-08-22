@@ -1,10 +1,65 @@
+/* eslint-disable no-undef */
 import { useState, useEffect } from 'react';
+
 import "./AppointmentForm.css";
+// eslint-disable-next-line no-unused-vars
+import { Navigate, redirect } from 'react-router-dom';
 
 const AppointmentForm = () => {
+    // eslint-disable-next-line no-unused-vars
+    const get_current_user = async () => {
+        try {
+            // Extract the token from the document cookie
+            const getCookie = (name) => {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            };
+    
+            const token = getCookie('token'); // Assuming the token is stored in a cookie named 'token'
+    
+            const response = await fetch('http://127.0.0.1:5000/auth/current_user', {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Include the token in the Authorization header
+                },
+            });
+    
+            if (response.status === 200) {
+                // User is logged in, do nothing
+                current_user = response.json
+                return current_user
+            } else {
+                // User is not logged in, redirect to login page
+                current_user = ' '
+                console.log(response.json())
+                return current_user
+            }
+        } catch (error) {
+            console.error('Network Error:', error);
+        }
+    };
+
+// trying to implement a function to get current user, not going well as you can see
+
+    // current_user = get_current_user()
+    // if (current_user != ''){
+    //     firstName = current_user.first_name
+    //     surname = current_user.last_name
+    //     email = current_user.email
+    //     phoneNumber = current_user.phone_number
+    // }
+    // else{
+    //     firstName=''
+    //     surname=''
+    //     email=''
+    //     phoneNumber=''
+    // }
     const [formData, setFormData] = useState({
         firstName: '',
-        surname:'',
+        surname: '',
         email: '',
         phoneNumber: '',
         date: '',
@@ -40,6 +95,7 @@ const AppointmentForm = () => {
 
             if (response.status === 201) {
                 alert('Appointment Booked Successfully!');
+                window.location.href = '/appointments'
             } else {
                 const errorData = await response.json();
                 console.error('Server Error:', errorData);
@@ -97,7 +153,8 @@ const AppointmentForm = () => {
             <main>
                 <section className="appointment">
                     <h1 className='appointment title'>Book an Appointment</h1>
-                    <form className="appointment-form" onSubmit={handleSubmit}>
+                    <form className="appointment-form"  onSubmit={handleSubmit}>
+                       
                         {/* <label htmlFor="name">Name:</label> */}
                         <input 
                             type="text" 
@@ -143,8 +200,8 @@ const AppointmentForm = () => {
                         />
                         </div>
                        
-                        
-                        {/* <label htmlFor="petId">Pet&#39;s Id:</label> */}
+                        <div className='contact-details'>
+                             {/* <label htmlFor="petId">Pet&#39;s Id:</label> */}
                         <input 
                             type="text" 
                             id="petName" 
@@ -154,6 +211,17 @@ const AppointmentForm = () => {
                             onChange={handleChange} 
                             required 
                         />
+                        <input 
+                            type="text" 
+                            id="homeAddress" 
+                            name="homeAddress" 
+                            value={formData.homeAddress}
+                            placeholder='GM-123-45-678*'  
+                            onChange={handleChange} 
+                            required 
+                        />
+                        </div>
+                       
 
                         <div className='animalKind-detail'>
                         {/* <label htmlFor="email">Email:</label> */}
@@ -167,8 +235,8 @@ const AppointmentForm = () => {
                             required 
                             className='contact-section'
                         >
-                            <option value='Dog' selected={formData.species === 'Dog'}>Dog</option>
-                            <option value='Cat' selected={formData.species === 'Cat'}>Cat</option>
+                            <option value='Dog' defaultValue={'Dog'}>Dog</option>
+                            <option value='Cat' defaultValue={'Cat'}>Cat</option>
                         </select>
 
                          {/* <label htmlFor="email">Email:</label> */}
@@ -220,12 +288,14 @@ const AppointmentForm = () => {
                              placeholder='Reason for Appointment:*'
                              value={formData.reason} 
                              onChange={handleChange} 
-                             required 
+                             required
                         >
-                             <option value="general">General Checkup</option>
+                             <option value="general">General Medical Checkup</option>
                              <option value="dental">Dental Care</option>
                              <option value="surgery">Surgery</option>
                              <option value="wellness">Wellness Care</option>
+                             <option value="wellness">Grooming</option>
+                             <option value="wellness">Vaccination</option>
                         </select>
 
 
@@ -240,7 +310,7 @@ const AppointmentForm = () => {
                         />
                         <div>
                         <div className='check-in-area'>
-                        <p>* Indicates Compulsory</p>
+                        <p style={{fontSize:'16px'}}>* Indicates Compulsory</p>
                         <label className="col-container">Walk In
                             <input 
                                 type="radio" 
@@ -251,7 +321,7 @@ const AppointmentForm = () => {
                             />
                             <span className="checkmark"></span>
                         </label>
-                            <label className="col-container">Home Appointment
+                            <label className="col-container">Home
                             <input 
                                 type="radio" 
                                 checked={formData.appointmentType === 'Home'} 

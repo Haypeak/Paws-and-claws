@@ -3,11 +3,28 @@ import './vetService.css'
 import '../ContactUs/ContactUs.css';
 import animalBabies from '../../assets/cat and dog.jpeg'
 // import paws from "../../assets/paw.png";
+import scissors from "../../assets/icons8-barbershop-48.png";
+// import groomedDog from "../../assets/groomedDog.jpg";
+// import groomedCat from "../../assets/groomed-cat.jpeg";
+// import groom from "../../assets/groom.jpg";
+// import groom2 from "../../assets/groom2.jpg"
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import Slider from 'react-slick';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
 const DentalCare =()=>{
+//   const settings = {
+//     dots: true,
+//     infinite: true,
+//     speed: 500,
+//     slidesToShow: 1,
+//     slidesToScroll: 1,
+//     autoplay: true,
+//     autoplaySpeed: 3000,
+// };
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
@@ -48,21 +65,66 @@ const DentalCare =()=>{
         <div className='container-highlight'>
             <div className='left-sub-container'>
                 <div >
-                <img src={animalBabies} alt='Dog and Cat Grooming' className='triangle-img'/>
+                <img src={animalBabies} alt='Dog and Cat Grooming' className='triangle-img' style={{marginTop:'-55px'}}/>
                 </div>
             </div>
             <div className='right-sub-container'>
-                <p>Dental hygiene is an important part of your pet’s health because dental disease can be associated with other serious health problems such as heart disease and kidney disease. Without proper care,bacteria that leads to plaque and tartar buildup on your pet’s teeth. The causes bad breath, reddened gums, and other common signs of dental disease. As dental disease progresses, other signs can include drooling, discomfort while chewing, and loose or missing teeth. Even if you’re using treats and chews to help control tartar, these are frequently not enough to keep dental disease in check.</p><br/>
+                <p>Is your pet starting to look a little shaggy? Does he or she smell a bit too strong? If so, it might be time for a grooming session. Pet grooming is an important part of taking care of your furry friend, and it&#39;s not as difficult as you might think. Pet grooming is the process of cleaning and caring for your pet&#39;s fur and skin. This can include brushing, shampooing, trimming, and more. Grooming is important for both dogs and cats as it keeps them clean.</p><br/>
 
-                <p>Fortunately, many dental problems can be managed through at-home care and by bringing your pet to us for regular dental checkups and teeth cleanings. We want your pet to live a long, healthy life, and we understand that maintaining a healthy mouth is part of that. Your pet’s health is important to us, hence we make it a priority to we provide all the necessary so to help you with this commitment. Call or book an appointment today to discuss your pet’s dental care needs and how we can help!</p>
+                <p>Our professional groomer can provide your pet with all the grooming services they could possibly need to maintain their health and comfort. Every pet deserves good hygiene, and in addition to benefiting their health, regular grooming can also make your pet more comfortable with being brushed and handled. Our groomers are patient and considerate to help your dog feel more at ease and make their grooming experience enjoyable!</p>
+
+                <div className='grooming-service-section' style={{ marginTop:'30px' }}>
+              
+              <div >
+              {/* <h3 style={{ fontSize:'28px', color:'#000F38', marginTop:'30px' }}>Grooming</h3> */}
+              <p>Pet grooming includes both the sanitary care and cleaning of the pet and the process of enhancing the pet&#39;s physical appearance.</p>
+              <p>The grooming services we offer includes:</p>
+              <div className='grooming-service-list'>
+              <div className='grooming-service-list-col-2'>
+              <ul style={{ listStyle: 'none' , color:'#9E9E9E', fontSize:'15px' }}>
+                <li><img src={scissors} alt='Scissors'/>Bathing</li>
+                <li><img src={scissors} alt='Scissors'/>Blow dry</li>
+                <li><img src={scissors} alt='Scissors'/>Brush out</li>
+                <li><img src={scissors} alt='Scissors'/>Hair trim</li>
+                <li><img src={scissors} alt='Scissors'/>Dematting</li>
+                <li><img src={scissors} alt='Scissors'/>Shave</li>
+              </ul>
+              </div>
+              <div className='grooming-service-list-col-2'>
+              <ul style={{ listStyle: 'none', color:'#9E9E9E', fontSize:'15px'}}>
+                <li><img src={scissors} alt='Scissors'/>Haircut</li>
+                <li><img src={scissors} alt='Scissors'/>Nail trim</li>
+                <li><img src={scissors} alt='Scissors'/>Ear cleaning</li>
+                <li><img src={scissors} alt='Scissors'/>Anal gland expression</li>
+                <li><img src={scissors} alt='Scissors'/>Medicated shampoo</li>
+                {/* <li><img src={scissors} alt='Scissors'/>Shave</li> */}
+              </ul>
+              </div>
+              </div>
+             
+              </div>
+             
+            </div>
             </div>
         </div>
 
+        {/* <div className='grooming-service-flex-direction'>
+       
+            <div className='grooming-slide-show'>
+            <Slider {...settings}>
+            <img src={groomedDog} alt=' ' className='Cat-groomed-image-slide'/>
+            <img src={groomedCat} alt='' className='Cat-groomed-image-slide'/>
+            <img src={groom} alt='' className='Cat-groomed-image-slide'/>
+            <img src={groom2} alt='' className='Cat-groomed-image-slide'/>
+            </Slider>
+              </div>
+        </div> */}
+        
         <div className='vet-notice'>
             <h2 style={{color: '#fff'}}>Gentle Grooming Care</h2>
-            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide gentle grooming services for your pet&#39;s physical care.This services includes dental check ups and dental cleaning.</p>
+            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide gentle grooming services for your pet&#39;s physical care.This services includes Haircut, Nail trim, Bathing, Ear cleaning and more.</p>
             <div className='vet-sub-notice'>
-                <p>Dental disease can also lead to systemic health problems in dogs and cats, including heart disease and kidney disease. Fortunately, this can be easily prevented by regular dental examinations, home care, and regular dental cleanings.</p>
+                <p>Grooming you pet ensures not only that your pet looks clean but it&#39;s physical appearance is kept at its best. After all, Every pet deserves good hygiene, and in addition to benefiting their health, regular grooming can also make your pet more comfortable with being brushed and handled.</p>
             </div>
         </div>
         <div className='vet-divider-container'>

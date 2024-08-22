@@ -25,8 +25,8 @@ const Navbar = () => {
       <ul className={mobileMenu ? 'mobile-menu' : 'hide-mobile-menu'}>
         <li><a href='/'>Home</a></li>
         <li><a href='/about'>About</a></li>
-        <li><a href='/#products'>Products</a></li>
-        <li><a href='/#services'>Services</a></li>
+        <li><a href='/Veterinary-Care-And-Product'>Products</a></li>
+        <li><a href='/VeterinaryService'>Services</a></li>
         <li><a href='/#tips'>Tips & Updates</a></li>
         <li>
           <button className='btn'>

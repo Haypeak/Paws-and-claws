@@ -59,10 +59,10 @@ const PetAndWellness =()=>{
         </div>
 
         <div className='vet-notice'>
-            <h2 style={{color: '#fff'}}>Gentle Grooming Care</h2>
-            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide gentle grooming services for your pet&#39;s physical care.This services includes dental check ups and dental cleaning.</p>
+            <h2 style={{color: '#fff'}}>Pet Wellness Care</h2>
+            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide a comprehensive wellness exam service for your pet&#39;s general wellness.This services includes dental check ups and a follow up dental booking if additional work is needed.</p>
             <div className='vet-sub-notice'>
-                <p>Dental disease can also lead to systemic health problems in dogs and cats, including heart disease and kidney disease. Fortunately, this can be easily prevented by regular dental examinations, home care, and regular dental cleanings.</p>
+                <p>It is recommended for your companion to see a veterinarian at least once each ye ar. For pets 9 years old and older, pets on chronic medication, or pets with underlying medical conditions, biannual examinations are recommended.</p>
             </div>
         </div>
         <div className='vet-divider-container'>

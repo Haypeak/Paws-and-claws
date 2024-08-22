@@ -21,6 +21,9 @@
     opacity: 1; /* Changed from 0 to 1 */
     transform: translateX(0); /* Changed from -100% to 0 */
 }
+.products-right p{
+    text-align: left;
+}
 
 .products img {
     width: 180px; 

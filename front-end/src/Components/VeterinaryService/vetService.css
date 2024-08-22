@@ -1,5 +1,6 @@
 p{
     text-transform: none;
+    text-align: left;
 }
 
 h2{
@@ -34,6 +35,7 @@ h2{
     text-transform: none;
     font-size: 16px;
     color: #fff;
+    text-align: center;
 }
 
 
@@ -183,11 +185,50 @@ h2{
     transform: rotate(35deg); /* Rotate to form a diamond shape */
 }
 
-.vet-message{
+.contact-Us-message{
     color: #000F38;
     margin-top: 30px;
     font-size: 38px;
 }
+
+.grooming-service-flex-direction{
+    display: flex;
+    flex-direction: row;
+    gap: 250px;
+    margin-bottom: 50px;
+    
+}
+
+.grooming-service-section{
+   
+    margin-bottom: 30px;
+    margin-top: -90px;
+    justify-content: center;
+    align-items: center;
+   
+}
+.grooming-service-section p{
+    font-size: 15px;
+    max-width: 720px;
+}
+.grooming-service-list{
+   display: flex;
+   flex-direction: row;
+   gap: 30px;
+   margin-top: 10px;
+}
+
+.grooming-service-list-col-2 img{
+    margin-right: 8px;
+}
+.Cat-groomed-image-slide{
+    width: 30px;
+    height: 40px;
+    object-fit: fill;
+    border-radius: 0 30px;
+}
+
+
 
 /* Media Queries for Responsiveness */
 /* Mobile Devices (Portrait and Landscape) */

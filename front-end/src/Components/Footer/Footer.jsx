@@ -26,12 +26,12 @@ const Footer = () => {
         <div className='col'>
           <h4 className='cols'>Links</h4>
           <ul>
-            <li><a href=''>Home</a></li>
-            <li><a href=''>About</a></li>
-            <li><a href=''>Products</a></li>
-            <li><a href=''>Services</a></li>
-            <li><a href=''>Tips & Updates</a></li>
-            <li><a href=''>Book Appointment</a></li>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/about'>About</a></li>
+            <li><a href='/Veterinary-Care-And-Product'>Products</a></li>
+            <li><a href='/VeterinaryService'>Services</a></li>
+            <li><a href='/#tips'>Tips & Updates</a></li>
+            <li><a href='/login'>Book Appointment</a></li>
           </ul>
         </div>
         <div className='col'>
