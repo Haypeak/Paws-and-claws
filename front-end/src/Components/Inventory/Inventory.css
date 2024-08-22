@@ -14,6 +14,17 @@
     margin-left: 150px;
     width: 87%; 
 }
+.Inventory button{
+    background-color: #d07f22;
+    border-radius: 6px;
+    width: 135px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+.Inventory button img {
+    margin-right: 6px;
+}
 
 .back-btn, .next-btn{
     position: absolute;
@@ -46,7 +57,6 @@
  .slider ul{
     list-style-type: none;
     transition: transform 0.5s ease-in-out;
-    grid-template-columns: repeat(6, 1fr);  
  }
 
  .slide{

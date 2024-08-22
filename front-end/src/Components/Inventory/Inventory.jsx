@@ -1,4 +1,5 @@
 import {useRef} from 'react';
+import manage from "../../assets/managee.png";
 import "./Inventory.css"; 
 import back_icon from "../../assets/back-icon.jpg";
 import next_icon from "../../assets/forward-icon.jpg";
@@ -280,14 +281,14 @@ const slideBackward = () =>{
         <h4>Product Name</h4>
         <h4>Price</h4>
         <h4>Current Stock</h4>
-        <h4>Actions</h4></nav>
+        <h4>Actions</h4></nav> 
         <img src={next_icon} alt='' className='next-btn' onClick={slideForward}/>
         <img src={back_icon} alt='' className='back-btn'onClick={slideBackward} />
         <slider className="slider">
             <ul ref={slider}>
                 <div className='slide'></div>
         {AllProducts.map((item) => (
-            <div key={item.id} style={styles.productContainer} className='productContainer'>
+            <div key={item.id} style={styles.productContainer} className='productContainer'> <button><a href=''><img src={manage} />Manage</a></button>
              <li><p style={styles.productnum} className='productnum'>{item.productnum}</p></li>
             <li><img style={styles.productImage} src={item.image} alt={item.productName} className='productImage'/></li>
               <li><p style={styles.productName} className='productName'>{item.productName}</p></li>
