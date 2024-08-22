@@ -1,18 +1,12 @@
 // import React from 'react';
-// import { useState } from 'react';
 import logo from "../../assets/Paws&Claws logo.png";
 import "./Footer.css";
 import facebook from "../../assets/facebook.png";
 import insta from "../../assets/insta.png";
-// import { useNavigate } from "react-router-dom";
 
 
 
 const Footer = () => {
-  // const navigate = useNavigate(); // Initialize navigate
-  // const handleAdminLogin = () => {
-  //   navigate('/AdminLogin'); // Navigates to the Admin Login page
-  // };
   return (
     <div className='footer'>
       <div className='row'>
@@ -53,13 +47,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      {/* <p>
-              <a onClick={handleAdminLogin} style={{cursor: 'pointer'}}>Log in as Admin</a>
-      </p>  */}
+      <hr></hr>
       <p className='copyright' style={{color: '#BEBEBE'}}>&copy; 2024 Pasw&Claws. All Rights Reserved</p>
     </div>
   )
 }
 
 export default Footer
-
