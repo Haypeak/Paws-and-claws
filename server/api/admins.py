@@ -1,5 +1,6 @@
+import os
 from flask import Blueprint, jsonify, request
-from flask import Blueprint, jsonify, request
+from werkzeug.utils import secure_filename
 from database.db import *
 import jwt
 from functools import wraps
@@ -9,7 +10,6 @@ from functools import wraps
 from werkzeug.security import generate_password_hash
 
 # Create a blueprint object
-# the above is a useless comment, but then why not
 # the above is a useless comment, but then why not
 admins_bp = Blueprint('admins', __name__)
 
@@ -207,11 +207,9 @@ def delete_admin(admin_id):
 
     user = User.query.get(admin.user_id)
     user.remove_admin()
-
     return jsonify({"message": "Admin deleted successfully"}), 200
 
 @admins_bp.route('/admins', methods=['GET'])
-@admin_required
 @admin_required
 def get_admins():
     admins = Admin.query.all()
@@ -230,23 +228,7 @@ def get_admins():
             "date_joined": user.date_joined
             })
     return jsonify(admin_details), 200
-    admins = Admin.query.all()
-    admin_details = []
-    for admin in admins:
-        user = User.query.get(admin.user_id)
-        admin_details.append({
-            "id": admin.id,
-            "first_name": user.first_name,
-            "surname": user.last_name,
-            "username" : user.username,
-            "email" : user.email,
-            "phone_number" : user.phone_number,
-            "address": user.address if not None else "" ,
-            "role": user.role,
-            "date_joined": user.date_joined
-            })
-    return jsonify(admin_details), 200
-
+    
 @admins_bp.route('/admins/<int:admin_id>', methods=['GET'])
 @admin_required
 @admin_required
@@ -412,7 +394,10 @@ def generate_report():
             "id": product.id,
             "name": product.name,
             "price": product.price,
-            "quantity": product.quantity
+            "cost": product.cost,
+            "tax": product.tax,
+            "quantity": product.quantity,
+            "category": product.category
         }
         report["products"].append(product_details)
 
@@ -643,7 +628,11 @@ def get_all_products():
         "name": product.name,
         "description": product.description,
         "price": product.price,
-        "quantity": product.quantity
+        "quantity": product.quantity,
+        "cost": product.cost,
+        "image": product.image_url,
+        "tax": product.tax,
+        "category": product.category
     } for product in products]), 200
 
 @admins_bp.route('/products/<int:product_id>', methods=['GET'])
@@ -656,7 +645,11 @@ def get_single_product(product_id):
             "name": product.name,
             "description": product.description,
             "price": product.price,
-            "quantity": product.quantity
+            "quantity": product.quantity,
+            "cost": product.cost,
+            "image": product.image_url,
+            "tax": product.tax,
+            "category": product.category
         }), 200
     return jsonify({"message": "Product not found"}), 404
 
@@ -668,11 +661,19 @@ def create_product():
     description = data.get('description')
     price = data.get('price')
     quantity = data.get('quantity')
+    tax = data.get('tax')
+    cost = data.get('cost')
+    image = data.get('image')
+
+    if image:
+        filename = secure_filename(image.filename)
+        image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        product.image_url = filename
 
     if not name or not description or not price or not quantity:
         return jsonify({"message": "Missing required fields"}), 400
 
-    product = Product(name=name, description=description, price=price, quantity=quantity)
+    product = Product(name=name, description=description, price=price, quantity=quantity, tax=tax)
     db.session.add(product)
     db.session.commit()
 

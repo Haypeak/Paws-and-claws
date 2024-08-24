@@ -18,31 +18,28 @@ const AdminProductForm = ({ onSave, productId }) => {
 
   useEffect(() => {
     if (productId) {
-      // Simulate fetch, replace with actual fetch logic
-      const fetchProductData = () => {
-        const product = {
-          productName: 'Sample Product',
-          productId: '001',
-          productImage: 'path/to/image.jpg',
-          cost: 10.0,
-          priceBefore: 12.0,
-          tax: 5,
-          priceAfter: 12.6,
-          quantity: 100,
-          productDescription: 'Sample description',
-          category: 'Dog Food',
+        const fetchProductData = async () => {
+          try {
+            const response = await fetch(`/api/products/${productId}`);
+            if (response.ok) {
+              const product = await response.json();
+              setProductName(product.productName);
+              setProductIdState(product.productId);
+              setProductImage(product.productImage);
+              setCost(product.cost);
+              setPriceBefore(product.priceBefore);
+              setTax(product.tax);
+              setPriceAfter(product.priceAfter);
+              setQuantity(product.quantity);
+              setProductDescription(product.productDescription);
+              setCategory(product.category);
+            } else {
+              console.error('Failed to fetch product data');
+            }
+          } catch (error) {
+            console.error('Error fetching product data:', error);
+          }
         };
-        setProductName(product.productName);
-        setProductIdState(product.productId);
-        setProductImage(product.productImage);
-        setCost(product.cost);
-        setPriceBefore(product.priceBefore);
-        setTax(product.tax);
-        setPriceAfter(product.priceAfter);
-        setQuantity(product.quantity);
-        setProductDescription(product.productDescription);
-        setCategory(product.category);
-      };
       fetchProductData();
     }
   }, [productId]);
@@ -67,9 +64,29 @@ const AdminProductForm = ({ onSave, productId }) => {
       productId: productIdState,
       productImage,
       cost,
-      priceAfter,
+      price,
       category,
     };
+    const saveProductData = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/admin/products', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(productData),
+        });
+        if (response.ok) {
+          console.log('Product data saved successfully');
+        } else {
+          console.error('Failed to save product data');
+        }
+      } catch (error) {
+        console.error('Error saving product data:', error);
+      }
+    };
+
+    saveProductData();
     onSave(productData); // Trigger save
   };
 
@@ -162,7 +179,7 @@ const AdminProductForm = ({ onSave, productId }) => {
               className='tax-category-col'
               type="number"
               id="price-before"
-              value={priceBefore}
+              value={price}
               onChange={(e) => setPriceBefore(parseFloat(e.target.value))}
             />
           </div>

@@ -8,6 +8,7 @@ app = Flask(__name__, static_folder='../../front-end/dist', static_url_path='/')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pawsandclaws.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['UPLOAD_FOLDER'] = 'uploads'
 db = SQLAlchemy(app)
 # migrate = Migrate(app, db)
 
@@ -99,7 +100,9 @@ class Product(db.Model):
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Numeric(10, 2), nullable=False)
-    stock_quantity = db.Column(db.Integer, nullable=False)
+    tax = db.Column(db.Numeric(10, 2), nullable=False)
+    cost = db.Column(db.Numeric(10, 2), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
     category = db.Column(db.String(255), nullable=False)
     image_url = db.Column(db.String(200), nullable=True)
 
