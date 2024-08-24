@@ -1,0 +1,92 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AdminProductForm from '../../AdminPanel/AdminProductForm'; // Adjust the import path
+import './Inventory.css';
+import deleteIcon from '../../../assets/delete.png';
+import pencil from '../../../assets/icons8-pencil-48.png';
+
+const Inventory = () => {
+  const [products, setProducts] = useState([]);
+  const [editingProductId, setEditingProductId] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedProducts = localStorage.getItem('products');
+    if (storedProducts) {
+      setProducts(JSON.parse(storedProducts));
+    } else {
+      const defaultProducts = [
+        {
+          productId: '001',
+          productName: 'Dog Food',
+          productImage: 'https://via.placeholder.com/150',
+          priceAfter: 20.00,
+          category: 'Dog Food'
+        },
+        {
+          productId: '002',
+          productName: 'Cat Toy',
+          productImage: 'https://via.placeholder.com/150',
+          priceAfter: 15.00,
+          category: 'Toys'
+        }
+      ];
+      setProducts(defaultProducts);
+      localStorage.setItem('products', JSON.stringify(defaultProducts));
+    }
+  }, []);
+
+  const handleSave = (productData) => {
+    const updatedProducts = products.map((product) =>
+      product.productId === productData.productId ? productData : product
+    );
+    setProducts(updatedProducts);
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
+    setEditingProductId(null); // Reset editing state
+    navigate('/inventory-page'); // Navigate back to inventory after saving
+  };
+
+  const handleEdit = (productId) => {
+    setEditingProductId(productId);
+    navigate(`/admin-product-form/${productId}`); // Navigate to the form page with the product ID
+  };
+
+  const handleDelete = (productId) => {
+    const updatedProducts = products.filter(product => product.productId !== productId);
+    setProducts(updatedProducts);
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
+  };
+
+  return (
+    <div>
+      {editingProductId && (
+        <AdminProductForm 
+          onSave={handleSave} 
+          productId={editingProductId} 
+        />
+      )}
+      <div className='inventory-container'>
+        {products.length === 0 ? (
+          <p>No products available</p>
+        ) : (
+          products.map((product, index) => (
+            <div key={product.productId} className='inventory-item'>
+              <div className='action-btn-btn'>
+                <button onClick={() => handleEdit(product.productId)} className='action-btn'><img src={pencil} className='action-btn-img' alt='Edit' /></button>
+                <button onClick={() => handleDelete(product.productId)} className='action-btn'><img src={deleteIcon} className='action-btn-img' alt='Delete' /></button>
+              </div>
+              <p>{index + 1}</p>
+              <img src={product.productImage} alt={product.productName} className='inventory-image' />
+              <p>{product.productName}</p>
+              <p>{product.productId}</p>
+              <p>${product.priceAfter.toFixed(2)}</p>
+              <p>{product.category}</p>
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Inventory;

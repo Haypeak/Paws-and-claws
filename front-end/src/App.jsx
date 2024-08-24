@@ -16,7 +16,9 @@ import VaccinationPage from "./Pages/VaccinationPage"
 import PetAndWellnessPage from './Pages/PetWellnessPage';
 import VetCareAndProductPage from './Pages/VetCareAndProductPage';
 // import AdminPanel from './Pages/AdminPanel';
-import AdminProductFormPage from './Pages/AdminProductFormPage'
+import AdminProductFormPage from './Pages/AdminProductFormPage';
+import InventoryPage from './Pages/InventoryPage';
+
 
 
 
@@ -47,6 +49,7 @@ const App = () => {
         {/* Admin Routes */}
         <Route path="/admin-login" element={<AdminLoginPage />} />
         <Route path='/new-product-edit' element={<AdminProductFormPage/>}/>
+        <Route path='/inventory-page' element={<InventoryPage/>}/>
         {/* <Route path="/admin-dashboard" element={isAdminAuthenticated ? <AdminPanel /> : <Navigate to="/admin-login" />} /> */}
       </Routes>
     </Router>
