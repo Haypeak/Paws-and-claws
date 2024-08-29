@@ -460,23 +460,24 @@ def get_single_product(product_id):
 @admin_required
 def create_product():
     data = request.get_json()
-    name = data.get('name')
-    description = data.get('description')
+    name = data.get('productName')
+    description = data.get('productDescription')
     price = data.get('price')
     quantity = data.get('quantity')
+    category = data.get('category')
     tax = data.get('tax')
     cost = data.get('cost')
-    image = data.get('image')
+    image = data.get('productImage') if data.get('productImage') else None
 
-    if image:
-        filename = secure_filename(image.filename)
-        image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        product.image_url = filename
+    # if image:
+    #     filename = secure_filename(image.filename)
+    #     image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    #     product.image_url = filename
 
     if not name or not description or not price or not quantity:
         return jsonify({"message": "Missing required fields"}), 400
 
-    product = Product(name=name, description=description, price=price, quantity=quantity, tax=tax, cost=cost)
+    product = Product(name=name, description=description, category=category, price=price, quantity=quantity, tax=tax, cost=cost)
     db.session.add(product)
     db.session.commit()
 

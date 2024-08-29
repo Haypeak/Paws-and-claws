@@ -91,7 +91,7 @@ function Login() {
 
           <p>
             <a onClick={handleForgotPassword}>Forgot password?</a>
-            <a href='/new-product-edit'>a</a>
+            {/* <a href='/new-product-edit'>a</a> */}
           </p>
         </form>
       </div>

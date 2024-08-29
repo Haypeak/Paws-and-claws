@@ -35,10 +35,43 @@ const Inventory = () => {
       localStorage.setItem('products', JSON.stringify(defaultProducts));
     }
   }, []);
+  useEffect(() => {
+    const fetchProductData = async () => {
+          const getCookie = (name) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        };
+
+        const token = getCookie('token'); // Assuming the token is stored in a cookie named 'token'
+
+        try {
+          const response = await fetch('http://127.0.0.1:5000/admin/products',{
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}` // Include the token in the Authorization header
+            }
+          }
+          );
+          if (response.ok) {
+            const products = await response.json();
+            console.log(products)
+            setProducts(products)
+          } else {
+            console.error('Failed to fetch product data');
+          }
+        } catch (error) {
+          console.error('Error fetching product data:', error);
+        }
+      };
+    fetchProductData();
+  }, []);
 
   const handleSave = (productData) => {
     const updatedProducts = products.map((product) =>
-      product.productId === productData.productId ? productData : product
+      product.productId === productData.id ? productData : product
     );
     setProducts(updatedProducts);
     localStorage.setItem('products', JSON.stringify(updatedProducts));
@@ -70,16 +103,16 @@ const Inventory = () => {
           <p>No products available</p>
         ) : (
           products.map((product, index) => (
-            <div key={product.productId} className='inventory-item'>
+            <div key={product.id} className='inventory-item'>
               <div className='action-btn-btn'>
-                <button onClick={() => handleEdit(product.productId)} className='action-btn'><img src={pencil} className='action-btn-img' alt='Edit' /></button>
-                <button onClick={() => handleDelete(product.productId)} className='action-btn'><img src={deleteIcon} className='action-btn-img' alt='Delete' /></button>
+                <button onClick={() => handleEdit(product.id)} className='action-btn'><img src={pencil} className='action-btn-img' alt='Edit' /></button>
+                <button onClick={() => handleDelete(product.id)} className='action-btn'><img src={deleteIcon} className='action-btn-img' alt='Delete' /></button>
               </div>
               <p>{index + 1}</p>
-              <img src={product.productImage} alt={product.productName} className='inventory-image' />
-              <p>{product.productName}</p>
-              <p>{product.productId}</p>
-              <p>${product.priceAfter.toFixed(2)}</p>
+              <img src={product.image} alt={product.name} className='inventory-image' />
+              <p>{product.name}</p>
+              <p>{product.id}</p>
+              <p>${Number(product.price + (product.price * product.tax)).toFixed(2)}</p>
               <p>{product.category}</p>
             </div>
           ))

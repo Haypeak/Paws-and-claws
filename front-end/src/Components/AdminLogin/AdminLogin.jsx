@@ -1,15 +1,45 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import Cookies from 'js-cookie';
 import './AdminLogin.css';
 
 const AdminLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-  
-    const handleSubmit = (e) => {
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
       e.preventDefault();
       // Implement your authentication logic here
-      console.log('Email:', email);
-      console.log('Password:', password);
+      if (!email || !password) {
+        setError('Please fill in both email and password.');
+        return;
+      }
+  
+      try {
+        const response = await axios.post('http://127.0.0.1:5000/auth/login', {}, {
+          auth: {
+            username: email,
+            password: password
+          }
+        });
+  
+        if (response.status === 200) {
+          if (response.data.token) {
+            Cookies.set('token', response.data.token);
+            navigate('/admin-dashboard');
+          } else {
+            setError('Login failed. Please check your credentials.');
+          }
+        } else {
+          setError('Login failed. Please check your credentials.');
+        }
+      } catch (error) {
+        setError('An error occurred. Please try again.');
+        console.error('Login error:', error);
+      }
     };
   
     return (

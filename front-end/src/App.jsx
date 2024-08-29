@@ -44,6 +44,7 @@ const App = () => {
         <Route path='/vaccinations' element={<VaccinationPage />} />
         <Route path='/Pet-wellness-care' element={<PetAndWellnessPage />} />
         <Route path='/Veterinary-Care-And-Product' element={<VetCareAndProductPage />} />
+        <Route path='/logout' action={document.cookie = '' && document.location}/>
         <Route path="*" element={<h1>404 Not Found</h1>} />
 
         {/* Admin Routes */}

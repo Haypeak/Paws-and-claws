@@ -3,31 +3,48 @@ import PropTypes from 'prop-types';
 import './AdminProductForm.css';
 import plus from '../../assets/icons8-plus-24.png';
 import equal from '../../assets/icons8-equal-48.png';
+import { useNavigate } from 'react-router-dom';
 
 const AdminProductForm = ({ onSave, productId }) => {
   const [productName, setProductName] = useState('');
   const [productIdState, setProductIdState] = useState('');
   const [productImage, setProductImage] = useState(null);
-  const [cost, setCost] = useState(0);
-  const [priceBefore, setPriceBefore] = useState(0);
+  const [cost, setCost] = useState(0.00);
+  const [price, setPrice] = useState(0.00);
   const [tax, setTax] = useState(0);
-  const [priceAfter, setPriceAfter] = useState(0);
+  const [priceAfter, setPriceAfter] = useState(0.00);
   const [quantity, setQuantity] = useState(0);
   const [productDescription, setProductDescription] = useState('');
   const [category, setCategory] = useState('');
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (productId) {
         const fetchProductData = async () => {
+            const getCookie = (name) => {
+              const value = `; ${document.cookie}`;
+              const parts = value.split(`; ${name}=`);
+              if (parts.length === 2) return parts.pop().split(';').shift();
+          };
+
+          const token = getCookie('token'); // Assuming the token is stored in a cookie named 'token'
+
           try {
-            const response = await fetch(`/api/products/${productId}`);
+            const response = await fetch(`http://127.0.0.1:5000/admin/products/${productId}`,{
+              method: 'GET',
+              mode: 'cors',
+              headers: {
+                'Content-Type': 'application/json',
+              }
+            }
+            );
             if (response.ok) {
               const product = await response.json();
               setProductName(product.productName);
               setProductIdState(product.productId);
               setProductImage(product.productImage);
               setCost(product.cost);
-              setPriceBefore(product.priceBefore);
+              setPrice(product.price);
               setTax(product.tax);
               setPriceAfter(product.priceAfter);
               setQuantity(product.quantity);
@@ -45,9 +62,9 @@ const AdminProductForm = ({ onSave, productId }) => {
   }, [productId]);
 
   useEffect(() => {
-    const calculatedPriceAfter = priceBefore + (priceBefore * tax) / 100;
+    const calculatedPriceAfter = price + (price * tax) / 100;
     setPriceAfter(calculatedPriceAfter);
-  }, [priceBefore, tax]);
+  }, [price, tax]);
 
   const handleFileChange = (event) => {
     setProductImage(URL.createObjectURL(event.target.files[0]));
@@ -63,21 +80,51 @@ const AdminProductForm = ({ onSave, productId }) => {
       productName,
       productId: productIdState,
       productImage,
+      productDescription,
       cost,
       price,
       category,
+      quantity,
+      tax
     };
-    const saveProductData = async () => {
+    const saveProductData = async (productData) => {
       try {
-        const response = await fetch('http://127.0.0.1:5000/admin/products', {
+          const getCookie = (name) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        };
+
+        const token = getCookie('token'); // Assuming the token is stored in a cookie named 'token'
+        if (productId){
+          const url = 'http://127.0.0.1:5000/admin/products'
+        
+        const response = await fetch(url, {
           method: 'POST',
+          mode: 'cors',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` // Include the token in the Authorization header
           },
           body: JSON.stringify(productData),
         });
+      }
+      else{
+      const url = `http://127.0.0.1:5000/admin/products/${productId}`
+        const response = await fetch(url, {
+          method: 'PUT',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` // Include the token in the Authorization header
+          },
+          body: JSON.stringify(productData),
+        });
+      }
         if (response.ok) {
           console.log('Product data saved successfully');
+          alert('Product data saved successfully');
+          navigate('Inventory-page')
         } else {
           console.error('Failed to save product data');
         }
@@ -86,8 +133,8 @@ const AdminProductForm = ({ onSave, productId }) => {
       }
     };
 
-    saveProductData();
-    onSave(productData); // Trigger save
+    saveProductData(productData);
+    // onSave(productData); // Trigger save
   };
 
   return (
@@ -106,7 +153,7 @@ const AdminProductForm = ({ onSave, productId }) => {
         />
       </div>
       <div className='id-category-product'>
-        <div className='id-category-section'>
+        {/* <div className='id-category-section'>
           <label htmlFor="product-id">Product ID:</label>
           <input
             className='id-category'
@@ -116,7 +163,7 @@ const AdminProductForm = ({ onSave, productId }) => {
             onChange={(e) => setProductIdState(e.target.value)}
             placeholder='001'
           />
-        </div>
+        </div> */}
 
         <div className='product-category-section'>
           <div className='product-category'>
@@ -134,9 +181,9 @@ const AdminProductForm = ({ onSave, productId }) => {
               <option value="Health Care">Health Care</option>
             </select>
           </div>
-          <button type="button" onClick={() => setCategory('Add Category')} className='product-category-button'>
+          {/* <button type="button" onClick={() => setCategory(category)} className='product-category-button'>
             Add Category
-          </button>
+          </button> */}
         </div>
       </div>
 
@@ -151,13 +198,13 @@ const AdminProductForm = ({ onSave, productId }) => {
             onChange={handleFileChange}
           />
         </div>
-        <div style={{ marginTop: '28px' }}>
+        {/* <div style={{ marginTop: '28px' }}>
           <h5>Default</h5>
           <label className="container">
             <input type="radio" checked="checked" name="radio" />
             <span className="checkmark"></span>
           </label>
-        </div>
+        </div> */}
       </div>
 
       <div>
@@ -180,7 +227,7 @@ const AdminProductForm = ({ onSave, productId }) => {
               type="number"
               id="price-before"
               value={price}
-              onChange={(e) => setPriceBefore(parseFloat(e.target.value))}
+              onChange={(e) => setPrice(parseFloat(e.target.value))}
             />
           </div>
           <img src={plus} className='tax-image' alt="Plus"/>
@@ -243,9 +290,9 @@ const AdminProductForm = ({ onSave, productId }) => {
 };
 
 // PropTypes validation
-AdminProductForm.propTypes = {
-  onSave: PropTypes.func.isRequired, // Ensures onSave is a required function prop
-  productId: PropTypes.string, // Ensures productId is an optional string prop
-};
+// AdminProductForm.propTypes = {
+//   onSave: PropTypes.func.isRequired, // Ensures onSave is a required function prop
+//   productId: PropTypes.string, // Ensures productId is an optional string prop
+// };
 
 export default AdminProductForm;
