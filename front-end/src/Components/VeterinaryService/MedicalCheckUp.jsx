@@ -34,7 +34,7 @@ const MedicalCheckUp =()=>{
         
           <div className='Vet-text'>
        <h1>OUR SERVICES</h1>
-       <h3>All Your Pet Need Is Here</h3>
+       <h3>Pet&#39;s Medical Check Up</h3>
        <p>Your pet’s health and well-being are our top priority. We provide compassionate and professional care to ensure your furry friends live happy and healthy lives. Explore our services and let us partner with you in caring for your beloved pets. 
        Trust Paws and Claws to treat your pets like family.
     </p>
@@ -48,21 +48,29 @@ const MedicalCheckUp =()=>{
         <div className='container-highlight'>
             <div className='left-sub-container'>
                 <div >
-                <img src={petDiagnostic} alt="Pet Diagnostic Imaging"  className='triangle-img'/>
+                <img src={petDiagnostic} alt="Pet Diagnostic Imaging"  className='triangle-img' style={{marginTop:'-22px'}}/>
                 </div>
             </div>
             <div className='right-sub-container'>
-                <p>Dental hygiene is an important part of your pet’s health because dental disease can be associated with other serious health problems such as heart disease and kidney disease. Without proper care,bacteria that leads to plaque and tartar buildup on your pet’s teeth. The causes bad breath, reddened gums, and other common signs of dental disease. As dental disease progresses, other signs can include drooling, discomfort while chewing, and loose or missing teeth. Even if you’re using treats and chews to help control tartar, these are frequently not enough to keep dental disease in check.</p><br/>
+                <p>A wellness examination is a routine medical examination of a dog who appears healthy, as opposed to an examination of a dog who is ill. A wellness examination may also be called a “check-up” or a “physical examination”. The focus of a wellness examination is to make sure your dog is as healthy as possible.</p><br/>
 
-                <p>Fortunately, many dental problems can be managed through at-home care and by bringing your pet to us for regular dental checkups and teeth cleanings. We want your pet to live a long, healthy life, and we understand that maintaining a healthy mouth is part of that. Your pet’s health is important to us, hence we make it a priority to we provide all the necessary so to help you with this commitment. Call or book an appointment today to discuss your pet’s dental care needs and how we can help!</p>
+                <h3>How often should my pet have a medical check up?</h3>
+
+                <p>The answer to this question depends on your dog’s age and current health status. During early puppyhood, wellness exams are recommended on a monthly basis, while for the average adult dog, annual wellness examinations are the norm. For middle-aged, senior, and geriatric dogs, twice-yearly examinations are recommended.</p>
+
+                <p>During a routine medical check up examination, the veterinarian will ask you questions about your dog&#39;s diet, exercise, how much they’re drinking, breathing, behavior, habits, elimination patterns (i.e., bowel movements and urination), lifestyle, and general health. Your veterinarian will also perform a physical examination of your dog.</p>
+
+                <p>Based on your pet&#39;s history and physical examination, the veterinarian will then make recommendations for specific preventive medicine treatments. These may include vaccination, parasite control (including preventive treatments for fleas, ticks, intestinal parasites, and heartworm), nutrition, skin and coat care, joint health, weight management, or dental care.</p>
+
+               <p> In addition, the veterinarian will discuss your dog&#39;s individual circumstances and decide whether any other life-stage or lifestyle recommendations are appropriate. Your pet&#39;s health is important to us, hence we make it a priority to we provide all the necessary so to help you with this commitment. Call or book an appointment today to discuss your pet&#39;s dental care needs and how we can help!</p>
             </div>
         </div>
 
         <div className='vet-notice'>
-            <h2 style={{color: '#fff'}}>Gentle Grooming Care</h2>
-            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide gentle grooming services for your pet&#39;s physical care.This services includes dental check ups and dental cleaning.</p>
+            <h2 style={{color: '#fff'}}>Routine Medical Check Up</h2>
+            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide routine medical examination for your pet&#39;s overall health.This services includes dental check ups to vaccination.</p>
             <div className='vet-sub-notice'>
-                <p>Dental disease can also lead to systemic health problems in dogs and cats, including heart disease and kidney disease. Fortunately, this can be easily prevented by regular dental examinations, home care, and regular dental cleanings.</p>
+                <p>Dogs cannot tell you how they are feeling and, as a result, disease may be present before you are aware of it. Most dogs will hide signs of disease in early stages. This means that a health condition may become highly advanced before your dog shows any recognizable problems.  Fortunately, this can be easily prevented by regular wellness examinations.</p>
             </div>
         </div>
         <div className='vet-divider-container'>

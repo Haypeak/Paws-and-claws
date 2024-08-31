@@ -249,9 +249,11 @@ footer {
 
 
 .profile-image-container{
+  position: relative;
   background-color: #BEBEBE;
-  border-radius: 6px;
-  width: 210px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
 }
 .profile-image-container-main{
   display: flex;
@@ -279,6 +281,7 @@ footer {
   height: 50px;
   border-radius: 50%;
   margin-top: 4px;
+  display: block;
 }
 
 .edit-icon {
@@ -319,11 +322,11 @@ footer {
 
 .hovering-image {
   position: absolute;
-  top: 1;
+  top: 4px;;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(rgba(225, 189, 123, 0.703), rgba(8, 0, 58, 0.7));        
+  background: linear-gradient(rgba(225, 189, 123, 0.3), rgba(8, 0, 58, 0.3));         
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -349,5 +352,4 @@ footer {
 
 .hovering-image:hover, .profile-img-container {
   opacity: 1;
-  padding-top: 0;
 }

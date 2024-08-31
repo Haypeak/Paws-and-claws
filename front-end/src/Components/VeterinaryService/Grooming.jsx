@@ -51,7 +51,7 @@ const DentalCare =()=>{
         
           <div className='Vet-text'>
        <h1>OUR SERVICES</h1>
-       <h3>All Your Pet Need Is Here</h3>
+       <h3>Pet Grooming Service</h3>
        <p>Your pet’s health and well-being are our top priority. We provide compassionate and professional care to ensure your furry friends live happy and healthy lives. Explore our services and let us partner with you in caring for your beloved pets. 
        Trust Paws and Claws to treat your pets like family.
     </p>
@@ -76,7 +76,7 @@ const DentalCare =()=>{
                 <div className='grooming-service-section' style={{ marginTop:'30px' }}>
               
               <div >
-              {/* <h3 style={{ fontSize:'28px', color:'#000F38', marginTop:'30px' }}>Grooming</h3> */}
+             
               <p>Pet grooming includes both the sanitary care and cleaning of the pet and the process of enhancing the pet&#39;s physical appearance.</p>
               <p>The grooming services we offer includes:</p>
               <div className='grooming-service-list'>
@@ -97,7 +97,7 @@ const DentalCare =()=>{
                 <li><img src={scissors} alt='Scissors'/>Ear cleaning</li>
                 <li><img src={scissors} alt='Scissors'/>Anal gland expression</li>
                 <li><img src={scissors} alt='Scissors'/>Medicated shampoo</li>
-                {/* <li><img src={scissors} alt='Scissors'/>Shave</li> */}
+               
               </ul>
               </div>
               </div>
@@ -108,17 +108,6 @@ const DentalCare =()=>{
             </div>
         </div>
 
-        {/* <div className='grooming-service-flex-direction'>
-       
-            <div className='grooming-slide-show'>
-            <Slider {...settings}>
-            <img src={groomedDog} alt=' ' className='Cat-groomed-image-slide'/>
-            <img src={groomedCat} alt='' className='Cat-groomed-image-slide'/>
-            <img src={groom} alt='' className='Cat-groomed-image-slide'/>
-            <img src={groom2} alt='' className='Cat-groomed-image-slide'/>
-            </Slider>
-              </div>
-        </div> */}
         
         <div className='vet-notice'>
             <h2 style={{color: '#fff'}}>Gentle Grooming Care</h2>

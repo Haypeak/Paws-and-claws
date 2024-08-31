@@ -1,7 +1,7 @@
 import './VeterinaryService.css'
 import './vetService.css'
 import '../ContactUs/ContactUs.css';
-import dogSurgery from '../../assets/dog_surgery.jpg'
+import emergencyCare from '../../assets/emergency care.jpeg'
 // import paws from "../../assets/paw.png";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -34,7 +34,7 @@ const Surgery =()=>{
         
           <div className='Vet-text'>
        <h1>OUR SERVICES</h1>
-       <h3>All Your Pet Need Is Here</h3>
+       <h3>Pet&#39;s Surgical Service</h3>
        <p>Your pet’s health and well-being are our top priority. We provide compassionate and professional care to ensure your furry friends live happy and healthy lives. Explore our services and let us partner with you in caring for your beloved pets. 
        Trust Paws and Claws to treat your pets like family.
     </p>
@@ -48,21 +48,21 @@ const Surgery =()=>{
         <div className='container-highlight'>
             <div className='left-sub-container'>
                 <div >
-                <img src={dogSurgery} alt="Dog Surgery" className='triangle-img'/>
+                <img src={emergencyCare} alt="Dog Surgery" className='triangle-img'/>
                 </div>
             </div>
             <div className='right-sub-container'>
-                <p>Dental hygiene is an important part of your pet’s health because dental disease can be associated with other serious health problems such as heart disease and kidney disease. Without proper care,bacteria that leads to plaque and tartar buildup on your pet’s teeth. The causes bad breath, reddened gums, and other common signs of dental disease. As dental disease progresses, other signs can include drooling, discomfort while chewing, and loose or missing teeth. Even if you’re using treats and chews to help control tartar, these are frequently not enough to keep dental disease in check.</p><br/>
+                <p>Paws and Claws Veterinary pet shop provides veterinary surgical care and services for cats and dogs. Surgeries are performed in our surgery suite, which is equipped with all the right surgical equipment to ensure that your pet&#39;s surgery goes on smoothly and safely. At PawsnClaws We specialize in minor surgery and major surgery of any kind. Every procedure includes a dedicated anesthesia technician to provide constant monitoring and supportive care from start to finish.</p><br/>
 
-                <p>Fortunately, many dental problems can be managed through at-home care and by bringing your pet to us for regular dental checkups and teeth cleanings. We want your pet to live a long, healthy life, and we understand that maintaining a healthy mouth is part of that. Your pet’s health is important to us, hence we make it a priority to we provide all the necessary so to help you with this commitment. Call or book an appointment today to discuss your pet’s dental care needs and how we can help!</p>
+                <p>Your pet’s health is important to us, hence we make it a priority to we provide all the necessary so to help you with this commitment. Call or book an appointment today to discuss your pet’s dental care needs and how we can help!</p>
             </div>
         </div>
 
         <div className='vet-notice'>
-            <h2 style={{color: '#fff'}}>Gentle Grooming Care</h2>
-            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide gentle grooming services for your pet&#39;s physical care.This services includes dental check ups and dental cleaning.</p>
+            <h2 style={{color: '#fff'}}>Safe Surgical Procedures</h2>
+            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop when your pet requires surgery, the PawsnClaws team offers the most compassionate surgrical services.</p>
             <div className='vet-sub-notice'>
-                <p>Dental disease can also lead to systemic health problems in dogs and cats, including heart disease and kidney disease. Fortunately, this can be easily prevented by regular dental examinations, home care, and regular dental cleanings.</p>
+                <p>When it comes to the health, safety, and well-being of your loved ones, we simply don’t believe in shortcuts. A higher level of care is our goal in all that we do, including some of our most common surgical procedures.</p>
             </div>
         </div>
         <div className='vet-divider-container'>

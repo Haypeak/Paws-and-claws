@@ -40,17 +40,17 @@ h2{
 
 
 .Header-header{
-    margin-top: 100px;
+    margin-top: 60px;
     color: #000F38;
     font-size: 40px;
 }
 
-.container-highlight{
+.container-highlight {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: center;
-    margin-top: 60px;
+    align-items: center; /* This ensures vertical alignment */
+    margin-top: 20px;
     margin-bottom: 60px;
     gap: 20px;
 }
@@ -60,8 +60,23 @@ h2{
     height: 400px;
     position: relative;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* Center the image vertically */
+    justify-content: center; /* Center the image horizontally */
+}
+
+.right-sub-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the paragraph vertically */
+}
+
+.right-sub-container p {
+    text-transform: none;
+    font-size: 15px;
+    line-height: 1.4;
+    max-width: 730px;
+    text-wrap: break-word;
+    margin: 0; /* Remove default margin */
 }
 
 .service-list li a:hover{
@@ -79,13 +94,13 @@ h2{
     margin-top: 50px;
 }
 
-.right-sub-container p{
+/* .right-sub-container p{
     text-transform: none;
     font-size: 15px;
     line-height: 1.4;
     max-width: 730px;
     text-wrap:break-word ;
-}
+} */
 
 .vet-notice{
     background-color: #f09342;

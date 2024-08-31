@@ -16,11 +16,36 @@ const Profile = () => {
     }
   }, []);
 
+  const getInitialAvatar = (name) => {
+    const initial = name.charAt(0).toUpperCase();
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+
+    // Set canvas size
+    canvas.width = 100;
+    canvas.height = 100;
+
+    // Draw background circle
+    context.fillStyle = '#d07322'; // Set any background color
+    context.beginPath();
+    context.arc(50, 50, 50, 0, Math.PI * 2);
+    context.fill();
+
+    // Draw initial
+    context.fillStyle = '#fff'; // Text color
+    context.font = '50px Arial'; // Font size and family
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillText(initial, 50, 55);
+
+    return canvas.toDataURL();
+  };
+
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file && selectedProfile) {
       const newProfiles = profiles.map(profile => {
-        if (profile.first_name + ' ' + profile.last_name === selectedProfile) {
+        if (profile.first_name + ' ' + profile.last_name === selectedProfile.fullName) {
           return { ...profile, image: URL.createObjectURL(file) };
         }
         return profile;
@@ -34,7 +59,7 @@ const Profile = () => {
   const handleRemoveImage = () => {
     if (selectedProfile) {
       const newProfiles = profiles.map(profile => {
-        if (profile.first_name + ' ' + profile.last_name === selectedProfile) {
+        if (profile.first_name + ' ' + profile.last_name === selectedProfile.fullName) {
           return { ...profile, image: null };
         }
         return profile;
@@ -45,8 +70,9 @@ const Profile = () => {
     }
   };
 
-  const openModal = (profileId) => {
-    setSelectedProfile(profileId);
+  const openModal = (profile) => {
+    const fullName = profile.first_name + ' ' + profile.last_name;
+    setSelectedProfile({ ...profile, fullName });
     setIsModalOpen(true);
   };
 
@@ -63,7 +89,7 @@ const Profile = () => {
             <div className="profile-image-wrapper">
               <div className='profile-img-container'>
                 <img
-                  src={profile.image || 'default-profile.png'}
+                  src={profile.image || getInitialAvatar(profile.first_name)}
                   alt="Profile"
                   className='profile-image'
                 />
@@ -75,7 +101,7 @@ const Profile = () => {
                 src={pencil} 
                 alt='edit image' 
                 className='edit-icon'
-                onClick={() => openModal(profile.first_name + ' ' + profile.last_name)} 
+                onClick={() => openModal(profile)} 
               />
             </div>
           </div>
@@ -85,12 +111,15 @@ const Profile = () => {
           </div>
         </div>
       ))}
-      <Modal 
+      <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
         onImageChange={handleImageChange}
         onRemoveImage={handleRemoveImage}
+        profile={selectedProfile}  // Pass the selected profile
+        getInitialAvatar={getInitialAvatar}  // Pass the function to generate the avatar
       />
+
     </div>
   );
 };

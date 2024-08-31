@@ -1,13 +1,13 @@
 import './VeterinaryService.css'
 import './vetService.css'
 import '../ContactUs/ContactUs.css';
-import wellness from '../../assets/wellness and care.jpeg'
+import painManagementImg from '../../assets/pet-pain-managment.jpeg'
 // import paws from "../../assets/paw.png";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const PetAndWellness =()=>{
+const PainManagement =()=>{
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
@@ -34,7 +34,7 @@ const PetAndWellness =()=>{
         
           <div className='Vet-text'>
        <h1>OUR SERVICES</h1>
-       <h3>All Your Pet Need Is Here</h3>
+       <h3>Pet&#39;s Pain Management</h3>
        <p>Your pet’s health and well-being are our top priority. We provide compassionate and professional care to ensure your furry friends live happy and healthy lives. Explore our services and let us partner with you in caring for your beloved pets. 
        Trust Paws and Claws to treat your pets like family.
     </p>
@@ -43,26 +43,31 @@ const PetAndWellness =()=>{
         </div>
     <div className='main-container-section'>
         <div className='Header-header'>
-            <h2>Pet and Wellness Care</h2>
+            <h2>Pain Management</h2>
         </div>
         <div className='container-highlight'>
             <div className='left-sub-container'>
                 <div >
-                <img src={wellness} alt="Wellness and Care" className='triangle-img'/>
+                <img src={painManagementImg} alt="pain Management Img" className='triangle-img' style={{marginTop:'-22px'}}/>  
                 </div>
             </div>
             <div className='right-sub-container'>
-                <p>Dental hygiene is an important part of your pet’s health because dental disease can be associated with other serious health problems such as heart disease and kidney disease. Without proper care,bacteria that leads to plaque and tartar buildup on your pet’s teeth. The causes bad breath, reddened gums, and other common signs of dental disease. As dental disease progresses, other signs can include drooling, discomfort while chewing, and loose or missing teeth. Even if you’re using treats and chews to help control tartar, these are frequently not enough to keep dental disease in check.</p><br/>
+                <h3>Providing relief so your pet can enjoy life.</h3>
+                <p>Pain has as many manifestations as there are injuries, conditions, and individuals. Pain experts define pain as ``an unpleasant sensory and emotional experience associated with actual or potential tissue damage.``</p>
 
-                <p>Fortunately, many dental problems can be managed through at-home care and by bringing your pet to us for regular dental checkups and teeth cleanings. We want your pet to live a long, healthy life, and we understand that maintaining a healthy mouth is part of that. Your pet’s health is important to us, hence we make it a priority to we provide all the necessary so to help you with this commitment. Call or book an appointment today to discuss your pet’s dental care needs and how we can help!</p>
+                <p>Pain is very subjective and difficult to measure. Because dogs instinctively hide their pain to prevent potential predators from targeting them when they are injured, pain assessment in dogs can be challenging. The outward demonstrations of pain vary widely from dog to dog. It is important to recognize that just because a dog does not cry, limp, or show other obvious signs of pain, that does not mean it is not in pain. A good general rule is that if it would hurt you, it would hurt a dog.</p>
+
+                <p>Dogs and cats experience pain just like people. The primary cause is aging, but other reasons include trauma, obesity, high activity, and large breed issues. Some of the signals that your pet is experiencing pain may be difficulty getting up, whining, restlessness, panting, and lameness. A single method to treat pain can be quite effective, but research and experience have shown that putting multiple modalities into use can dramatically help in reducing pain, resulting in a more comfortable and active life for your pet.  We&#39;ve attached some resources below for further information on pain management for your pet.</p><br/>
+
+                <p>If your pet is undergoing a surgical or dental procedure, do not be afraid, we provide pain management services to ensure that your pet&#39; discomfort is brought to a stop. Most of these procedures require some postoperative pain management, though the duration of treatment will vary with the procedure. Generally, your pet will receive pain-relief medications before, during, and after the surgery or a dental procedure. Your pet’s health is important to us, hence we make it a priority to we provide all the necessary so to help you with this commitment. Call or book an appointment today to discuss your pet’s dental care needs and how we can help!</p>
             </div>
         </div>
 
         <div className='vet-notice'>
-            <h2 style={{color: '#fff'}}>Pet Wellness Care</h2>
-            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide a comprehensive wellness exam service for your pet&#39;s general wellness.This services includes dental check ups and a follow up dental booking if additional work is needed.</p>
+            <h2 style={{color: '#fff'}}>Relieving Pain Management</h2>
+            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide a relieving pain management service for your pet&#39;s general well being.This services includes pain management medications.</p>
             <div className='vet-sub-notice'>
-                <p>It is recommended for your companion to see a veterinarian at least once each ye ar. For pets 9 years old and older, pets on chronic medication, or pets with underlying medical conditions, biannual examinations are recommended.</p>
+                <p>Pain management procedure is a method to treat pain can be quite effective. It is a way to ease your pet&#39;s discomfort. The duration of treatment will vary with the procedure. Generally, your pet will receive pain-relief medications before, during, and after the surgery or a dental procedure.</p>
             </div>
         </div>
         <div className='vet-divider-container'>
@@ -123,4 +128,4 @@ const PetAndWellness =()=>{
 }
 
 
-export default PetAndWellness;
+export default PainManagement;

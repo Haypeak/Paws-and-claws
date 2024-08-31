@@ -12,7 +12,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* Adjust the minmax value based on desired width */
     gap: 1px; /* Space between images */
-    column-gap: 35px;
+    column-gap: 75px;
     justify-content: start;
     width: 100%; 
 }

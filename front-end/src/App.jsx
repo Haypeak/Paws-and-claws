@@ -7,13 +7,16 @@ import LoginPage from './Pages/LoginPage';
 import SignUpPage from './Pages/SignUpPage';
 import AdminLoginPage from './Pages/AdminLoginPage';
 import ContactUsPage from './Pages/ContactUsPage'
-import VeterianaryServicePage from './Pages/VeterinaryServicePage';
+import VeterinaryServicePage from './Pages/VeterinaryServicePage';
 import DentalCarePage from './Pages/DentalCarePage';
 import GroomingPage from './Pages/GroomingPage';
 import MedicalCheckupPage from './Pages/MedicalCheckupPage'
 import SurgeryPage from "./Pages/SurgeryPage"
 import VaccinationPage from "./Pages/VaccinationPage"
-import PetAndWellnessPage from './Pages/PetWellnessPage';
+import WellnessVisitPlanPage from './Pages/WellnessVisitPlanPage';
+import SprayAndNeuterPage from './Pages/SprayAndNeuterPage';
+import PainManagementPage from './Pages/PainManagementPage';
+import DiagnosticsPage from './Pages/DiagnosticsPage';
 import VetCareAndProductPage from './Pages/VetCareAndProductPage';
 // import AdminPanel from './Pages/AdminPanel';
 import AdminProductFormPage from './Pages/AdminProductFormPage';
@@ -36,13 +39,16 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/SignUp" element={<SignUpPage />} />
         <Route path="/ContactUs" element={<ContactUsPage />} />
-        <Route path='/VeterinaryService' element={<VeterianaryServicePage />} />
+        <Route path='/VeterinaryService' element={<VeterinaryServicePage />} />
         <Route path='/dental-care' element={<DentalCarePage />} />
         <Route path='/grooming' element={<GroomingPage />} />
         <Route path='/medical-checkup' element={<MedicalCheckupPage />} />
         <Route path='/surgery' element={<SurgeryPage />} />
         <Route path='/vaccinations' element={<VaccinationPage />} />
-        <Route path='/Pet-wellness-care' element={<PetAndWellnessPage />} />
+        <Route path='/wellness-plan' element={<WellnessVisitPlanPage />} />
+        <Route path='/spray-and-neuter' element={<SprayAndNeuterPage />} />
+        <Route path='/pain-management' element={<PainManagementPage />} />
+        <Route path='/diagnostics' element={<DiagnosticsPage />} />
         <Route path='/Veterinary-Care-And-Product' element={<VetCareAndProductPage />} />
         <Route path='/logout' action={document.cookie = '' && document.location}/>
         <Route path="*" element={<h1>404 Not Found</h1>} />

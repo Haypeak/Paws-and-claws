@@ -1,13 +1,13 @@
 import './VeterinaryService.css'
 import './vetService.css'
 import '../ContactUs/ContactUs.css';
-import dogSurgery from '../../assets/dog_surgery.jpg'
+import sprayAndNeuterImg from '../../assets/spray-and-neuter.jpeg'
 // import paws from "../../assets/paw.png";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const Vaccination =()=>{
+const SprayAndNeuter =()=>{
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
@@ -34,7 +34,7 @@ const Vaccination =()=>{
         
           <div className='Vet-text'>
        <h1>OUR SERVICES</h1>
-       <h3>Pet&#39;s Vaccination Service</h3>
+       <h3>Spay And Neuter</h3>
        <p>Your pet’s health and well-being are our top priority. We provide compassionate and professional care to ensure your furry friends live happy and healthy lives. Explore our services and let us partner with you in caring for your beloved pets. 
        Trust Paws and Claws to treat your pets like family.
     </p>
@@ -43,28 +43,37 @@ const Vaccination =()=>{
         </div>
     <div className='main-container-section'>
         <div className='Header-header'>
-            <h2>Pet&#39;s Vaccination Service</h2>
+            <h2>Spay And Neuter</h2>
         </div>
-        <div className='container-highlight'>
+        <div className='container-highlight' >
             <div className='left-sub-container'>
                 <div >
-                <img src={dogSurgery} alt='Pet Vaccination' className='triangle-img'/>
+                <img src={sprayAndNeuterImg} alt="spray And Neuter Img"  className='triangle-img' style={{marginTop:'-22px'}}/>
                 </div>
             </div>
             <div className='right-sub-container'>
-                <p>Vaccinations are a critical part of your pet&#39;s health, and can help protect your pets from fatal diseases such as rabies and lyme disease. The rabies vaccine is a requirement for every pet.</p><br/>
+                <p>Spay and neuter refer to the surgical sterilization of animals.Spaying involves removing the uterus and ovaries of a female animal, and this makes them not able to become pregnant. Neutering involves removing the testicles of a male animal. Both terms refer to the surgical sterilization of an animal, but sometimes neuter is used for both genders. The choice to spay or neuter your pet may be one of the most important decisions you make impacting their long-term health. Deciding whether to spay or neuter your cat or dog can be a difficult decision for some pet owners. Although the thought of your pet having surgery may seem scary, we’re here to assure you that spays and neuters are common surgeries that are safe, simple, and generally quick.</p><br/>
 
-                <p>Othe vaccines are recommended based on an animal&#39;s individual lifestyle. Your veterinarian will make a suggestion about which vaccines your pet should receive during your visit.</p><br/>
+                <h3>How can my pet benefit from Sterilization?</h3>
 
-                <p>Puppies and kittens are to receive serial vaccines every 3-4 weeks starting at 8 weeks of age, with the last dose between 16 weeks-18 weeks of age. Elderly pets or pets with underlying medical conditions may not be vaccinated. We want your pet to live a long, healthy life and we understand that a healthy  pet requires vaccination.Your pet’s health is important to us, hence we make it a priority to we provide all the necessary to help you with this commitment. Call or book an appointment today to discuss your pet’s dental care needs and how we can help!</p>
+                <p>Spaying and neutering help pets live long, healthy lives. Having pets sterilized while they’re young reduces their likelihood of developing certain infections and cancers. Plus, it combats overpopulation which, sadly, leads to the euthanasia of pets who cannot be placed in good homes.</p>
+
+              <p>Other common issues that spaying and neutering help prevent include:
+              <ul>
+                <li>Your pet being inclined to roam to find a mate which could put them in harm’s way. Car accidents, encounters with wild animals, or fights with other males are just some of the possible dangers.</li>
+                <li>Cancerous mammary tumors that can spread to other parts of the body. If you spay your female pet prior to her first heat cycle, you’ll significantly reduce the likelihood that she’ll develop tumors.</li>
+                <li>Testicular cancer and infections that can lead to malignant or benign swelling of the prostate.</li>
+                <li>Unwanted behavioral problems such as aggression, territorial marking, and roaming. Don’t worry — they’ll still remain protective!</li>
+              </ul>
+              </p><br/> 
             </div>
         </div>
 
         <div className='vet-notice'>
-            <h2 style={{color: '#fff'}}>Pet Preventive Care</h2>
-            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide a pet preventative care services for your pet&#39;s immune system.This services includes prescribed vaccines instructed by the veterinarian</p>
+            <h2 style={{color: '#fff'}}>Safe Spay & Neuter Procedures</h2>
+            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide safe and generally quick spay and neuter surgrical procedures for your pet&#39;s health care.</p>
             <div className='vet-sub-notice'>
-                <p>Vaccines are very important to managing the health of your pet.It is very important to discuss with the veterinarian a vaccination protocol that’s right for your pet. Factors that should be examined include age, medical history, environment, travel habits and lifestyle.</p>
+                <p>Deciding whether to spay or neuter your cat or dog can be a difficult decision for some pet owners. Although the thought of your pet having surgery may seem scary, we’re here to assure you that spays and neuters are common surgeries that are safe, simple, and generally quick.</p>
             </div>
         </div>
         <div className='vet-divider-container'>
@@ -125,4 +134,4 @@ const Vaccination =()=>{
 }
 
 
-export default Vaccination;
+export default SprayAndNeuter;

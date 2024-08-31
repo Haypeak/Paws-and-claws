@@ -1,13 +1,13 @@
 import './VeterinaryService.css'
 import './vetService.css'
 import '../ContactUs/ContactUs.css';
-import dogSurgery from '../../assets/dog_surgery.jpg'
+import wellnessPlanVisitImg from '../../assets/wellnessPlan.jpeg'
 // import paws from "../../assets/paw.png";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const Vaccination =()=>{
+const WellnessVisitPlan =()=>{
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
@@ -34,7 +34,7 @@ const Vaccination =()=>{
         
           <div className='Vet-text'>
        <h1>OUR SERVICES</h1>
-       <h3>Pet&#39;s Vaccination Service</h3>
+       <h3>Pet&#39;s Wellness Plan & Visits</h3>
        <p>Your pet’s health and well-being are our top priority. We provide compassionate and professional care to ensure your furry friends live happy and healthy lives. Explore our services and let us partner with you in caring for your beloved pets. 
        Trust Paws and Claws to treat your pets like family.
     </p>
@@ -43,28 +43,30 @@ const Vaccination =()=>{
         </div>
     <div className='main-container-section'>
         <div className='Header-header'>
-            <h2>Pet&#39;s Vaccination Service</h2>
+            <h2>Pet&#39;s Wellness Plan & Visits</h2>
         </div>
         <div className='container-highlight'>
             <div className='left-sub-container'>
                 <div >
-                <img src={dogSurgery} alt='Pet Vaccination' className='triangle-img'/>
+                <img src={wellnessPlanVisitImg} alt="wellness Plan Visit Img" className='triangle-img' style={{marginTop:'-2px'}}/>
                 </div>
             </div>
             <div className='right-sub-container'>
-                <p>Vaccinations are a critical part of your pet&#39;s health, and can help protect your pets from fatal diseases such as rabies and lyme disease. The rabies vaccine is a requirement for every pet.</p><br/>
+                <p>At Paws and Claws Veterinary Pet Shop, we believe in the importance of comprehensive wellness care for your beloved pets. Regular veterinary wellness visits are crucial for early detection and prevention of potential health issues, allowing us to provide the best possible care for your pets.</p><br/>
 
-                <p>Othe vaccines are recommended based on an animal&#39;s individual lifestyle. Your veterinarian will make a suggestion about which vaccines your pet should receive during your visit.</p><br/>
+                <p>During these visits, our experienced veterinarians conduct thorough examinations, checking for any signs of illness or discomfort. We also take the time to discuss your pet&#39;s diet, exercise routine, and behavior, offering tailored advice and recommendations to optimize their overall well-being. By partnering with us for veterinary wellness care, you can rest assured that your pets will receive the highest standard of preventive care, helping them lead long, happy, and healthy lives.</p>
 
-                <p>Puppies and kittens are to receive serial vaccines every 3-4 weeks starting at 8 weeks of age, with the last dose between 16 weeks-18 weeks of age. Elderly pets or pets with underlying medical conditions may not be vaccinated. We want your pet to live a long, healthy life and we understand that a healthy  pet requires vaccination.Your pet’s health is important to us, hence we make it a priority to we provide all the necessary to help you with this commitment. Call or book an appointment today to discuss your pet’s dental care needs and how we can help!</p>
+                <p>As loving pet parents, we want our animal companions by our side for as many years as possible. At Pet Vet Family Pet Care Center, we believe the best way to ensure this happens is by making a commitment to their ongoing wellness. By bringing your pet in for regular checkups, you&#39;ll help protect him or her from many common ailments that can affect companion animals. You&#39;ll also give us the opportunity to identify and address potential health problems early, before they have chance to develop and worsen.</p>
+                
+                <p> We want your pet to live a long, healthy life, and we understand that maintaining a healthy mouth is part of that. Your pet&#39;s health is important to us, hence we make it a priority to we provide all the necessary so to help you with this commitment. Call or book an appointment today to discuss your pet&#39;s dental care needs and how we can help!</p>
             </div>
         </div>
 
         <div className='vet-notice'>
-            <h2 style={{color: '#fff'}}>Pet Preventive Care</h2>
-            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide a pet preventative care services for your pet&#39;s immune system.This services includes prescribed vaccines instructed by the veterinarian</p>
+            <h2 style={{color: '#fff'}}>Pet Wellness Care</h2>
+            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide a comprehensive wellness exam service for your pet&#39;s general wellness.Our veterinary wellness care services encompass a wide range of preventive measures to keep your pets in optimal health.</p>
             <div className='vet-sub-notice'>
-                <p>Vaccines are very important to managing the health of your pet.It is very important to discuss with the veterinarian a vaccination protocol that’s right for your pet. Factors that should be examined include age, medical history, environment, travel habits and lifestyle.</p>
+                <p>It is recommended for your companion to see a veterinarian at least once each ye ar. For pets 9 years old and older, pets on chronic medication, or pets with underlying medical conditions, biannual examinations are recommended.</p>
             </div>
         </div>
         <div className='vet-divider-container'>
@@ -125,4 +127,4 @@ const Vaccination =()=>{
 }
 
 
-export default Vaccination;
+export default WellnessVisitPlan;

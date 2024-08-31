@@ -1,13 +1,13 @@
 import './VeterinaryService.css'
 import './vetService.css'
 import '../ContactUs/ContactUs.css';
-import dogSurgery from '../../assets/dog_surgery.jpg'
+import diagnosticsImg from '../../assets/diagnostic-img.jpg'
 // import paws from "../../assets/paw.png";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const Vaccination =()=>{
+const Diagnostics =()=>{
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
@@ -34,7 +34,7 @@ const Vaccination =()=>{
         
           <div className='Vet-text'>
        <h1>OUR SERVICES</h1>
-       <h3>Pet&#39;s Vaccination Service</h3>
+       <h3>Pet&#39;s Dignostics</h3>
        <p>Your pet’s health and well-being are our top priority. We provide compassionate and professional care to ensure your furry friends live happy and healthy lives. Explore our services and let us partner with you in caring for your beloved pets. 
        Trust Paws and Claws to treat your pets like family.
     </p>
@@ -43,28 +43,32 @@ const Vaccination =()=>{
         </div>
     <div className='main-container-section'>
         <div className='Header-header'>
-            <h2>Pet&#39;s Vaccination Service</h2>
+            <h2>Pet Diagnostics</h2>
         </div>
         <div className='container-highlight'>
             <div className='left-sub-container'>
                 <div >
-                <img src={dogSurgery} alt='Pet Vaccination' className='triangle-img'/>
+                <img src={diagnosticsImg} alt="diagnostics Img" className='triangle-img' style={{marginTop:'-1px'}}/>
                 </div>
             </div>
             <div className='right-sub-container'>
-                <p>Vaccinations are a critical part of your pet&#39;s health, and can help protect your pets from fatal diseases such as rabies and lyme disease. The rabies vaccine is a requirement for every pet.</p><br/>
+                <h3>What are pet diagnostics?</h3>
+                <p>Pet diagnostics are different kinds of tests that can help provide a general overview of your pet’s health or help to diagnose an illness or disease.</p>
 
-                <p>Othe vaccines are recommended based on an animal&#39;s individual lifestyle. Your veterinarian will make a suggestion about which vaccines your pet should receive during your visit.</p><br/>
+                <p>X-rays, MRIs, CT scans, and labwork are all common diagnostic tools your vet might use to monitor things like your pet’s internal organ function or their complete blood count, or to check for broken bones or identify conditions like Lyme disease. These kinds of imaging technologies and laboratory tests will allow your vet to create a full assessment of your pet’s health. </p><br/>
 
-                <p>Puppies and kittens are to receive serial vaccines every 3-4 weeks starting at 8 weeks of age, with the last dose between 16 weeks-18 weeks of age. Elderly pets or pets with underlying medical conditions may not be vaccinated. We want your pet to live a long, healthy life and we understand that a healthy  pet requires vaccination.Your pet’s health is important to us, hence we make it a priority to we provide all the necessary to help you with this commitment. Call or book an appointment today to discuss your pet’s dental care needs and how we can help!</p>
+                <h3>Our Diagnostic Care</h3>
+                <p>At Paws and Claws Veterinary Pet Shop, our goal is keeping your pet happy and healthy. Thanks to modern diagnostics and our on-site laboratory, we&#39;re able to do just that for sick and injured pets. We are also able to run a variety of tests that are best suited to your pet’s individual needs. This allows us to get quicker diagnostic results, improving our care and treatment for your pets. With the shared goal of successful recovery, our team of experienced veterinarians works together to return your pet to good health. </p>
+
+                <p>We want your pet to live a long, healthy life, and we understand that ensuring monitoring the internal system is part of that. Your pet’s health is important to us, hence we make it a priority to we provide all the necessary so to help you with this commitment. Call or book an appointment today to discuss your pet’s dental care needs and how we can help!</p>
             </div>
         </div>
 
         <div className='vet-notice'>
-            <h2 style={{color: '#fff'}}>Pet Preventive Care</h2>
-            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide a pet preventative care services for your pet&#39;s immune system.This services includes prescribed vaccines instructed by the veterinarian</p>
+            <h2 style={{color: '#fff'}}>Thorough Diagnostic Care</h2>
+            <p className='vet-notice-col-1'>At Paws an Claws Veterinary Pet Shop we provide a thorough diagnostic care for your pet&#39;s health care.This services includes digital radiology and in house laboratory.</p>
             <div className='vet-sub-notice'>
-                <p>Vaccines are very important to managing the health of your pet.It is very important to discuss with the veterinarian a vaccination protocol that’s right for your pet. Factors that should be examined include age, medical history, environment, travel habits and lifestyle.</p>
+                <p>Without diagnostic test, it will be really chanelling to know the root cause of certian diseases that can develop or lead to systemic health problems in dogs and cats, including heart disease and kidney disease. Fortunately, this can be easily prevented by a diagnostic examinations.</p>
             </div>
         </div>
         <div className='vet-divider-container'>
@@ -125,4 +129,4 @@ const Vaccination =()=>{
 }
 
 
-export default Vaccination;
+export default Diagnostics;

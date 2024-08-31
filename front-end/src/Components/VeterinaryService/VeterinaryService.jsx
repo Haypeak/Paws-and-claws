@@ -5,11 +5,14 @@ import dentalCare from '../../assets/Dental care.jpeg'
 import dogSurgery from '../../assets/dog_surgery.jpg'
 import emergencyCare from '../../assets/emergency care.jpeg'
 import petDiagnostic from '../../assets/Pet-Diagnostic-Imaging.jpeg'
-import wellness from '../../assets/wellness and care.jpeg'
+import diagnosticsImg from '../../assets/diagnostic-img.jpg'
+import painManagementImg from '../../assets/pet-pain-managment.jpeg'
+import wellnessPlanVisitImg from '../../assets/wellnessPlan.jpeg'
+import sprayAndNeuterImg from '../../assets/spray-and-neuter.jpeg'
 import { useNavigate} from 'react-router-dom'
 
 
-const VeterianaryService =()=>{
+const  VeterinaryService =()=>{
     const navigate = useNavigate();
 
     return(
@@ -37,7 +40,10 @@ const VeterianaryService =()=>{
                         <li><a href="/surgery">Surgerical Service</a></li><br/>
                         <li><a href="/dental-care">Dental Care</a></li><br/>
                         <li><a href="/medical-checkup">Medical Check Up</a></li><br/>
-                        <li><a href="/Pet-wellness-care">Pet and Wellness Care</a></li>
+                        <li><a href="/diagnostics">Diagnostics</a></li><br/>
+                        <li><a href="/pain-management">Pain Management</a></li><br/>
+                        <li><a href="/spray-and-neuter">Spay and Neuter</a></li><br/>
+                        <li><a href="/wellness-plan">Wellness Visit & Plan</a></li>
                     </ul>
 
                 </div>
@@ -57,9 +63,9 @@ const VeterianaryService =()=>{
             <div className='service-image-container'>
                 <div className='service-image-col-1'>
                     <div className='service-image-wrap'>
-                        <img src={wellness} alt="Wellness and Care" />
-                        <p style={{fontSize:'20px', textAlign:'center'}}>Pet Wellness and Care</p>
-                        <p style={{textAlign:'center'}}><a href="/Pet-wellness-care">READ MORE</a></p>
+                        <img src={sprayAndNeuterImg} alt="spray And Neuter Img" />
+                        <p style={{fontSize:'20px', textAlign:'center'}}>Spay & Neuter</p>
+                        <p style={{textAlign:'center'}}><a href="/spray-and-neuter">READ MORE</a></p>
                     </div>
                     <div className='service-image-wrap'>
                         <img src={dentalCare} alt="Dental Care" />
@@ -74,12 +80,12 @@ const VeterianaryService =()=>{
                 </div>
                 <div className='service-image-col-2'>
                     <div className='service-image-wrap'>
-                        <img src={emergencyCare} alt="Emergency Care" />
+                        <img src={dogSurgery} alt="Dog Surgery" />
                         <p style={{fontSize:'20px', textAlign:'center'}}>Vaccination Service</p>
                         <p style={{textAlign:'center'}}><a href="/vaccinations" >READ MORE</a></p>
                     </div>
                     <div className='service-image-wrap'>
-                        <img src={dogSurgery} alt="Dog Surgery" />
+                        <img src={emergencyCare} alt="Emergency Care" />
                         <p style={{fontSize:'20px', textAlign:'center'}}>Surgery</p>
                         <p style={{textAlign:'center'}}><a href="/surgery" >READ MORE</a></p>
                     </div>
@@ -89,10 +95,27 @@ const VeterianaryService =()=>{
                         <p style={{textAlign:'center'}}><a href="/grooming" >READ MORE</a></p>
                     </div>
                 </div>
+                <div className='service-image-col-1'>
+                    <div className='service-image-wrap'>
+                        <img src={diagnosticsImg} alt="diagnostics Img" />
+                        <p style={{fontSize:'20px', textAlign:'center'}}>Pet Dignostics</p>
+                        <p style={{textAlign:'center'}}><a href="/diagnostics">READ MORE</a></p>
+                    </div>
+                    <div className='service-image-wrap'>
+                        <img src={painManagementImg} alt="pain Management Img" />
+                        <p style={{fontSize:'20px', textAlign:'center'}}>Pain Management</p>
+                        <p style={{textAlign:'center'}}><a href="/pain-management" >READ MORE</a></p>
+                    </div>
+                    <div className='service-image-wrap'>
+                        <img src={wellnessPlanVisitImg} alt="wellness Plan Visit Img" />
+                        <p style={{fontSize:'20px', textAlign:'center'}}>Wellness Plan & Visits</p>
+                        <p style={{textAlign:'center'}}><a href="/wellness-plan" >READ MORE</a></p>
+                    </div>
+                </div>
             </div>
         </div>
     )
 }
 
 
-export default VeterianaryService
+export default VeterinaryService;
