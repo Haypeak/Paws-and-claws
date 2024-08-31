@@ -3,6 +3,8 @@ from sqlalchemy import JSON
 from flask import Flask
 from datetime import datetime, UTC
 from flask_migrate import Migrate
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 app = Flask(__name__, static_folder='../../front-end/dist', static_url_path='/')
 
@@ -55,6 +57,12 @@ class User(db.Model):
         db.session.delete(admin)
         db.session.commit()
 
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+    
 class Admin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
