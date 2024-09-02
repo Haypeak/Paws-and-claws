@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import './AdminProductForm.css';
 import plus from '../../assets/icons8-plus-24.png';
 import equal from '../../assets/icons8-equal-48.png';
 import { useNavigate } from 'react-router-dom';
 
-const AdminProductForm = ({ onSave, productId }) => {
+const AdminProductForm = ({ productId }) => {
   const [productName, setProductName] = useState('');
   const [productIdState, setProductIdState] = useState('');
   const [productImage, setProductImage] = useState(null);
@@ -16,47 +15,46 @@ const AdminProductForm = ({ onSave, productId }) => {
   const [quantity, setQuantity] = useState(0);
   const [productDescription, setProductDescription] = useState('');
   const [category, setCategory] = useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (productId) {
-        const fetchProductData = async () => {
-            const getCookie = (name) => {
-              const value = `; ${document.cookie}`;
-              const parts = value.split(`; ${name}=`);
-              if (parts.length === 2) return parts.pop().split(';').shift();
-          };
-
-          const token = getCookie('token'); // Assuming the token is stored in a cookie named 'token'
-
-          try {
-            const response = await fetch(`http://127.0.0.1:5000/admin/products/${productId}`,{
-              method: 'GET',
-              mode: 'cors',
-              headers: {
-                'Content-Type': 'application/json',
-              }
-            }
-            );
-            if (response.ok) {
-              const product = await response.json();
-              setProductName(product.productName);
-              setProductIdState(product.productId);
-              setProductImage(product.productImage);
-              setCost(product.cost);
-              setPrice(product.price);
-              setTax(product.tax);
-              setPriceAfter(product.priceAfter);
-              setQuantity(product.quantity);
-              setProductDescription(product.productDescription);
-              setCategory(product.category);
-            } else {
-              console.error('Failed to fetch product data');
-            }
-          } catch (error) {
-            console.error('Error fetching product data:', error);
-          }
+      const fetchProductData = async () => {
+        const getCookie = (name) => {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
         };
+
+        const token = getCookie('token');
+
+        try {
+          const response = await fetch(`http://127.0.0.1:5000/admin/products/${productId}`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          });
+          if (response.ok) {
+            const product = await response.json();
+            setProductName(product.productName);
+            setProductIdState(product.productId);
+            setProductImage(product.productImage);
+            setCost(product.cost);
+            setPrice(product.price);
+            setTax(product.tax);
+            setPriceAfter(product.priceAfter);
+            setQuantity(product.quantity);
+            setProductDescription(product.productDescription);
+            setCategory(product.category);
+          } else {
+            console.error('Failed to fetch product data');
+          }
+        } catch (error) {
+          console.error('Error fetching product data:', error);
+        }
+      };
       fetchProductData();
     }
   }, [productId]);
@@ -87,44 +85,41 @@ const AdminProductForm = ({ onSave, productId }) => {
       quantity,
       tax
     };
-    const saveProductData = async (productData) => {
+
+    const saveProductData = async () => {
       try {
-          const getCookie = (name) => {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
+        const getCookie = (name) => {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
         };
 
-        const token = getCookie('token'); // Assuming the token is stored in a cookie named 'token'
-        if (productId){
-          const url = 'http://127.0.0.1:5000/admin/products'
-        
+        const token = getCookie('token');
+        let url;
+        let method;
+
+        if (productId) {
+          url = `http://127.0.0.1:5000/admin/products/${productId}`;
+          method = 'PUT';
+        } else {
+          url = 'http://127.0.0.1:5000/admin/products';
+          method = 'POST';
+        }
+
         const response = await fetch(url, {
-          method: 'POST',
+          method,
           mode: 'cors',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` // Include the token in the Authorization header
+            'Authorization': `Bearer ${token}`
           },
           body: JSON.stringify(productData),
         });
-      }
-      else{
-      const url = `http://127.0.0.1:5000/admin/products/${productId}`
-        const response = await fetch(url, {
-          method: 'PUT',
-          mode: 'cors',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` // Include the token in the Authorization header
-          },
-          body: JSON.stringify(productData),
-        });
-      }
+
         if (response.ok) {
           console.log('Product data saved successfully');
           alert('Product data saved successfully');
-          navigate('Inventory-page')
+          navigate('/inventory-page');
         } else {
           console.error('Failed to save product data');
         }
@@ -133,8 +128,7 @@ const AdminProductForm = ({ onSave, productId }) => {
       }
     };
 
-    saveProductData(productData);
-    // onSave(productData); // Trigger save
+    saveProductData();
   };
 
   return (
@@ -153,18 +147,6 @@ const AdminProductForm = ({ onSave, productId }) => {
         />
       </div>
       <div className='id-category-product'>
-        {/* <div className='id-category-section'>
-          <label htmlFor="product-id">Product ID:</label>
-          <input
-            className='id-category'
-            type="text"
-            id="product-id"
-            value={productIdState}
-            onChange={(e) => setProductIdState(e.target.value)}
-            placeholder='001'
-          />
-        </div> */}
-
         <div className='product-category-section'>
           <div className='product-category'>
             <label htmlFor="category">Category:</label>
@@ -181,9 +163,6 @@ const AdminProductForm = ({ onSave, productId }) => {
               <option value="Health Care">Health Care</option>
             </select>
           </div>
-          {/* <button type="button" onClick={() => setCategory(category)} className='product-category-button'>
-            Add Category
-          </button> */}
         </div>
       </div>
 
@@ -198,13 +177,6 @@ const AdminProductForm = ({ onSave, productId }) => {
             onChange={handleFileChange}
           />
         </div>
-        {/* <div style={{ marginTop: '28px' }}>
-          <h5>Default</h5>
-          <label className="container">
-            <input type="radio" checked="checked" name="radio" />
-            <span className="checkmark"></span>
-          </label>
-        </div> */}
       </div>
 
       <div>
@@ -230,7 +202,7 @@ const AdminProductForm = ({ onSave, productId }) => {
               onChange={(e) => setPrice(parseFloat(e.target.value))}
             />
           </div>
-          <img src={plus} className='tax-image' alt="Plus"/>
+          <img src={plus} className='tax-image' alt="Plus" />
           <div>
             <label htmlFor="tax">Tax (%):</label>
             <input
@@ -242,7 +214,7 @@ const AdminProductForm = ({ onSave, productId }) => {
               placeholder='VAT(12.5%)'
             />
           </div>
-          <img src={equal} className='tax-image' alt="Equal"/>
+          <img src={equal} className='tax-image' alt="Equal" />
           <div>
             <label htmlFor="price-after">Price After Tax:</label>
             <input
@@ -280,19 +252,11 @@ const AdminProductForm = ({ onSave, productId }) => {
       </div>
 
       <div className='product-form-button-section'>
-      <div className='product-form-button-section'>
         <button type="button" className='product-form-button' onClick={() => window.history.back()}>Back</button>
         <button type="submit" className='product-form-button'>Save</button>
-      </div>
       </div>
     </form>
   );
 };
-
-// PropTypes validation
-// AdminProductForm.propTypes = {
-//   onSave: PropTypes.func.isRequired, // Ensures onSave is a required function prop
-//   productId: PropTypes.string, // Ensures productId is an optional string prop
-// };
 
 export default AdminProductForm;
