@@ -8,6 +8,8 @@ from werkzeug.security import generate_password_hash
 import jwt
 from functools import wraps
 from werkzeug.security import generate_password_hash
+from uuid import uuid4
+from flask import current_app
 
 # Create a blueprint object
 # the above is a useless comment, but then why not
@@ -32,6 +34,18 @@ def admin_required(f):
                 return jsonify({"message": "User not found"}), 404
         return jsonify({"message": "Missing token"}), 401
     return decorated_function
+
+def save_image(image):
+    if not image:
+        return None
+    
+    filename = secure_filename(image.filename)
+    unique_filename = f"{uuid4().hex}_{filename}"
+    upload_folder = current_app.config['UPLOAD_FOLDER']
+    file_path = os.path.join(upload_folder, unique_filename)
+    
+    image.save(file_path)
+    return unique_filename
 
 # Define routes
 
@@ -459,7 +473,7 @@ def get_single_product(product_id):
 @admins_bp.route('/products', methods=['POST'])
 @admin_required
 def create_product():
-    data = request.get_json()
+    data = request.form  # Use form data instead of JSON
     name = data.get('productName')
     description = data.get('productDescription')
     price = data.get('price')
@@ -467,17 +481,23 @@ def create_product():
     category = data.get('category')
     tax = data.get('tax')
     cost = data.get('cost')
-    image = data.get('productImage') if data.get('productImage') else None
-
-    # if image:
-    #     filename = secure_filename(image.filename)
-    #     image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    #     product.image_url = filename
+    image = request.files.get('productImage')
 
     if not name or not description or not price or not quantity:
         return jsonify({"message": "Missing required fields"}), 400
 
-    product = Product(name=name, description=description, category=category, price=price, quantity=quantity, tax=tax, cost=cost)
+    image_filename = save_image(image)
+
+    product = Product(
+        name=name, 
+        description=description, 
+        category=category, 
+        price=price, 
+        quantity=quantity, 
+        tax=tax, 
+        cost=cost,
+        image_url=image_filename
+    )
     db.session.add(product)
     db.session.commit()
 
@@ -490,16 +510,15 @@ def update_product(product_id):
     if not product:
         return jsonify({"message": "Product not found"}), 404
 
-    data = request.get_json()
-    name = data.get('name')
-    description = data.get('description')
+    data = request.form  # Use form data instead of JSON
+    name = data.get('productName')
+    description = data.get('productDescription')
     price = data.get('price')
     quantity = data.get('quantity')
-    image = data.get('image')
-    price = data.get('price')
-    cost = data.get('cost')
+    category = data.get('category')
     tax = data.get('tax')
-    
+    cost = data.get('cost')
+    image = request.files.get('productImage')
 
     if not name or not description or not price or not quantity:
         return jsonify({"message": "Missing required fields"}), 400
@@ -508,10 +527,19 @@ def update_product(product_id):
     product.description = description
     product.price = price
     product.quantity = quantity
-    product.cost = cost
+    product.category = category
     product.tax = tax
-    product.quantity = quantity
-    # product.image_url = image
+    product.cost = cost
+
+    if image:
+        # Delete old image if it exists
+        if product.image_url:
+            old_image_path = os.path.join(current_app.config['UPLOAD_FOLDER'], product.image_url)
+            if os.path.exists(old_image_path):
+                os.remove(old_image_path)
+        
+        # Save new image
+        product.image_url = save_image(image)
 
     db.session.commit()
 

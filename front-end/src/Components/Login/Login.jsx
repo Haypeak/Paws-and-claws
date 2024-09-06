@@ -1,14 +1,20 @@
-import { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import Cookies from 'js-cookie';
-import './Login.css';
+import { AuthContext } from '../Auth/AuthContext';
 
-function Login() {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { authState, loginUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    // Check if user is already logged in
+    if (authState.isAuthenticated) {
+      navigate('/appointments'); // or whatever your destination page is
+    }
+  }, [authState.isAuthenticated, navigate]);
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -19,22 +25,11 @@ function Login() {
     }
 
     try {
-      const response = await axios.post('http://127.0.0.1:5000/auth/login', {}, {
-        auth: {
-          username: email,
-          password: password
-        }
-      });
-
-      if (response.status === 200) {
-        if (response.data.token) {
-          Cookies.set('token', response.data.token);
-          navigate('/appointments');
-        } else {
-          setError('Login failed. Please check your credentials.');
-        }
+      const result = await loginUser(email, password);
+      if (result.success) {
+        navigate('/appointments'); // or whatever your destination page is
       } else {
-        setError('Login failed. Please check your credentials.');
+        setError(result.error || 'Login failed. Please try again.');
       }
     } catch (error) {
       setError('An error occurred. Please try again.');
@@ -46,6 +41,11 @@ function Login() {
     console.log('Forgot password clicked');
     // Implement forgot password logic here
   };
+
+  // If user is already authenticated, don't render the login form
+  if (authState.isAuthenticated) {
+    return null; // or you could return a loading spinner here
+  }
 
   return (
     <div className="login-container">
@@ -91,12 +91,11 @@ function Login() {
 
           <p>
             <a onClick={handleForgotPassword}>Forgot password?</a>
-            {/* <a href='/new-product-edit'>a</a> */}
           </p>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default Login;

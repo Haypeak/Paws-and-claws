@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import './AdminProductForm.css';
 import plus from '../../assets/icons8-plus-24.png';
 import equal from '../../assets/icons8-equal-48.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const AdminProductForm = ({ productId }) => {
+const AdminProductForm = () => {
+  const { productId } = useParams();
+  
   const [productName, setProductName] = useState('');
   const [productIdState, setProductIdState] = useState('');
+  const [id, setId] = useState('');
   const [productImage, setProductImage] = useState(null);
   const [cost, setCost] = useState(0.00);
   const [price, setPrice] = useState(0.00);
@@ -16,9 +19,11 @@ const AdminProductForm = ({ productId }) => {
   const [productDescription, setProductDescription] = useState('');
   const [category, setCategory] = useState('');
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (productId) {
+      setIsLoading(true);
       const fetchProductData = async () => {
         const getCookie = (name) => {
           const value = `; ${document.cookie}`;
@@ -27,35 +32,53 @@ const AdminProductForm = ({ productId }) => {
         };
 
         const token = getCookie('token');
+        console.log('Token:', token); // Log the token
 
         try {
+          console.log(`Fetching product data for ID: ${productId}`);
           const response = await fetch(`http://127.0.0.1:5000/admin/products/${productId}`, {
             method: 'GET',
-            mode: 'cors',
             headers: {
               'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
             }
           });
+          console.log('Response status:', response.status);
+          
           if (response.ok) {
             const product = await response.json();
-            setProductName(product.productName);
-            setProductIdState(product.productId);
-            setProductImage(product.productImage);
-            setCost(product.cost);
-            setPrice(product.price);
-            setTax(product.tax);
-            setPriceAfter(product.priceAfter);
-            setQuantity(product.quantity);
-            setProductDescription(product.productDescription);
-            setCategory(product.category);
+            console.log('Fetched product data:', product);
+            
+            // Set state variables
+            setProductName(product.name || '');
+            setProductIdState(product.id || '');
+            setProductImage(product.image || null);
+            setCost(product.cost || 0);
+            setPrice(product.price || 0);
+            setTax(product.tax || 0);
+            setPriceAfter(product.price + (product.price * product.tax / 100) || 0);
+            setQuantity(product.quantity || 0);
+            setProductDescription(product.description || '');
+            setCategory(product.category || '');
+            
+            console.log('State after setting:', { 
+              productName, productIdState, cost, price, tax, priceAfter, quantity, productDescription, category 
+            });
           } else {
             console.error('Failed to fetch product data');
+            const errorText = await response.text();
+            console.error('Error response:', errorText);
           }
         } catch (error) {
           console.error('Error fetching product data:', error);
+        } finally {
+          setIsLoading(false);
         }
       };
       fetchProductData();
+    } else {
+      console.log('No productId provided, skipping fetch');
+      setIsLoading(false);
     }
   }, [productId]);
 
@@ -65,7 +88,9 @@ const AdminProductForm = ({ productId }) => {
   }, [price, tax]);
 
   const handleFileChange = (event) => {
-    setProductImage(URL.createObjectURL(event.target.files[0]));
+    if (event.target.files && event.target.files[0]) {
+      setProductImage(URL.createObjectURL(event.target.files[0]));
+    }
   };
 
   const handleCategoryChange = (event) => {
@@ -95,15 +120,12 @@ const AdminProductForm = ({ productId }) => {
         };
 
         const token = getCookie('token');
-        let url;
-        let method;
+        let url = 'http://127.0.0.1:5000/admin/products';
+        let method = 'POST';
 
         if (productId) {
           url = `http://127.0.0.1:5000/admin/products/${productId}`;
           method = 'PUT';
-        } else {
-          url = 'http://127.0.0.1:5000/admin/products';
-          method = 'POST';
         }
 
         const response = await fetch(url, {
@@ -130,6 +152,10 @@ const AdminProductForm = ({ productId }) => {
 
     saveProductData();
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <form onSubmit={handleSubmit} className='Admin-Product-container'>
@@ -177,6 +203,11 @@ const AdminProductForm = ({ productId }) => {
             onChange={handleFileChange}
           />
         </div>
+        {productImage && (
+          <div className='product-image-preview'>
+            <img src={productImage} alt="Product preview" style={{ maxWidth: '200px', maxHeight: '200px' }} />
+          </div>
+        )}
       </div>
 
       <div>

@@ -4,14 +4,16 @@ from flask import Flask
 from datetime import datetime, UTC
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from flask_jwt_extended import JWTManager
 
 app = Flask(__name__, static_folder='../../front-end/dist', static_url_path='/')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pawsandclaws.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'uploads'
+app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
 db = SQLAlchemy(app)
+JWT = JWTManager(app)
 # migrate = Migrate(app, db)
 
 class Pet(db.Model): 
@@ -25,6 +27,15 @@ class Pet(db.Model):
     # vaccinations = db.relationship('PetVaccination', backref='pet', lazy=True)
     appointments = db.relationship('Appointment', backref='pet', lazy=True)
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'species': self.species,
+            'breed': self.breed,
+            'age': self.age
+        }
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255), unique=True, nullable=True)
@@ -33,6 +44,7 @@ class User(db.Model):
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
     phone_number = db.Column(db.String(20), nullable=False)
+    profile_picture = db.Column(db.String(255), nullable=True)
     address = db.Column(db.Text, nullable=True)
     role = db.Column(db.String(50), nullable=False, default='user')
     date_joined = db.Column(db.DateTime, default=datetime.now(UTC))
