@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import { useState, useEffect } from 'react';
+import { format, addMinutes } from 'date-fns';
 
 import "./AppointmentForm.css";
 // eslint-disable-next-line no-unused-vars
@@ -9,15 +10,9 @@ const AppointmentForm = () => {
     // eslint-disable-next-line no-unused-vars
     const get_current_user = async () => {
         try {
-            // Extract the token from the document cookie
-            const getCookie = (name) => {
-                const value = `; ${document.cookie}`;
-                const parts = value.split(`; ${name}=`);
-                if (parts.length === 2) return parts.pop().split(';').shift();
-            };
-    
-            const token = getCookie('token'); // Assuming the token is stored in a cookie named 'token'
-    
+            // Get the token from local storage
+            const token = localStorage.getItem('token'); // Retrieve token from local storage
+
             const response = await fetch('http://127.0.0.1:5000/auth/current_user', {
                 method: 'GET',
                 mode: 'cors',
@@ -26,7 +21,7 @@ const AppointmentForm = () => {
                     'Authorization': `Bearer ${token}` // Include the token in the Authorization header
                 },
             });
-    
+
             if (response.status === 200) {
                 // User is logged in, do nothing
                 current_user = response.json
@@ -110,15 +105,9 @@ const AppointmentForm = () => {
     useEffect(() => {
         const checkLoggedIn = async () => {
             try {
-                // Extract the token from the document cookie
-                const getCookie = (name) => {
-                    const value = `; ${document.cookie}`;
-                    const parts = value.split(`; ${name}=`);
-                    if (parts.length === 2) return parts.pop().split(';').shift();
-                };
-        
-                const token = getCookie('token'); // Assuming the token is stored in a cookie named 'token'
-        
+                // Get the token from local storage
+                const token = localStorage.getItem('token'); // Retrieve token from local storage
+
                 const response = await fetch('http://127.0.0.1:5000/auth/checkloggedin', {
                     method: 'GET',
                     headers: {
@@ -126,7 +115,7 @@ const AppointmentForm = () => {
                         'Authorization': `Bearer ${token}` // Include the token in the Authorization header
                     },
                 });
-        
+
                 if (response.status === 200) {
                     // User is logged in, do nothing
                     setIsLoading(false);
@@ -143,6 +132,10 @@ const AppointmentForm = () => {
 
         checkLoggedIn();
     }, []);
+
+    const now = new Date();
+    const minDate = format(now, 'yyyy-MM-dd');
+    const minTime = format(addMinutes(now, 1), 'HH:mm');
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -261,6 +254,7 @@ const AppointmentForm = () => {
                             name="date"
                             value={formData.date} 
                             onChange={handleChange} 
+                            min={minDate}
                             required 
                             className='contact-section'
                         />
@@ -273,6 +267,7 @@ const AppointmentForm = () => {
                             name="time" 
                             value={formData.time}
                             onChange={handleChange} 
+                            min={minTime}
                             required 
                             className='contact-section'
                         />

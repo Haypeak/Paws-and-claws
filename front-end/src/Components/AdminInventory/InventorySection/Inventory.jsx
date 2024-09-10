@@ -59,7 +59,7 @@ const Inventory = () => {
           );
           if (response.ok) {
             const products = await response.json();
-            console.log(products)
+            // console.log(products)
             setProducts(products)
           } else {
             console.error('Failed to fetch product data');
@@ -82,8 +82,8 @@ const Inventory = () => {
   };
 
   const handleEdit = (productId) => {
-    setEditingProductId(productId);
-    navigate(`/new-product-edit/${productId}`); // Navigate to the form page with the product ID
+    console.log('Editing product with ID:', productId); // Add this line for debugging
+    navigate(`/admin-product-form/${productId}`);
   };
 
   const handleDelete = (productId) => {
@@ -110,7 +110,7 @@ const Inventory = () => {
                 <button onClick={() => handleEdit(product.id)} className='action-btn'><img src={pencil} className='action-btn-img' alt='Edit' /></button>
                 <button onClick={() => handleDelete(product.id)} className='action-btn'><img src={deleteIcon} className='action-btn-img' alt='Delete' /></button>
               </div>
-              <p>{index + 1}</p>
+              <p>{product.id}</p>
               <img src={product.image} alt={product.name} className='inventory-image' />
               <p>{product.name}</p>
               <p>{product.id}</p>

@@ -120,3 +120,35 @@ nav ul button {
       transition: transform 0.5s ease; /* Smooth transition for opening/closing */
   }
 }
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  margin-right: 10px;
+}
+
+.mobile-logout {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-logout {
+    display: block;
+  }
+
+  .right-section {
+    gap: 10px;
+  }
+}

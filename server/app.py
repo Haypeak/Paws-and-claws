@@ -5,9 +5,12 @@ from api.auth import auth_blueprint
 from api.appointments import appointments_bp  # Imported the blueprint
 from api.admins import admins_bp
 from api.newsletters import newsletter_bp, send_newsletters
+from api.profile import profile_blueprint
+from api.contactus import contactus_blueprint
 from database.db import app, db, User  # Ensure the app instance is imported correctly
 from flask_cors import CORS, cross_origin
 from flask_migrate import Migrate
+# from flask_jwt_extended import JWTManager
 
 # Configuring the Flask application
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -43,8 +46,12 @@ app.register_blueprint(appointments_bp)
 app.register_blueprint(auth_blueprint, url_prefix='/auth')
 app.register_blueprint(admins_bp, url_prefix='/admin')
 app.register_blueprint(newsletter_bp, url_prefix='/newsletters')
+app.register_blueprint(contactus_blueprint, url_prefix ='/contactus')
+app.register_blueprint(profile_blueprint, url_prefix='/profile')
 
-
+# Registering the new pets blueprint
+from api.pets import pets  # Import the new pets blueprint
+app.register_blueprint(pets)  # Register the new pets blueprint
 
 # Starting the Flask application
 if __name__ == '__main__':

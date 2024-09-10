@@ -21,15 +21,14 @@ import VetCareAndProductPage from './Pages/VetCareAndProductPage';
 // import AdminPanel from './Pages/AdminPanel';
 import AdminProductFormPage from './Pages/AdminProductFormPage';
 import InventoryPage from './Pages/InventoryPage';
-
-
-
-
+import UserProfilePage from "./Pages/UserProfilePage";
+import { AuthProvider } from './Components/Auth/AuthContext';
 
 const App = () => {
   // const isAdminAuthenticated = localStorage.getItem('adminAuthenticated'); // Check if admin is authenticated
 
   return (
+    <AuthProvider>
     <Router>
       <Routes>
         {/* Public Routes */}
@@ -57,9 +56,12 @@ const App = () => {
         <Route path="/admin-login" element={<AdminLoginPage />} />
         <Route path='/new-product-edit' element={<AdminProductFormPage/>}/>
         <Route path='/inventory-page' element={<InventoryPage/>}/>
-        {/* <Route path="/inventory-page" element={isAdminAuthenticated ? <AdminPanel /> : <Navigate to="/admin-login" />} /> */}
+        <Route path='/admin-product-form/:productId' element={<AdminProductFormPage/>}/>
+        {/* <Route path="/admin-dashboard" element={isAdminAuthenticated ? <AdminPanel /> : <Navigate to="/admin-login" />} /> */}
+        <Route path="/user-profile" element={<UserProfilePage />} />
       </Routes>
     </Router>
+  </AuthProvider>
   );
 };
 

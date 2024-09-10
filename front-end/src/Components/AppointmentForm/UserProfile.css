@@ -1,0 +1,248 @@
+.main-content {
+  padding-top: 0px; /* Adjust this value to match your navbar height */
+}
+
+.user-profile {
+  padding-top: 70px;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  background-color: #ffffff;
+  border-radius: 0 0 8px 8px; /* Rounded corners only at the bottom */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #e0e0e0; /* Add a top border */
+}
+
+.user-profile-inner {
+  padding: 30px;
+}
+
+.user-profile h2 {
+  margin-bottom: 20px;
+  color: #333333;
+  font-size: 24px;
+}
+
+.user-profile form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.user-profile input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.user-profile button {
+  padding: 10px;
+  background-color: #f09342;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.appointment-item {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.appointment-item:hover {
+  background-color: #f5f5f5;
+}
+
+.appointment-item.cancelled {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.appointment-item form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.appointment-item input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.appointment-item button {
+  padding: 5px 10px;
+  background-color: #f09342;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.appointment-item button[type="button"] {
+  background-color: #ccc;
+}
+
+.appointment-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.appointment-actions button {
+  margin-left: 10px;
+}
+
+.small-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.small-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.small-button.edit {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.small-button.save {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.small-button.cancel {
+  background-color: #f44336;
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.profile-info {
+  margin-bottom: 30px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333333; /* Darker text color */
+  line-height: 1.5;
+}
+
+.profile-info strong {
+  font-weight: 600;
+  color: #1a1a1a; /* Even darker color for labels */
+}
+
+.edit-profile-btn, .logout-btn {
+  padding: 8px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-profile-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.logout-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.edit-profile-btn:hover, .logout-btn:hover {
+  opacity: 0.8;
+}
+
+.profile-picture-container,
+.profile-picture-upload {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #4CAF50;
+}
+
+.profile-picture-upload input[type="file"] {
+  display: none;
+}
+
+.profile-picture-label {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.profile-picture-label:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: #f44336;
+  background-color: #ffebee;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  margin-left: 10px;
+}

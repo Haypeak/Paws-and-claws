@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from database.db import db, Appointment, Pet, User
 from datetime import datetime, timedelta
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 appointments_bp = Blueprint('appointments', __name__, url_prefix='/api')
 
@@ -140,8 +141,15 @@ def get_appointment(id):
     }), 200
 
 @appointments_bp.route('/appointments/<int:id>', methods=['PUT'])
+@jwt_required()
 def update_appointment(id):
-    appointment = db.session.get(Appointment, id)
+    current_user_id = get_jwt_identity()
+    appointment = Appointment.query.filter_by(id=id, user_id=current_user_id).first()
+    if not appointment:
+        return jsonify({"msg": "Appointment not found or not authorized"}), 404
+    # Update appointment logic here
+    # ...
+
     data = request.get_json()
 
     if not data:
@@ -172,3 +180,30 @@ def delete_appointment(id):
     db.session.delete(appointment)
     db.session.commit()
     return jsonify({"message": "Appointment deleted"}), 200
+
+@appointments_bp.route('/appointments/<int:id>/cancel', methods=['DELETE'])
+@jwt_required()
+def cancel_appointment(id):
+    current_user_id = get_jwt_identity()
+    appointment = Appointment.query.filter_by(id=id, user_id=current_user_id).first()
+    if not appointment:
+        return jsonify({"msg": "Appointment not found or not authorized"}), 404
+    # Cancel appointment logic here
+    # ...
+
+    db.session.delete(appointment)
+    db.session.commit()
+    return jsonify({"message": "Appointment cancelled"}), 200
+
+# @appointments_bp.route('/appointments/<int:id>/update', methods=['PUT'])
+# def update_appointment(id):
+#     appointment = db.session.get(Appointment, id)
+#     if appointment:
+#         data = request.get_json()
+#         # Update appointment fields
+#         appointment.date_time = datetime.strptime(f"{data['date']} {data['time']}", '%Y-%m-%d %H:%M')
+#         appointment.reason = data['reason']
+#         # Update other fields as necessary
+#         db.session.commit()
+#         return jsonify({"message": "Appointment updated"}), 200
+#     return jsonify({"message": "Appointment not found"}), 404
