@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between; /* Align items with space between them */
-  gap: 20px; /* Adjust gap between item elements */
+  gap: 5px; /* Adjust gap between item elements */
   padding: 10px;
   border: 1px solid #ddd; /* Border for better visual separation */
   border-radius: 8px; /* Rounded corners */
@@ -23,7 +23,7 @@
 .inventory-item > div {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between elements in each div */
+  gap: 5px; /* Space between elements in each div */
 }
 
 .inventory-image {

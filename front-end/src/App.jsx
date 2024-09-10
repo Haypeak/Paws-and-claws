@@ -57,7 +57,7 @@ const App = () => {
         <Route path="/admin-login" element={<AdminLoginPage />} />
         <Route path='/new-product-edit' element={<AdminProductFormPage/>}/>
         <Route path='/inventory-page' element={<InventoryPage/>}/>
-        {/* <Route path="/admin-dashboard" element={isAdminAuthenticated ? <AdminPanel /> : <Navigate to="/admin-login" />} /> */}
+        {/* <Route path="/inventory-page" element={isAdminAuthenticated ? <AdminPanel /> : <Navigate to="/admin-login" />} /> */}
       </Routes>
     </Router>
   );

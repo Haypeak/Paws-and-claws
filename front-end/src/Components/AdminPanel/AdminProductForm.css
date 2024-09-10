@@ -95,6 +95,7 @@
 .product-form-textarea {
     resize: vertical;
     min-height: 200px;
+    margin-bottom: 40px;
 }
 
 .product-form-button-section {

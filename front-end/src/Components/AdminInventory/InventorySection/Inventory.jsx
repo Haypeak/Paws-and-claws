@@ -17,15 +17,17 @@ const Inventory = () => {
     } else {
       const defaultProducts = [
         {
+          
+          productName: 'Friskies',
           productId: '001',
-          productName: 'Dog Food',
           productImage: 'https://via.placeholder.com/150',
           priceAfter: 20.00,
           category: 'Dog Food'
         },
         {
+          
+          productName: 'chewy',
           productId: '002',
-          productName: 'Cat Toy',
           productImage: 'https://via.placeholder.com/150',
           priceAfter: 15.00,
           category: 'Toys'
@@ -81,7 +83,7 @@ const Inventory = () => {
 
   const handleEdit = (productId) => {
     setEditingProductId(productId);
-    navigate(`/admin-product-form/${productId}`); // Navigate to the form page with the product ID
+    navigate(`/new-product-edit/${productId}`); // Navigate to the form page with the product ID
   };
 
   const handleDelete = (productId) => {
@@ -113,7 +115,7 @@ const Inventory = () => {
               <p>{product.name}</p>
               <p>{product.id}</p>
               <p>${Number(product.price + (product.price * product.tax)).toFixed(2)}</p>
-              <p>{product.category}</p>
+              <p style={{marginRight:'36px'}}>{product.category}</p>
             </div>
           ))
         )}

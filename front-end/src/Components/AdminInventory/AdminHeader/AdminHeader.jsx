@@ -32,8 +32,8 @@ const AdminHeader = () => {
       </div>
 
       <div className='Inventory-container'>
-            <div className='inventory-section-col'>
-                <p>Action</p>
+            <div className='inventory-section-col' style={{gap:'60px'}}>
+                <p >Action</p>
                 <p>#</p>
                 <p>Image</p>
                 <div>

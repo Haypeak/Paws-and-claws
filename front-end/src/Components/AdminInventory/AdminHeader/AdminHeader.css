@@ -94,6 +94,10 @@ background-color: antiquewhite;
     display: flex;
     margin-left: 100px;
 }
+
+.Inventory-container input{
+    width: 120px;
+}
 .inventory-section-col{
     display: flex;
     flex-direction: row;

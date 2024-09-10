@@ -137,6 +137,10 @@
         margin-bottom: 20px;
     }
 
+    .service-col-section-1 {
+        margin-bottom: 80px;
+    }
+
     .service-image-wrap img {
         width: 150px;
         height: 100px;
@@ -154,6 +158,11 @@
         width: 100%;
         margin-bottom: 70px;
     }
+
+    .service-col-section-1 {
+        margin-bottom: 70px;
+    }
+
 
     .service-image-wrap img {
         width: 120px;

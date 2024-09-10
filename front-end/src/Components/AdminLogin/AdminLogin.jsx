@@ -29,7 +29,7 @@ const AdminLogin = () => {
         if (response.status === 200) {
           if (response.data.token) {
             Cookies.set('token', response.data.token);
-            navigate('/admin-dashboard');
+            navigate('/inventory-page');
           } else {
             setError('Login failed. Please check your credentials.');
           }

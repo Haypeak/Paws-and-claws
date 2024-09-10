@@ -353,3 +353,59 @@ footer {
 .hovering-image:hover, .profile-img-container {
   opacity: 1;
 }
+
+
+/* Media queries for tablets */
+@media (max-width: 768px) {
+  .contact-details, .time-details, .animalKind-detail {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .note-submit-btn {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .appointment {
+    max-width: 90%;
+  }
+}
+
+/* Media queries for mobile phones */
+@media (max-width: 480px) {
+  .contact-details, .time-details, .animalKind-detail {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .note-submit-btn {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .appointment {
+    max-width: 95%;
+    margin: 30px auto;
+  }
+
+  .appointment input, .appointment select, .appointment button {
+    font-size: 14px;
+  }
+
+  .appointment-textarea {
+    min-height: 80px;
+  }
+
+  .checkmark {
+    height: 12px;
+    width: 12px;
+  }
+
+  .col-container .checkmark:after {
+    top: 4px;
+    left: 3px;
+    width: 4px;
+    height: 4px;
+  }
+}
