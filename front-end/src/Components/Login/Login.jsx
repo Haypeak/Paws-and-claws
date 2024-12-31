@@ -1,6 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
+import  { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Auth/AuthContext';
+import './Login.css'
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -50,12 +51,13 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="Log-in">
-        <div className="ll-header">
-          <h2 className="ll">Welcome</h2>
-          <h4 className="lolo">to Paws and Claws Veterinary Pet Shop Portal</h4>
-        </div>
 
         <form className="login-form" onSubmit={handleLogin}>
+       
+        <div className="ll-header">
+          <h2 className="ll">Welcome</h2>
+          <h4 className="lolo" style={{textAlign:'center'}}>to Paws and Claws Veterinary Pet Shop Portal</h4>
+        </div>
           <div className="login-info">
             <input
               type="email"
@@ -85,7 +87,7 @@ const Login = () => {
           {error && <p className="error-message">{error}</p>}
 
           <div className="login-signup">
-            <button type="submit" className="btn-btn">Log In</button>
+            <button type="submit" className="btn-btn" style={{marginBottom:'5px'}}>Log In</button>
             <button type="button" className="btn-btn" onClick={() => navigate('/SignUp')}>Sign Up</button>
           </div>
 

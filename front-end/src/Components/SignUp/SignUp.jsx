@@ -71,7 +71,7 @@ function SignUp() {
     <div className="sign-container">
       <div className="sign-in">
         <div className="ss-header" style={{ marginBottom: '10px', color:'#d07322' }}>
-          <h2 className="ss">Welcome</h2>
+          <h2 className="ss" style={{marginTop:'80px'}}>Welcome</h2>
           <h4 className="soso">to Paws and Claws Veterinary Pet Shop Registration Portal</h4>
         </div>
 

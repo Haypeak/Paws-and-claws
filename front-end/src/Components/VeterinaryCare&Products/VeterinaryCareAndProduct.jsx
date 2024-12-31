@@ -4,8 +4,21 @@ import dog from '../../assets/dog.jpeg';
 import cat from '../../assets/cat.jpeg';
 import fish from '../../assets/fish.jpeg';
 import dogtreat from '../../assets/kibblesnbite.jpg';
+import catfood from '../../assets/Tender&crunchy.jpg';
+import cattreat from '../../assets/friskies-shred.jpg';
+import bowls from '../../assets/bowls.jpeg';
 import shirt from '../../assets/products13.jpg';
+import clean from '../../assets/clean.jpeg';
+import collar from '../../assets/collar.jpeg'
+import leashset from '../../assets/Harness & Leash Set.jpg'
 import dogfood from '../../assets/pedigree-smallDog.jpg'
+import toys from '../../assets/tys.jpeg'
+import cage from '../../assets/dogCage (1).jpg'
+import cushion from '../../assets/catInBed.png'
+import homespray from '../../assets/home-spray.jpg'
+import shampoo from '../../assets/shampoo.webp'
+import canfood from '../../assets/canned food.jpeg'
+import artullano from '../../assets/artuluna.jpg'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -48,7 +61,7 @@ const VeterinaryCareAndProduct=()=> {
       <div className='Popular-category-main-container'>
         <div className='Popular-category-col'>
           <div className='Popular-category-sub'>
-            <img src={dogfood} alt='Dog treat'/>
+            <img src={dogfood} alt='Dog food'/>
             <p>Dog Food</p>
           </div>
           <div className='Popular-category-sub'>
@@ -56,61 +69,61 @@ const VeterinaryCareAndProduct=()=> {
             <p>Dog Treat</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={dogtreat} alt='Dog treat'/>
+            <img src={catfood} alt='cat food'/>
             <p>Cat Food</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={dogtreat} alt='Dog treat'/>
+            <img src={cattreat} alt='cat treat'/>
             <p>Cat Treat</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={dogtreat} alt='Dog treat'/>
+            <img src={bowls} alt='bowls'/>
             <p>Bowls</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={dogtreat} alt='Dog treat'/>
-            <p>Cleaning supplies</p>
+            <img src={clean} alt='Supplies'/>
+            <p>Supplies</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={dogtreat} alt='Dog treat'/>
+            <img src={collar} alt='Collar'/>
             <p>Collar</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={dogtreat} alt='Dog treat'/>
+            <img src={leashset} alt='Leash'/>
             <p>Leash Set</p>
           </div>
         </div>
         <div className='Popular-category-col'>
           <div className='Popular-category-sub'>
-            <img src={shirt} alt='Dog shirt'/>
+            <img src={shirt} alt='Clothes'/>
             <p>Clothes</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={shirt} alt='Dog shirt'/>
+            <img src={toys} alt='Toys'/>
             <p>Toys</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={shirt} alt='Dog shirt'/>
+            <img src={cage} alt='Cage'/>
             <p>Dog Cage</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={shirt} alt='Dog shirt'/>
-            <p>Sleep Cushion</p>
+            <img src={cushion} alt='Sleep'/>
+            <p>Sleep</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={shirt} alt='Dog shirt'/>
+            <img src={homespray} alt='Medicine'/>
             <p>Medicine</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={shirt} alt='Dog shirt'/>
+            <img src={shampoo} alt='Shampoo'/>
             <p>Shampoo</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={shirt} alt='Dog shirt'/>
-            <p>Clothes</p>
+            <img src={canfood} alt='Canned food'/>
+            <p>Can food</p>
           </div>
           <div className='Popular-category-sub'>
-            <img src={shirt} alt='Dog shirt'/>
+            <img src={artullano} alt='Treat'/>
             <p>Clothes</p>
           </div>
         </div>
