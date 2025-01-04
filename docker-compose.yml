@@ -1,0 +1,19 @@
+services:
+  frontend:
+    build:
+      context: ./front-end
+    ports:
+      - "3000:80"
+    networks:
+      - paws-and-claws-network
+
+  server:
+    build:
+      context: ./server
+    ports:
+      - "5000:5000"
+    networks:
+      - paws-and-claws-network
+
+networks:
+  paws-and-claws-network:
